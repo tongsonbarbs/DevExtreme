@@ -19,7 +19,7 @@ fixture.disablePageReloads`a11y - contrast`
   test(`Scheduler a11y: Insufficient contrast of day numbers in the MonthView (${theme})`, async (t) => {
     const scheduler = new Scheduler('#container');
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
-    await t.debug();
+
     await t
       .expect(takeScreenshot(`month_day_number_contrast-${theme}`, scheduler.element))
       .ok()
