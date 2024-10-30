@@ -10,8 +10,11 @@ fixture.disablePageReloads`a11y - contrast`
 
 [
   Themes.genericLight,
+  Themes.genericDark,
   Themes.fluentBlue,
+  Themes.fluentBlueDark,
   Themes.materialBlue,
+  Themes.materialBlueDark,
 ].forEach((theme) => {
   test(`Scheduler a11y: Insufficient contrast of day numbers in the MonthView (${theme})`, async (t) => {
     const scheduler = new Scheduler('#container');

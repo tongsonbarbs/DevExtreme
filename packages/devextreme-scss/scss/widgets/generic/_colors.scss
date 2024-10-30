@@ -201,7 +201,7 @@ $base-grid-selectedrow-border-color: null !default;
 @if $color == "dark" {
   $generic-color-postfix: ".dark" !default;
   $base-accent: #1ca8dd !default;
-  $base-text-color: #dedede !default;
+  $base-text-color: #fff !default;
   $base-bg: #2a2a2a !default;
   $base-border-color: #4d4d4d !default;
   $base-label-color: $base-text-color !default;
@@ -271,7 +271,7 @@ $base-grid-selectedrow-border-color: null !default;
   $base-link-color: #83a2c7 !default;
   $base-icon-color: #fff !default;
   $base-accent: #9c63ff !default;
-  $base-text-color: #f5f6f7 !default;
+  $base-text-color: #fff !default;
   $base-label-color: $base-text-color !default;
   $base-bg: #17171f !default;
   $base-border-color: #343840 !default;

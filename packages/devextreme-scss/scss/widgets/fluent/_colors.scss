@@ -144,7 +144,7 @@ $scrollview-pulldown-path: null !default;
     $base-accent: rgba(15, 108, 189, 1) !default;
     $base-success: rgba(16, 124, 16, 1) !default;
     $base-danger: rgba(209, 52, 56, 1) !default;
-    $base-text-color: rgba(36, 36, 36, 1) !default;
+    $base-text-color: rgba(0, 0, 0, 1) !default;
     $base-label-color: lighten($base-text-color, 29.80) !default;
     $base-icon-color: lighten($base-text-color, 23.92) !default;
     $base-border-color: rgba(224, 224, 224, 1) !default;
