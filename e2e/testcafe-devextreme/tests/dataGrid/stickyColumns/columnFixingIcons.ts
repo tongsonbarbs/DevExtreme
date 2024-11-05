@@ -24,7 +24,7 @@ fixture.disablePageReloads`Column Fixing`.page(
         .click(dataGrid.getContextMenu().getItemByOrder(4))
         .expect(
           await takeScreenshot(
-            `sticky_columns_menu_texts_(${theme}).png`,
+            `sticky_columns_context_menu_(${theme}).png`,
             dataGrid.element,
           ),
         )
