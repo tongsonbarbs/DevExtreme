@@ -8,7 +8,7 @@ import { Themes } from '../../../helpers/themes';
 import { getData } from '../helpers/generateDataSourceData';
 
 fixture.disablePageReloads`Column Fixing`.page(
-  url(__dirname, '../container.html'),
+  url(__dirname, '../../container.html'),
 );
 
 [Themes.genericLight, Themes.materialBlue, Themes.fluentBlue].forEach(
