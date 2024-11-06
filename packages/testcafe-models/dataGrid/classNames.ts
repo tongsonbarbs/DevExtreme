@@ -13,6 +13,4 @@ export const ClassNames = {
 
   calendarCell: 'dx-calendar-cell',
   listItemContent: 'dx-list-item-content',
-
-  focused: 'dx-state-focused',
 };

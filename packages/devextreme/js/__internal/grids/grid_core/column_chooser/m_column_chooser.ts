@@ -180,11 +180,8 @@ export class ColumnChooserView extends ColumnsView {
           $('body').removeClass(that.addWidgetPrefix(NOTOUCH_ACTION_CLASS));
         }
       },
-      onInitialized(e) {
-        const { component } = e;
-        component.option('_loopFocus', true);
-      },
       container: columnChooserOptions.container,
+      _loopFocus: true,
     };
 
     if (isGenericTheme || isMaterial) {
