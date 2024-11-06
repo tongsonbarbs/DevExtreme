@@ -4808,17 +4808,23 @@ test('Cancel button in the last column cannot be focused via the Tab key (T12489
   ],
 }));
 
-test.only('Grids a11y: Fix the header filter and the column chooser focus issue and update VPAT', async (t) => {
+test('Grids a11y: Fix the header filter and the column chooser focus issue and update VPAT', async (t) => {
   const dataGrid = new DataGrid('#container');
   const filterIconElement = dataGrid.getHeaders().getHeaderRow(0).getHeaderCell(0).getFilterIcon();
   const headerFilter = new HeaderFilter();
+  const columnChooser = dataGrid.getColumnChooser().content;
+  const columnChooserButton = dataGrid.getColumnChooserButton();
 
   await t
     .expect(dataGrid.isReady())
     .ok()
     .click(filterIconElement)
     .pressKey('tab tab tab tab')
-    .expect(headerFilter.getSelectAll().hasClass('dx-state-focused'))
+    .expect(headerFilter.getSelectAll().hasClass(`${CLASS.focused}`))
+    .ok()
+    .click(columnChooserButton)
+    .pressKey('tab tab tab')
+    .expect(columnChooser.hasClass(`${CLASS.focused}`))
     .ok();
 })
   .before(async () => {
@@ -4826,6 +4832,9 @@ test.only('Grids a11y: Fix the header filter and the column chooser focus issue 
       dataSource: getData(5, 3),
       headerFilter: {
         visible: true,
+      },
+      columnChooser: {
+        enabled: true,
       },
     });
   });
