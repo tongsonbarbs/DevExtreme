@@ -6,6 +6,7 @@ const CLASS = {
   content: 'dx-overlay-content',
   list: 'dx-list',
   button: 'dx-button',
+  selectAll: 'dx-list-select-all',
 };
 
 export default class HeaderFilter {
@@ -23,5 +24,9 @@ export default class HeaderFilter {
 
   getContent(): Selector {
     return this.element.find(`.${CLASS.content}`);
+  }
+
+  getSelectAll(): Selector {
+    return this.element.find(`.${CLASS.selectAll}`);
   }
 }
