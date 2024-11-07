@@ -516,6 +516,15 @@ class FilterBuilder extends Widget<any> {
     }
   }
 
+  _getUniqueFieldIdentifier(item, currentCondition) {
+    const isDataFieldUnique = !this._model.some(
+      (condition) => condition !== currentCondition
+        && Array.isArray(condition)
+        && condition[0] === item.dataField,
+    );
+    return isDataFieldUnique ? item.dataField : item.name;
+  }
+
   _createFieldButtonWithMenu(fields, condition, field) {
     const that = this;
     const allowHierarchicalFields = this.option('allowHierarchicalFields');
@@ -524,6 +533,7 @@ class FilterBuilder extends Widget<any> {
     const getFullCaption = function (item, items) {
       return allowHierarchicalFields ? getCaptionWithParents(item, items) : item.caption;
     };
+    condition[0] = this._getUniqueFieldIdentifier(item, condition);
 
     const $fieldButton = this._createButtonWithMenu({
       caption: getFullCaption(item, items),
@@ -536,7 +546,7 @@ class FilterBuilder extends Widget<any> {
         onItemClick: (e) => {
           if (item !== e.itemData) {
             item = e.itemData;
-            condition[0] = item.name || item.dataField;
+            condition[0] = this._getUniqueFieldIdentifier(item, condition);
             condition[2] = item.dataType === 'object' ? null : '';
             updateConditionByOperation(condition, getDefaultOperation(item), that._customOperations);
             $fieldButton.siblings().filter(`.${FILTER_BUILDER_ITEM_TEXT_CLASS}`).remove();
