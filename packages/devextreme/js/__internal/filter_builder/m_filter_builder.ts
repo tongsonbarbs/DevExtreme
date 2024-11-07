@@ -522,7 +522,7 @@ class FilterBuilder extends Widget<any> {
         && Array.isArray(condition)
         && condition[0] === item.dataField,
     );
-    return isDataFieldUnique ? item.dataField : item.name;
+    return isDataFieldUnique ? item.dataField : item.name ? item.name : item.dataField;
   }
 
   _createFieldButtonWithMenu(fields, condition, field) {
