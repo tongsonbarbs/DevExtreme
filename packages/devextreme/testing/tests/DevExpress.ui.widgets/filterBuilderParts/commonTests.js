@@ -813,7 +813,7 @@ QUnit.module('Filter value', function() {
         valueInput.find('input').trigger('change');
 
         clickByOutside();
-        assert.deepEqual(filterBuilder.option('value'), ['field2', 'contains', 'K&S Music'], 'expression is correct');
+        assert.deepEqual(filterBuilder.option('value'), ['State', 'contains', 'K&S Music'], 'expression is correct');
     });
 
     // T812261
