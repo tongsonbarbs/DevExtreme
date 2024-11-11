@@ -23686,7 +23686,7 @@ declare module DevExpress.ui {
      */
     deleteRecurrence(
       appointmentData: Appointment,
-      date: Date,
+      date: Date | String,
       recurrenceEditMode: DevExpress.ui.dxScheduler.RecurrenceEditMode
     ): void;
     getDataSource(): DevExpress.data.DataSource;
