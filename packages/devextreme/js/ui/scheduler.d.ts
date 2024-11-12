@@ -1149,7 +1149,7 @@ export default class dxScheduler extends Widget<dxSchedulerOptions> {
      */
     deleteRecurrence(
       appointmentData: Appointment,
-      date: Date | String,
+      date: Date | string,
       recurrenceEditMode: RecurrenceEditMode,
     ): void;
     getDataSource(): DataSource;
