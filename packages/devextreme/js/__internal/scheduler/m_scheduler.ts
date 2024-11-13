@@ -2543,9 +2543,12 @@ class Scheduler extends Widget<any> {
 
   deleteRecurrence(
     appointment,
-    date,
+    date: Date | string,
     recurrenceEditMode,
   ) {
+    if (typeof date === 'string') {
+      date = new Date(date);
+    }
     this._checkRecurringAppointment(
       appointment,
       { },
