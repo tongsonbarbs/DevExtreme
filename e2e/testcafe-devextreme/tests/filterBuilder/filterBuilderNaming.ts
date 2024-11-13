@@ -15,14 +15,14 @@ test('FilterBuilder - First field uses the dataField property while subsequent f
 
   const expectedValues = [
     [
-      ['dataField1', '<>', 0],
+      ['name1', '<>', 0],
       'and',
       ['name1', 'contains', 'A'],
     ],
     [
-      ['dataField1', '<>', 0],
+      ['name1', '<>', 0],
       'and',
-      ['dataField2', 'contains', 'A'],
+      ['name2', 'contains', 'A'],
     ],
   ];
   await t
