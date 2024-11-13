@@ -5,10 +5,6 @@ import url from '../../helpers/getPageUrl';
 fixture`FilterBuilder - Field naming`
   .page(url(__dirname, '../container.html'));
 
-const fieldItem = [
-  { dataField: 'dataField1', name: 'name1' },
-  { dataField: 'dataField2', name: 'name2' },
-];
 // T1253754
 test('FilterBuilder - First field uses the dataField property while subsequent fields use the name property in the filter value', async (t) => {
   const filterBuilder = new FilterBuilder('#container');
@@ -52,6 +48,9 @@ test('FilterBuilder - First field uses the dataField property while subsequent f
       value: [
         ['dataField1', '<>', 0],
       ],
-      fields: fieldItem,
+      fields: [
+        { dataField: 'dataField1', name: 'name1' },
+        { dataField: 'dataField2', name: 'name2' },
+      ],
     });
   });
