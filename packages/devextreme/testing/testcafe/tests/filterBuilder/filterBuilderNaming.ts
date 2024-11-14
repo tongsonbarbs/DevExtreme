@@ -1,4 +1,4 @@
-import FilterBuilder from 'devextreme-testcafe-models/filterBuilder';
+import FilterBuilder from '../../model/filterBuilder';
 import { createWidget } from '../../helpers/createWidget';
 import url from '../../helpers/getPageUrl';
 
