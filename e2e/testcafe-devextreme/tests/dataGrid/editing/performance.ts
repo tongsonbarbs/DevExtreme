@@ -9,7 +9,7 @@ fixture`Editing performance`
 
 const setGridChanges = ClientFunction((changes) => {
   // @ts-expect-error instance
-  const grid = $('#otherContainer').dxDataGrid('instance');
+  const grid = $('#container').dxDataGrid('instance');
   grid.option('editing.changes', changes);
 });
 
