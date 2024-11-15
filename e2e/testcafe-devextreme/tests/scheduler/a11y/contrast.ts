@@ -19,7 +19,7 @@ fixture.disablePageReloads`a11y - contrast`
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
     await t.debug();
     await t
-      .expect(takeScreenshot(`month_day_number_contrast-${theme}`, scheduler.element))
+      .expect(await takeScreenshot(`month_day_number_contrast-${theme}`, scheduler.element))
       .ok()
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
