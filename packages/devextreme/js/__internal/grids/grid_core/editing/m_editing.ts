@@ -1764,8 +1764,7 @@ class EditingControllerImpl extends modules.ViewController {
     return deferred.promise();
   }
 
-  // @ts-expect-error
-  private _resolveAfterSave(deferred, { cancel, error } = {}) {
+  private _resolveAfterSave(deferred, { cancel = false, error = undefined } = {}) {
     // @ts-expect-error
     when(this._afterSaveEditData(cancel)).done(() => {
       deferred.resolve(error);
