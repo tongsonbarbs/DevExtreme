@@ -22,7 +22,7 @@ export class Field extends PureComponent<FieldProps> {
         <span className={CLASSES.fieldName}>{this.props.title}: </span>
         <span
           style={{ 'text-align': this.props.alignment }}
-          className={CLASSES.fieldName}
+          className={CLASSES.fieldValue}
         >
           {this.props.value}
         </span>

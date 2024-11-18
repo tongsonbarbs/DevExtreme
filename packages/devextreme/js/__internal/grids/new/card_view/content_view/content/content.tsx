@@ -3,6 +3,7 @@ import { PureComponent } from '@ts/grids/new/grid_core/core/pure_component';
 import { createRef } from 'inferno';
 
 import { Card } from './card/card';
+import type { CardHeaderItem } from './card/card.header';
 
 export interface SizesInfo {
   cardRowHeight: number;
@@ -12,6 +13,8 @@ export interface SizesInfo {
 
 export interface ContentProps {
   items: DataRow[];
+
+  toolbar?: CardHeaderItem[];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldTemplate?: any;
@@ -33,6 +36,7 @@ export class Content extends PureComponent<ContentProps> {
           <Card
             row={item}
             fieldTemplate={this.props.fieldTemplate}
+            toolbar={this.props.toolbar}
           />
         ))}
       </div>

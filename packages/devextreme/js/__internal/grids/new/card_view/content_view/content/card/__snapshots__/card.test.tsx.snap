@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component Rendering should be rendered correctly 1`] = `
+<div>
+  <div
+    class="dx-cardview-card"
+    tabindex="0"
+  >
+    <div
+      class="dx-cardheader"
+    >
+      <div
+        class="dx-cardheader-item dx-cardheader-dxcheckbox dx-cardheader-before"
+      >
+        <div
+          aria-checked="false"
+          aria-invalid="false"
+          aria-readonly="false"
+          class="dx-widget dx-checkbox"
+          role="checkbox"
+          tabindex="0"
+        >
+          <input
+            type="hidden"
+            value="false"
+          />
+          <div
+            class="dx-checkbox-container"
+          >
+            <span
+              class="dx-checkbox-icon"
+            />
+            
+          </div>
+        </div>
+      </div>
+      <div
+        class="dx-cardheader-item dx-cardheader-text dx-cardheader-before"
+      >
+        <span>
+          Card Header
+        </span>
+      </div>
+      <div
+        class="dx-cardheader-item dx-cardheader-dxbutton dx-cardheader-after"
+      >
+        <div
+          aria-label="edit"
+          class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="dx-button-content"
+          >
+            <i
+              class="dx-icon dx-icon-edit"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="dx-cardheader-item dx-cardheader-dxbutton dx-cardheader-after"
+      >
+        <div
+          aria-label="trash"
+          class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+          role="button"
+          tabindex="0"
+        >
+          <div
+            class="dx-button-content"
+          >
+            <i
+              class="dx-icon dx-icon-trash"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="dx-card-cover"
+    >
+      <img
+        alt="Card Cover"
+        src="https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
+        style="width: 100%; height: auto;"
+      />
+    </div>
+    <div
+      class="dx-cardview-field"
+      tabindex="0"
+    >
+      <span
+        class="dx-cardview-field-name"
+      >
+        Field
+        : 
+      </span>
+      <span
+        class="dx-cardview-field-value"
+      >
+        devextreme
+      </span>
+    </div>
+  </div>
+</div>
+`;
