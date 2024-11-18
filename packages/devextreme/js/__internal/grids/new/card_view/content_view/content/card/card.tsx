@@ -52,9 +52,3 @@ export class Card extends PureComponent<CardProps> {
     );
   }
 }
-
-// @ts-expect-error
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-window.renderCard = (domObject, props) => {
-  render(<Card {...props} />, domObject);
-};
