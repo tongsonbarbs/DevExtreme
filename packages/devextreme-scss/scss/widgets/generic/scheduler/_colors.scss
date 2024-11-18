@@ -114,7 +114,7 @@ $colors-dark: "dark",
   $scheduler-workspace-month-text-color: $month-text-color-dark;
 }
 
-@if $color =="carmine" {
+@if $color == "carmine" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: $base-hover-bg !default;
@@ -153,7 +153,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change($base-accent, $alpha: 0.15) !default;
 }
 
-@if $color =="contrast" {
+@if $color == "contrast" {
   $scheduler-base-border-color: $base-border-color !default;
   $scheduler-cell-active-bg: $base-border-color !default;
   $scheduler-cell-hover-bg: $base-border-color !default;
@@ -191,7 +191,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: $base-accent !default;
 }
 
-@if $color =="dark" {
+@if $color == "dark" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: $base-hover-bg !default;
@@ -229,7 +229,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change(#fff, $alpha: 0.15) !default;
 }
 
-@if $color =="darkmoon" {
+@if $color == "darkmoon" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: lighten($base-bg, 4%) !default;
@@ -269,7 +269,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change(#000, $alpha: 0.15) !default;
 }
 
-@if $color =="darkviolet" {
+@if $color == "darkviolet" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: $base-hover-bg !default;
@@ -307,7 +307,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change(#9e9ec5, $alpha: 0.35) !default;
 }
 
-@if $color =="greenmist" {
+@if $color == "greenmist" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: color.change(darken($base-bg, 9%), $alpha: 0.4) !default;
@@ -347,7 +347,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change(#000, $alpha: 0.15) !default;
 }
 
-@if $color =="light" {
+@if $color == "light" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: $base-hover-bg !default;
@@ -385,7 +385,7 @@ $colors-dark: "dark",
   $agenda-appointment-active-bg: color.change(#000, $alpha: 0.08) !default;
 }
 
-@if $color =="softblue" {
+@if $color == "softblue" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
   $scheduler-cell-hover-bg: $base-webwidget-hover-background !default;
