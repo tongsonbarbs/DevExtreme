@@ -3,8 +3,8 @@
 import $ from '@js/core/renderer';
 import { render } from 'inferno';
 
-import { HeaderPanelController } from '../header_panel/controller';
 import { OptionsController } from '../options_controller/options_controller';
+import { HeaderPanelController } from '../toolbar/controller';
 import { SearchField } from './search_field';
 
 export class Search {

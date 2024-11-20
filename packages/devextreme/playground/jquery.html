@@ -72,8 +72,6 @@
                         .filter((paramName) => isNotEmpty(loadOptions[paramName]))
                         .forEach((paramName) => { args[paramName] = JSON.stringify(loadOptions[paramName]); });
 
-                    console.log(loadOptions)
-
                     $.ajax({
                         url: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/orders',
                         dataType: 'json',
@@ -98,8 +96,8 @@
                 $("#cardview").dxCardView({
                     accessKey: 'q',
                     dataSource: store,
-                    width: "70%",
-                    // width: 700,
+                    // width: "70%",
+                    width: 700,
                     height: 300,
                     keyExpr: 'OrderNumber',
                     fieldTemplate({ defaultTemplate, ...props}, index) {

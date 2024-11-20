@@ -4,7 +4,7 @@ import { computed, state } from '@ts/core/reactive/index';
 
 import { ColumnsController } from '../columns_controller/columns_controller';
 import { View } from '../core/view4';
-import { HeaderPanelController } from '../header_panel/controller';
+import { HeaderPanelController } from '../toolbar/controller';
 import type { ColumnChooserProps } from './column_chooser';
 import { ColumnChooser } from './column_chooser';
 
