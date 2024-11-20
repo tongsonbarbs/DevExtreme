@@ -9,22 +9,24 @@ import { isMaterialBased } from '@js/ui/themes';
 import Widget from '@js/ui/widget/ui.widget';
 import { DIContext } from '@ts/core/di/index';
 import type { Subscription } from '@ts/core/reactive/index';
-import { ColumnsChooserView } from '@ts/grids/new/grid_core/columns_chooser/view';
-import { ColumnsController } from '@ts/grids/new/grid_core/columns_controller/columns_controller';
-import { DataController } from '@ts/grids/new/grid_core/data_controller/index';
-import { EditingController } from '@ts/grids/new/grid_core/editing/controller';
-import { HeaderPanelController } from '@ts/grids/new/grid_core/header_panel/controller';
-import { HeaderPanelView } from '@ts/grids/new/grid_core/header_panel/view';
-import { MainView } from '@ts/grids/new/grid_core/main_view';
-import { PagerView } from '@ts/grids/new/grid_core/pager';
-import { Search } from '@ts/grids/new/grid_core/search/controller';
 import { render } from 'inferno';
 
+import { ColumnsChooserView } from './columns_chooser/view';
+import { ColumnsController } from './columns_controller/columns_controller';
+import { CompatibilityColumnsController } from './columns_controller/compatibility';
 import { StatusView } from './content_view/status_view/status_view';
 import * as DataControllerModule from './data_controller/index';
+import { EditingController } from './editing/controller';
 import { ErrorController } from './error_controller/error_controller';
 import { FilterPanelView } from './filtering/filter_panel/filter_panel';
+import { defaultOptions as filterPanelDefaultOptions } from './filtering/filter_panel/options';
+import { HeaderPanelController } from './header_panel/controller';
+import { HeaderPanelView } from './header_panel/view';
+import { MainView } from './main_view';
+import { PagerView } from './pager';
+import { Search } from './search/controller';
 import type { Properties } from './types';
+import { WidgetMock } from './widget_mock';
 
 export class GridCoreNewBase<
   TProperties extends Properties = Properties,
@@ -33,7 +35,7 @@ export class GridCoreNewBase<
 
   protected diContext!: DIContext;
 
-  private dataController!: DataController;
+  private dataController!: DataControllerModule.DataController;
 
   private columnsController!: ColumnsController;
 
@@ -53,8 +55,10 @@ export class GridCoreNewBase<
 
   protected _registerDIContext(): void {
     this.diContext = new DIContext();
-    this.diContext.register(DataController);
+    this.diContext.register(DataControllerModule.DataController);
+    this.diContext.register(DataControllerModule.CompatibilityDataController);
     this.diContext.register(ColumnsController);
+    this.diContext.register(CompatibilityColumnsController);
     this.diContext.register(HeaderPanelController);
     this.diContext.register(HeaderPanelView);
     this.diContext.register(EditingController);
@@ -66,9 +70,17 @@ export class GridCoreNewBase<
     this.diContext.register(ErrorController);
   }
 
+  protected _initWidgetMock() {
+    this.diContext.registerInstance(WidgetMock, new WidgetMock(
+      this,
+      this.diContext.get(DataControllerModule.CompatibilityDataController),
+      this.diContext.get(CompatibilityColumnsController),
+    ));
+  }
+
   protected _initDIContext(): void {
     this.columnsChooser = this.diContext.get(ColumnsChooserView);
-    this.dataController = this.diContext.get(DataController);
+    this.dataController = this.diContext.get(DataControllerModule.DataController);
     this.columnsController = this.diContext.get(ColumnsController);
     this.headerPanelController = this.diContext.get(HeaderPanelController);
     this.headerPanelView = this.diContext.get(HeaderPanelView);
@@ -82,6 +94,7 @@ export class GridCoreNewBase<
     // @ts-expect-error
     super._init();
     this._registerDIContext();
+    this._initWidgetMock();
     this._initDIContext();
   }
 
@@ -92,6 +105,7 @@ export class GridCoreNewBase<
       // @ts-expect-error
       ...super._getDefaultOptions() as {},
       ...DataControllerModule.defaultOptions,
+      ...filterPanelDefaultOptions,
       searchText: '',
       editingChanges: [],
       toolbar: {

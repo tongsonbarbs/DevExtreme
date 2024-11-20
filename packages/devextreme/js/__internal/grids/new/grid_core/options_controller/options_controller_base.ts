@@ -107,7 +107,14 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
     name: TProp,
   ): SubsGets<PropertyWithDefaults<TProps, TDefaultProps, TProp>> {
     const obs = computed(
-      (props) => getValue(props, name) ?? getValue(this.defaults, name),
+      (props) => {
+        const value = getValue(props, name);
+        // NOTE: it is better not to use '??' operator,
+        // because result will be different if value is 'null'.
+        // Some code works differently if undefined is passed instead of null,
+        // for example dataSource getter-setter .filter()
+        return value !== undefined ? value : getValue(this.defaults, name);
+      },
       [this.props],
     );
 

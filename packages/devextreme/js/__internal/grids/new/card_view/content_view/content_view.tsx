@@ -30,12 +30,12 @@ export interface ContentViewProps {
 
 export function ContentView(props: ContentViewProps): JSX.Element {
   return (
-    <>
+    <div>
       <ErrorRow {...props.errorRowProps} />
       {props.loadPanelProps.visible && <LoadPanel {...props.loadPanelProps} />}
-      {props.noDataTextProps.visible && <NoDataText {...props.noDataTextProps} />}
 
       <Scrollable componentRef={this.scrollableRef}>
+        {props.noDataTextProps.visible && <NoDataText {...props.noDataTextProps} />}
         <div className={CLASSES.content} tabIndex={0}>
           {
             props.virtualScrollingProps?.heightUp
@@ -51,6 +51,6 @@ export function ContentView(props: ContentViewProps): JSX.Element {
           }
         </div>
       </Scrollable>
-    </>
+    </div>
   );
 }

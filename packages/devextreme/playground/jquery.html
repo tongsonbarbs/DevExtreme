@@ -72,6 +72,8 @@
                         .filter((paramName) => isNotEmpty(loadOptions[paramName]))
                         .forEach((paramName) => { args[paramName] = JSON.stringify(loadOptions[paramName]); });
 
+                    console.log(loadOptions)
+
                     $.ajax({
                         url: 'https://js.devexpress.com/Demos/WidgetsGalleryDataService/api/orders',
                         dataType: 'json',
@@ -93,11 +95,11 @@
                 },
             });
 
-            $(function () {
                 $("#cardview").dxCardView({
                     accessKey: 'q',
                     dataSource: store,
                     width: "70%",
+                    // width: 700,
                     height: 300,
                     keyExpr: 'OrderNumber',
                     fieldTemplate({ defaultTemplate, ...props}, index) {
@@ -123,12 +125,11 @@
                         'Employee',
                         'SaleAmount',
                     ],
-                    filterPanelVisible: true,
+                    filterPanel: {visible: true},
                     onInitialized(e) {
                         window.cardView = e.component;
                     }
                 });
-            });
         </script>
     </div>
 </body>
