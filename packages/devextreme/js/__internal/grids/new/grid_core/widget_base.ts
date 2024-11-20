@@ -21,8 +21,8 @@ import { MainView } from './main_view';
 import { defaultOptions, defaultOptionsRules, type Options } from './options';
 import { PagerView } from './pager';
 import { Search } from './search/controller';
-import { HeaderPanelController } from './toolbar/controller';
-import { HeaderPanelView } from './toolbar/view';
+import { ToolbarController } from './toolbar/controller';
+import { ToolbarView } from './toolbar/view';
 import { WidgetMock } from './widget_mock';
 
 export class GridCoreNewBase<
@@ -42,9 +42,9 @@ export class GridCoreNewBase<
 
   private columnsChooser!: ColumnsChooserView;
 
-  private headerPanelController!: HeaderPanelController;
+  private toolbarController!: ToolbarController;
 
-  private headerPanelView!: HeaderPanelView;
+  private toolbarView!: ToolbarView;
 
   private errorController!: ErrorController;
 
@@ -56,8 +56,8 @@ export class GridCoreNewBase<
     this.diContext.register(DataControllerModule.CompatibilityDataController);
     this.diContext.register(ColumnsControllerModule.ColumnsController);
     this.diContext.register(ColumnsControllerModule.CompatibilityColumnsController);
-    this.diContext.register(HeaderPanelController);
-    this.diContext.register(HeaderPanelView);
+    this.diContext.register(ToolbarController);
+    this.diContext.register(ToolbarView);
     this.diContext.register(EditingController);
     this.diContext.register(PagerView);
     this.diContext.register(ColumnsChooserView);
@@ -79,8 +79,8 @@ export class GridCoreNewBase<
     this.columnsChooser = this.diContext.get(ColumnsChooserView);
     this.dataController = this.diContext.get(DataControllerModule.DataController);
     this.columnsController = this.diContext.get(ColumnsControllerModule.ColumnsController);
-    this.headerPanelController = this.diContext.get(HeaderPanelController);
-    this.headerPanelView = this.diContext.get(HeaderPanelView);
+    this.toolbarController = this.diContext.get(ToolbarController);
+    this.toolbarView = this.diContext.get(ToolbarView);
     this.editingController = this.diContext.get(EditingController);
     this.pagerView = this.diContext.get(PagerView);
     this.search = this.diContext.get(Search);

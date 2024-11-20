@@ -8,14 +8,14 @@ import { OptionsController as OptionsControllerBase } from '@ts/grids/new/grid_c
 import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget_base';
 
 import { ContentView } from './content_view/view';
-import { HeadersView } from './headers/view';
+import { HeaderPanelView } from './header_panel/view';
 import { MainView } from './main_view';
 import { OptionsController } from './options_controller';
 
 export class CardViewBase extends GridCoreNewBase {
   protected _registerDIContext(): void {
     super._registerDIContext();
-    this.diContext.register(HeadersView);
+    this.diContext.register(HeaderPanelView);
 
     this.diContext.register(ContentView);
     this.diContext.register(MainViewBase, MainView);

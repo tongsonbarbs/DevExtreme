@@ -7,20 +7,20 @@ import type { Column } from '@ts/grids/new/grid_core/columns_controller/types';
 import { Component } from 'inferno';
 
 import { Sortable } from '../../grid_core/inferno_wrappers/sortable';
-import { HeaderItem } from './header_item';
+import { Item } from './item';
 
 export const CLASSES = {
   headers: 'dx-gridcore-headers',
 };
 
-export interface HeadersProps {
+export interface HeaderPanelProps {
   columns: Column[];
 
   onReorder?: (fromIndex: number, toIndex: number) => void;
   onAdd?: (fromIndex: number, toIndex: number) => void;
 }
 
-export class Headers extends Component<HeadersProps> {
+export class HeaderPanel extends Component<HeaderPanelProps> {
   public render(): JSX.Element {
     return (
       <div className={CLASSES.headers}>
@@ -32,7 +32,7 @@ export class Headers extends Component<HeadersProps> {
           group='cardview'
         >
           {this.props.columns.map((column) => (
-            <HeaderItem
+            <Item
               column={column}
             />
           ))}

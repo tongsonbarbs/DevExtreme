@@ -11,7 +11,7 @@ import { OptionsController } from '../options_controller/options_controller';
 import { DEFAULT_TOOLBAR_ITEMS } from './defaults';
 import type { PredefinedToolbarItem, ToolbarItem } from './types';
 
-export class HeaderPanelController {
+export class ToolbarController {
   private readonly defaultItems = state<Record<string, ToolbarItem>>({});
 
   private readonly userItems = this.options.oneWay('toolbar.items');
