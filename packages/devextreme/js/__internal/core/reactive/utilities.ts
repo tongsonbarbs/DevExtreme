@@ -5,7 +5,7 @@
 import { InterruptableComputed, Observable } from './core';
 import { type Subscription, SubscriptionBag } from './subscription';
 import type {
-  Gettable, MaybeSubscribable, Subscribable, SubsGets, SubsGetsUpd, Updatable,
+  Gettable, MapMaybeSubscribable, MaybeSubscribable, Subscribable, SubsGets, SubsGetsUpd, Updatable,
 } from './types';
 import { isSubscribable } from './types';
 
@@ -36,6 +36,10 @@ export function computed<T1, T2, T3, T4, T5, TValue>(
 export function computed<T1, T2, T3, T4, T5, T6, TValue>(
   compute: (t1: T1, t2: T2, t3: T3, t4: T4, t5: T5, t6: T6) => TValue,
   deps: [Subscribable<T1>, Subscribable<T2>, Subscribable<T3>, Subscribable<T4>, Subscribable<T5>, Subscribable<T6>]
+): SubsGets<TValue>;
+export function computed<TArgs extends readonly any[], TValue>(
+  compute: (...args: TArgs) => TValue,
+  deps: { [I in keyof TArgs]: Subscribable<TArgs[I]> },
 ): SubsGets<TValue>;
 export function computed<TArgs extends readonly any[], TValue>(
   compute: (...args: TArgs) => TValue,
@@ -142,8 +146,15 @@ export function iif<T>(
   return obs;
 }
 
-// export function combine<T>(
-//   obj: MapMaybeSubscribable<T>,
-// ): Subscribable<T> & Gettable<T> {
-//   throw new Error('not implemented');
-// }
+export function combined<T>(
+  obj: MapMaybeSubscribable<T>,
+): SubsGets<T> {
+  const entries = Object.entries(obj) as any as [string, Subscribable<unknown>][];
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+  return computed(
+    (...args) => Object.fromEntries(
+      args.map((v, i) => [entries[i][0], v]),
+    ),
+    entries.map(([, v]) => toSubscribable(v)),
+  ) as any;
+}
