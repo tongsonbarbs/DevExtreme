@@ -14,6 +14,10 @@ export const CLASSES = {
 };
 
 export interface ContentViewProps {
+  cardsPerRow?: number;
+  cardWidth?: number;
+  cardMinWidth?: number;
+
   errorRowProps: ErrorRowProperties;
   loadPanelProps: LoadPanelProperties & { visible: boolean };
   noDataTextProps: NoDataTextProperties & { visible: boolean };
@@ -44,6 +48,7 @@ export function ContentView(props: ContentViewProps): JSX.Element {
           <Content
             items={props.items}
             fieldTemplate={props.fieldTemplate}
+            cardsPerRow={props.cardsPerRow}
           />
           {
             props.virtualScrollingProps?.heightDown

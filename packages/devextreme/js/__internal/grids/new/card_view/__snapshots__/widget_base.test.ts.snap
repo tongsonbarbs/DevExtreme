@@ -165,103 +165,170 @@ exports[`common initial render should be successfull 1`] = `
       </div>
     </div>
   </div>
-  <div
-    class="dx-gridcore-error-row"
-  />
-  <div
-    class="dx-scrollable dx-visibility-change-handler dx-scrollable-vertical dx-scrollable-simulated"
-  >
+  <div>
     <div
-      class="dx-scrollable-wrapper"
+      class="dx-gridcore-error-row"
+    />
+    <div
+      class="dx-scrollable dx-visibility-change-handler dx-scrollable-vertical dx-scrollable-simulated"
     >
       <div
-        class="dx-scrollable-container"
-        tabindex="0"
+        class="dx-scrollable-wrapper"
       >
         <div
-          class="dx-scrollable-content"
-          style="left: 0px; top: 0px; transform: none;"
+          class="dx-scrollable-container"
+          tabindex="0"
         >
           <div
-            class="dx-gridcore-content"
-            tabindex="0"
+            class="dx-scrollable-content"
+            style="left: 0px; top: 0px; transform: none;"
           >
             <div
-              class="dx-cardview-content"
+              class="dx-gridcore-content"
+              tabindex="0"
             >
               <div
-                class="dx-cardview-card"
-                tabindex="0"
+                class="dx-cardview-content"
+                style="--dx-cardview-cardsperrow: undefined;"
               >
                 <div
-                  class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection"
-                  role="toolbar"
+                  class="dx-cardview-card"
+                  tabindex="0"
                 >
                   <div
-                    class="dx-toolbar-items-container"
+                    class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection"
+                    role="toolbar"
                   >
                     <div
-                      class="dx-toolbar-before"
-                      role="presentation"
+                      class="dx-toolbar-items-container"
                     >
                       <div
-                        class="dx-item dx-toolbar-item dx-toolbar-button"
+                        class="dx-toolbar-before"
+                        role="presentation"
                       >
                         <div
-                          class="dx-item-content dx-toolbar-item-content"
+                          class="dx-item dx-toolbar-item dx-toolbar-button dx-toolbar-item-auto-hide"
                         >
                           <div
-                            aria-checked="false"
-                            aria-invalid="false"
-                            aria-readonly="false"
-                            class="dx-widget dx-checkbox"
-                            role="checkbox"
-                            tabindex="0"
+                            class="dx-item-content dx-toolbar-item-content"
                           >
-                            <input
-                              type="hidden"
-                              value="false"
-                            />
                             <div
-                              class="dx-checkbox-container"
+                              aria-checked="false"
+                              aria-invalid="false"
+                              aria-readonly="false"
+                              class="dx-widget dx-checkbox"
+                              role="checkbox"
+                              tabindex="0"
                             >
-                              <span
-                                class="dx-checkbox-icon"
+                              <input
+                                type="hidden"
+                                value="false"
                               />
-                              
+                              <div
+                                class="dx-checkbox-container"
+                              >
+                                <span
+                                  class="dx-checkbox-icon"
+                                />
+                                
+                              </div>
                             </div>
+                          </div>
+                        </div>
+                        <div
+                          class="dx-item dx-toolbar-item dx-toolbar-button"
+                        >
+                          <div
+                            class="dx-item-content dx-toolbar-item-content"
+                          >
+                            <span>
+                              Card Header
+                            </span>
                           </div>
                         </div>
                       </div>
                       <div
-                        class="dx-item dx-toolbar-item dx-toolbar-button"
-                      >
-                        <div
-                          class="dx-item-content dx-toolbar-item-content"
-                        >
-                          <span>
-                            Card Header
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="dx-toolbar-center"
-                      role="presentation"
-                    />
-                    <div
-                      class="dx-toolbar-after"
-                      role="presentation"
-                    >
+                        class="dx-toolbar-center"
+                        role="presentation"
+                      />
                       <div
-                        class="dx-item dx-toolbar-item dx-toolbar-button"
+                        class="dx-toolbar-after"
+                        role="presentation"
                       >
                         <div
-                          class="dx-item-content dx-toolbar-item-content"
+                          class="dx-item dx-toolbar-item dx-toolbar-button dx-toolbar-item-auto-hide"
                         >
                           <div
-                            aria-label="save"
-                            class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+                            class="dx-item-content dx-toolbar-item-content"
+                          >
+                            <div
+                              aria-label="save"
+                              class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+                              role="button"
+                              tabindex="0"
+                            >
+                              <div
+                                class="dx-button-content"
+                              >
+                                <i
+                                  class="dx-icon dx-icon-save"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="dx-item dx-toolbar-item dx-toolbar-button dx-toolbar-item-auto-hide"
+                        >
+                          <div
+                            class="dx-item-content dx-toolbar-item-content"
+                          >
+                            <div
+                              aria-label="edit"
+                              class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+                              role="button"
+                              tabindex="0"
+                            >
+                              <div
+                                class="dx-button-content"
+                              >
+                                <i
+                                  class="dx-icon dx-icon-edit"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="dx-item dx-toolbar-item dx-toolbar-button dx-toolbar-item-auto-hide"
+                        >
+                          <div
+                            class="dx-item-content dx-toolbar-item-content"
+                          >
+                            <div
+                              aria-label="remove"
+                              class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
+                              role="button"
+                              tabindex="0"
+                            >
+                              <div
+                                class="dx-button-content"
+                              >
+                                <i
+                                  class="dx-icon dx-icon-remove"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="dx-toolbar-button dx-toolbar-menu-container dx-state-invisible"
+                        >
+                          <div
+                            aria-expanded="false"
+                            aria-haspopup="true"
+                            aria-label="overflow"
+                            class="dx-widget dx-button dx-button-mode-contained dx-button-normal dx-button-has-icon dx-dropdownmenu dx-dropdownmenu-button"
                             role="button"
                             tabindex="0"
                           >
@@ -269,51 +336,7 @@ exports[`common initial render should be successfull 1`] = `
                               class="dx-button-content"
                             >
                               <i
-                                class="dx-icon dx-icon-save"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="dx-item dx-toolbar-item dx-toolbar-button"
-                      >
-                        <div
-                          class="dx-item-content dx-toolbar-item-content"
-                        >
-                          <div
-                            aria-label="edit"
-                            class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
-                            role="button"
-                            tabindex="0"
-                          >
-                            <div
-                              class="dx-button-content"
-                            >
-                              <i
-                                class="dx-icon dx-icon-edit"
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="dx-item dx-toolbar-item dx-toolbar-button"
-                      >
-                        <div
-                          class="dx-item-content dx-toolbar-item-content"
-                        >
-                          <div
-                            aria-label="remove"
-                            class="dx-widget dx-button dx-button-mode-text dx-button-normal dx-button-has-icon"
-                            role="button"
-                            tabindex="0"
-                          >
-                            <div
-                              class="dx-button-content"
-                            >
-                              <i
-                                class="dx-icon dx-icon-remove"
+                                class="dx-icon dx-icon-overflow"
                               />
                             </div>
                           </div>
@@ -321,44 +344,44 @@ exports[`common initial render should be successfull 1`] = `
                       </div>
                     </div>
                   </div>
-                </div>
-                <div
-                  class="dx-cardview-field"
-                  tabindex="0"
-                >
-                  <span
-                    class="dx-cardview-field-name"
+                  <div
+                    class="dx-cardview-field"
+                    tabindex="0"
                   >
-                    A
-                    : 
-                  </span>
-                  <span
-                    class="dx-cardview-field-name"
-                    style="text-align: left;"
-                  >
-                    a
-                  </span>
+                    <span
+                      class="dx-cardview-field-name"
+                    >
+                      A
+                      : 
+                    </span>
+                    <span
+                      class="dx-cardview-field-name"
+                      style="text-align: left;"
+                    >
+                      a
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div
-          class="dx-scrollable-scrollbar dx-widget dx-scrollbar-vertical dx-scrollbar-hoverable"
-        >
           <div
-            class="dx-scrollable-scroll dx-state-invisible"
-            style="height: 15px; transform: translate(0px, 0px);"
+            class="dx-scrollable-scrollbar dx-widget dx-scrollbar-vertical dx-scrollbar-hoverable"
           >
             <div
-              class="dx-scrollable-scroll-content"
-            />
+              class="dx-scrollable-scroll dx-state-invisible"
+              style="height: 15px; transform: translate(0px, 0px);"
+            >
+              <div
+                class="dx-scrollable-scroll-content"
+              />
+            </div>
           </div>
         </div>
       </div>
     </div>
+    
   </div>
-  
   
   <div>
     <div
@@ -394,8 +417,9 @@ exports[`common initial render should be successfull 1`] = `
           class="dx-page-indexes"
         >
           <div
+            aria-current="page"
             aria-label="Page 1"
-            class="dx-page"
+            class="dx-page dx-selection"
             role="button"
             tabindex="0"
           >
