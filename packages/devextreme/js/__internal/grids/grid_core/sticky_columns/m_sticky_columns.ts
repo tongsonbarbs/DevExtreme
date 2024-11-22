@@ -628,9 +628,10 @@ const draggingHeader = (Base: ModuleType<DraggingHeaderViewController>) => class
   public _generatePointsByColumns(options): any[] {
     // @ts-expect-error
     const hasStickyColumns = this._columnHeadersView?.hasStickyColumns();
-    const { sourceLocation, sourceColumn } = options;
+    const { sourceLocation, sourceColumn, targetDraggingPanel } = options;
+    const isDraggingBetweenHeaders = sourceLocation === 'headers' && targetDraggingPanel?.getName() === 'headers';
 
-    if (hasStickyColumns && sourceLocation === 'headers') {
+    if (hasStickyColumns && isDraggingBetweenHeaders) {
       const columnFixedPosition = getColumnFixedPosition(this._columnsController, sourceColumn);
 
       switch (true) {
