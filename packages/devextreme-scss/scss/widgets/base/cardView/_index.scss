@@ -2,6 +2,15 @@
 @use './sizes' as *;
 @use '../gridCore/error_row';
 
+.dx-cardview {
+  display: flex;
+  flex-direction: column;
+
+  > .dx-scrollable {
+    height: auto
+  }
+}
+
 .dx-cardview-content {
   &-grid {
     display: grid;

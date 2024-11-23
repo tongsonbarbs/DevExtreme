@@ -7,19 +7,13 @@ import { createRef } from 'inferno';
 
 import { Card } from './card/card';
 
-export interface SizesInfo {
-  cardRowHeight: number;
-
-  cardPerRow: number;
-}
-
 export interface ContentProps {
   items: DataRow[];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldTemplate?: any;
 
-  onSizesInfoChanged?: (info: SizesInfo) => void;
+  onRowHeightChange?: (value: number) => void;
 
   cardsPerRow?: number;
 }
@@ -51,6 +45,7 @@ export class Content extends PureComponent<ContentProps> {
       >
         {this.props.items.map((item, i) => (
           <Card
+            key={item.key as string}
             elementRef={this.cardRefs[i]}
             row={item}
             fieldTemplate={this.props.fieldTemplate}
@@ -65,11 +60,24 @@ export class Content extends PureComponent<ContentProps> {
     this.keyboardController.items = this.cardRefs.map((ref) => ref.current!);
   }
 
+  updateSizesInfo(): void {
+    const firstCard = this.cardRefs[0];
+    if (!firstCard) {
+      return;
+    }
+    const cardHeight = firstCard.current!.offsetHeight;
+    const gapHeight = parseFloat(getComputedStyle(this.containerRef.current!).rowGap);
+    const rowHeight = cardHeight + gapHeight;
+    this.props.onRowHeightChange?.(rowHeight);
+  }
+
   componentDidMount(): void {
     this.updateKeyboardController();
+    this.updateSizesInfo();
   }
 
   componentDidUpdate(): void {
     this.updateKeyboardController();
+    this.updateSizesInfo();
   }
 }
