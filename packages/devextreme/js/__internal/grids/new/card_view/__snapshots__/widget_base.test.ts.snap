@@ -194,9 +194,26 @@ exports[`common initial render should be successfull 1`] = `
                 tabindex="0"
               >
                 <div
-                  class="dx-cardheader"
-                />
-                
+                  class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection dx-toolbar-mini"
+                  role="toolbar"
+                >
+                  <div
+                    class="dx-toolbar-items-container"
+                  >
+                    <div
+                      class="dx-toolbar-before"
+                      role="presentation"
+                    />
+                    <div
+                      class="dx-toolbar-center"
+                      role="presentation"
+                    />
+                    <div
+                      class="dx-toolbar-after"
+                      role="presentation"
+                    />
+                  </div>
+                </div>
                 <div
                   class="dx-cardview-field"
                   tabindex="0"

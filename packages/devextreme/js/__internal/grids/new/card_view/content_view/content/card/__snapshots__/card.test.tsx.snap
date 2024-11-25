@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Component Rendering should be rendered correctly 1`] = `
+exports[`Rendering should be rendered correctly 1`] = `
 <div>
   <div
     class="dx-cardview-card"
@@ -83,7 +83,8 @@ exports[`Card Component Rendering should be rendered correctly 1`] = `
     >
       <img
         alt="Card Cover"
-        src="https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg"
+        class="dx-card-cover-image cover-image"
+        src="https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png"
         style="width: 100%; height: auto;"
       />
     </div>

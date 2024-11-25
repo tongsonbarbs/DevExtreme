@@ -3,7 +3,7 @@ import { PureComponent } from '@ts/grids/new/grid_core/core/pure_component';
 import { createRef } from 'inferno';
 
 import { Card } from './card/card';
-import type { CardHeaderItem } from './card/card.header';
+import type { CardHeaderItem } from './card/header';
 
 export interface SizesInfo {
   cardRowHeight: number;

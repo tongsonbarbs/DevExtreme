@@ -44,75 +44,74 @@ const props = {
     },
   ],
   cover: {
-    src: 'https://static.vecteezy.com/system/resources/thumbnails/004/141/669/small_2x/no-photo-or-blank-image-icon-loading-images-or-missing-image-mark-image-not-available-or-image-coming-soon-sign-simple-nature-silhouette-in-frame-isolated-illustration-vector.jpg',
+    src: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
     alt: 'Card Cover',
+    className: 'cover-image',
   },
 };
 
-describe('Card Component', () => {
-  describe('Rendering', () => {
-    it('should be rendered correctly', () => {
-      const container = document.createElement('div');
-      // @ts-expect-error
-      render(<Card {...props} />, container);
+describe('Rendering', () => {
+  it('should be rendered correctly', () => {
+    const container = document.createElement('div');
+    // @ts-expect-error
+    render(<Card {...props} />, container);
 
-      expect(container).toMatchSnapshot();
-    });
-
-    it('should render content correctly', () => {
-      const container = document.createElement('div');
-      // @ts-expect-error
-      render(<Card {...props} />, container);
-
-      const fieldValue = container.querySelector('.dx-cardview-field-value');
-      expect(fieldValue?.textContent).toEqual('devextreme');
-    });
+    expect(container).toMatchSnapshot();
   });
 
-  describe('Card Header', () => {
-    it('should render the card header components correctly', () => {
-      const container = document.createElement('div');
-      // @ts-expect-error
-      render(<Card {...props} />, container);
+  it('should render content correctly', () => {
+    const container = document.createElement('div');
+    // @ts-expect-error
+    render(<Card {...props} />, container);
 
-      const cardHeaderText = container.querySelector('.dx-cardheader-text span');
-      expect(cardHeaderText?.textContent).toBe('Card Header');
-
-      const checkbox = container.querySelector('.dx-checkbox');
-      expect(checkbox).not.toBeNull();
-
-      const editButton = container.querySelector('.dx-icon-edit');
-      expect(editButton).not.toBeNull();
-
-      const trashButton = container.querySelector('.dx-icon-trash');
-      expect(trashButton).not.toBeNull();
-    });
+    const fieldValue = container.querySelector('.dx-cardview-field-value');
+    expect(fieldValue?.textContent).toEqual('devextreme');
   });
+});
 
-  describe('Image', () => {
-    it('should render the image correctly', () => {
-      const container = document.createElement('div');
-      // @ts-expect-error
-      render(<Card {...props} />, container);
+describe('Card Header', () => {
+  it('should render the card header components correctly', () => {
+    const container = document.createElement('div');
+    // @ts-expect-error
+    render(<Card {...props} />, container);
 
-      const image = container.querySelector('img');
-      expect(image).not.toBeNull();
-      expect(image?.src).toBe(props.cover.src);
-      expect(image?.alt).toBe(props.cover.alt);
-    });
+    const cardHeaderText = container.querySelector('.dx-cardheader-text span');
+    expect(cardHeaderText?.textContent).toBe('Card Header');
+
+    const checkbox = container.querySelector('.dx-checkbox');
+    expect(checkbox).not.toBeNull();
+
+    const editButton = container.querySelector('.dx-icon-edit');
+    expect(editButton).not.toBeNull();
+
+    const trashButton = container.querySelector('.dx-icon-trash');
+    expect(trashButton).not.toBeNull();
   });
+});
 
-  describe('Field Template', () => {
-    it('should render field template correctly', () => {
-      const container = document.createElement('div');
-      // @ts-expect-error
-      render(<Card {...props} />, container);
+describe('Image', () => {
+  it('should render the image correctly', () => {
+    const container = document.createElement('div');
+    // @ts-expect-error
+    render(<Card {...props} />, container);
 
-      const fieldName = container.querySelector('.dx-cardview-field-name');
-      const fieldValue = container.querySelector('.dx-cardview-field-value');
+    const image = container.querySelector('img');
+    expect(image).not.toBeNull();
+    expect(image?.src).toBe(props.cover.src);
+    expect(image?.alt).toBe(props.cover.alt);
+  });
+});
 
-      expect(fieldName?.textContent).toBe('Field: ');
-      expect(fieldValue?.textContent).toBe('devextreme');
-    });
+describe('Field Template', () => {
+  it('should render field template correctly', () => {
+    const container = document.createElement('div');
+    // @ts-expect-error
+    render(<Card {...props} />, container);
+
+    const fieldName = container.querySelector('.dx-cardview-field-name');
+    const fieldValue = container.querySelector('.dx-cardview-field-value');
+
+    expect(fieldName?.textContent).toBe('Field: ');
+    expect(fieldValue?.textContent).toBe('devextreme');
   });
 });
