@@ -98,22 +98,6 @@ $agenda-appointment-hover-bg: $base-hover-bg !default;
 $agenda-appointment-active-bg: null !default;
 $agenda-appointment-text-color: null !default;
 
-$colors-light: "light",
-  "carmine",
-  "softblue";
-
-$colors-dark: "dark",
-  "darkmoon",
-  "darkviolet";
-
-@if index($colors-light, $color) {
-  $scheduler-workspace-month-text-color: $month-text-color-light;
-}
-
-@if index($colors-dark, $color) {
-  $scheduler-workspace-month-text-color: $month-text-color-dark;
-}
-
 @if $color == "carmine" {
   $scheduler-base-border-color: color.change($base-border-color, $alpha: 0.6) !default;
   $scheduler-cell-active-bg: color.change(darken($base-bg, 13.3%), $alpha: 0.7) !default;
@@ -130,7 +114,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-header-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: $base-inverted-text-color !default;
-  $scheduler-workspace-month-text-color: lighten($base-text-color, 38.5%) !default;
+  $scheduler-workspace-month-text-color: $month-text-color-light;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
@@ -207,6 +191,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-text-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: $base-inverted-text-color !default;
+  $scheduler-workspace-month-text-color: $month-text-color-dark;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
@@ -247,6 +232,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-text-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: #fff !default;
+  $scheduler-workspace-month-text-color: $month-text-color-dark;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
@@ -285,6 +271,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-header-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: $base-text-color !default;
+  $scheduler-workspace-month-text-color: $month-text-color-dark;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
@@ -364,6 +351,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-text-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: $base-inverted-text-color !default;
+  $scheduler-workspace-month-text-color: $month-text-color-light;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
@@ -401,6 +389,7 @@ $colors-dark: "dark",
   $scheduler-panel-text-color: $base-text-color !default;
   $scheduler-time-indicator-color: lighten($scheduler-current-time-cell-color, 15%) !default;
   $scheduler-dd-appointment-hover-text-color: $base-inverted-text-color !default;
+  $scheduler-workspace-month-text-color: $month-text-color-light;
   $scheduler-dropdown-appointment-date-color: lighten($base-text-color, 38.5%) !default;
   $scheduler-workspace-active-cell-color: $scheduler-accent-border-color !default;
   $scheduler-workspace-hovered-cell-color: $scheduler-workspace-month-text-color !default;
