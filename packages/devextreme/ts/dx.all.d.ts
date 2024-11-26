@@ -24091,9 +24091,6 @@ declare module DevExpress.ui {
        */
       readonly targetedAppointmentData?: Appointment;
     }
-    /**
-     * [descr:ViewType]
-     */
     export type ViewType =
       | 'agenda'
       | 'day'
@@ -24103,8 +24100,7 @@ declare module DevExpress.ui {
       | 'timelineWeek'
       | 'timelineWorkWeek'
       | 'week'
-      | 'workWeek'
-      | string;
+      | 'workWeek';
   }
   /**
    * @deprecated Use the Scheduler's Appointment type instead
@@ -24277,7 +24273,7 @@ declare module DevExpress.ui {
     /**
      * [descr:dxSchedulerOptions.currentView]
      */
-    currentView?: DevExpress.ui.dxScheduler.ViewType;
+    currentView?: DevExpress.ui.dxScheduler.ViewType | string;
     /**
      * [descr:dxSchedulerOptions.customizeDateNavigatorText]
      */

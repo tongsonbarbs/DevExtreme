@@ -101,7 +101,7 @@ const componentConfig = {
     cellDuration: Number,
     crossScrollingEnabled: Boolean,
     currentDate: [Date, Number, String],
-    currentView: [Object, String],
+    currentView: {},
     customizeDateNavigatorText: {},
     dataCellTemplate: {},
     dataSource: {},

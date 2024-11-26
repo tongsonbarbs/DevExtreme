@@ -76,12 +76,8 @@ export type AllDayPanelMode = 'all' | 'allDay' | 'hidden';
 export type CellAppointmentsLimit = 'auto' | 'unlimited';
 /** @public */
 export type RecurrenceEditMode = 'dialog' | 'occurrence' | 'series';
-/**
- * @docid ViewType
- * @public
- * @type string
- */
-export type ViewType = 'agenda' | 'day' | 'month' | 'timelineDay' | 'timelineMonth' | 'timelineWeek' | 'timelineWorkWeek' | 'week' | 'workWeek' | string;
+/** @public */
+export type ViewType = 'agenda' | 'day' | 'month' | 'timelineDay' | 'timelineMonth' | 'timelineWeek' | 'timelineWorkWeek' | 'week' | 'workWeek';
 
 /**
  * @docid _ui_scheduler_AppointmentAddedEvent
@@ -538,7 +534,7 @@ export interface dxSchedulerOptions extends WidgetOptions<dxScheduler> {
      * @fires dxSchedulerOptions.onOptionChanged
      * @public
      */
-    currentView?: ViewType;
+    currentView?: ViewType | string;
     /**
      * @docid
      * @type_function_param1 info:object
