@@ -75,7 +75,7 @@ describe('Card Header', () => {
     // @ts-expect-error
     render(<Card {...props} />, container);
 
-    const cardHeaderText = container.querySelector('.dx-cardheader-text span');
+    const cardHeaderText = container.querySelector('.dx-toolbar-label .dx-toolbar-item-content > div');
     expect(cardHeaderText?.textContent).toBe('Card Header');
 
     const checkbox = container.querySelector('.dx-checkbox');

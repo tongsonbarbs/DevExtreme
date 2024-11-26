@@ -18,7 +18,6 @@ export interface CardHeaderItem {
 export interface CardHeaderProps {
   items: CardHeaderItem[];
 }
-
 export const CardHeader = ({ items }: CardHeaderProps): JSX.Element => (
   <Toolbar items={items} />
 );
