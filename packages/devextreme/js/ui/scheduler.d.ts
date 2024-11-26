@@ -76,7 +76,11 @@ export type AllDayPanelMode = 'all' | 'allDay' | 'hidden';
 export type CellAppointmentsLimit = 'auto' | 'unlimited';
 /** @public */
 export type RecurrenceEditMode = 'dialog' | 'occurrence' | 'series';
-/** @public */
+/**
+ * @docid ViewType
+ * @public
+ * @type string
+ */
 export type ViewType = 'agenda' | 'day' | 'month' | 'timelineDay' | 'timelineMonth' | 'timelineWeek' | 'timelineWorkWeek' | 'week' | 'workWeek' | string;
 
 /**

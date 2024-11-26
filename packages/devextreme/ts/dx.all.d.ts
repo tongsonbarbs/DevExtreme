@@ -24091,6 +24091,9 @@ declare module DevExpress.ui {
        */
       readonly targetedAppointmentData?: Appointment;
     }
+    /**
+     * [descr:ViewType]
+     */
     export type ViewType =
       | 'agenda'
       | 'day'
