@@ -24100,7 +24100,8 @@ declare module DevExpress.ui {
       | 'timelineWeek'
       | 'timelineWorkWeek'
       | 'week'
-      | 'workWeek';
+      | 'workWeek'
+      | string;
   }
   /**
    * @deprecated Use the Scheduler's Appointment type instead

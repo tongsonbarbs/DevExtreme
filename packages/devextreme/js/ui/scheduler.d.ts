@@ -77,7 +77,7 @@ export type CellAppointmentsLimit = 'auto' | 'unlimited';
 /** @public */
 export type RecurrenceEditMode = 'dialog' | 'occurrence' | 'series';
 /** @public */
-export type ViewType = 'agenda' | 'day' | 'month' | 'timelineDay' | 'timelineMonth' | 'timelineWeek' | 'timelineWorkWeek' | 'week' | 'workWeek';
+export type ViewType = 'agenda' | 'day' | 'month' | 'timelineDay' | 'timelineMonth' | 'timelineWeek' | 'timelineWorkWeek' | 'week' | 'workWeek' | string;
 
 /**
  * @docid _ui_scheduler_AppointmentAddedEvent
