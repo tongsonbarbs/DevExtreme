@@ -23,6 +23,10 @@ export const CLASSES = {
 export interface CardProps {
   row: DataRow;
 
+  minWidth?: number;
+
+  maxWidth?: number;
+
   toolbar?: CardHeaderItem[];
 
   cover?: CoverProps;
@@ -54,6 +58,8 @@ export class Card extends PureComponent<CardProps> {
         tabIndex={0}
         ref={this.props.elementRef}
         onKeyDown={(e): void => this.keyboardController.onKeyDown(e)}
+        // TODO: move to scss
+        style={{ 'min-width': `${this.props.minWidth}px`, 'max-width': `${this.props.maxWidth}px` }}
       >
         <CardHeader
           items={this.props.toolbar || []}

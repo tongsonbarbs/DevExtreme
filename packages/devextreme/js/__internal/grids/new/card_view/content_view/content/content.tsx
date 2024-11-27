@@ -22,6 +22,8 @@ export interface ContentProps {
   onWidthChange?: (value: number) => void;
 
   cardsPerRow?: number;
+  cardMinWidth?: number;
+  cardMaxWidth?: number;
 }
 
 export const CLASSES = {
@@ -56,6 +58,8 @@ export class Content extends PureComponent<ContentProps> {
             row={item}
             fieldTemplate={this.props.fieldTemplate}
             toolbar={this.props.toolbar}
+            minWidth={this.props.cardMinWidth}
+            maxWidth={this.props.cardMaxWidth}
           />
         ))}
       </div>

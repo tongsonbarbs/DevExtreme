@@ -4,4 +4,5 @@ export type Options =
   BaseOptions & {
     cardsPerRow?: number | 'auto';
     cardMinWidth?: number;
+    cardMaxWidth?: number;
   };

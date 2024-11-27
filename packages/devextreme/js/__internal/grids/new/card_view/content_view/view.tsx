@@ -34,18 +34,18 @@ export class ContentView extends View<ContentViewProps> {
 
   private readonly cardMinWidth = this.options.oneWay('cardMinWidth');
 
+  private readonly cardMaxWidth = this.options.oneWay('cardMaxWidth');
+
   private readonly rowHeight = state(0);
 
   private readonly viewportHeight = state(0);
 
   private readonly scrollTop = state(0);
 
-  private readonly scrollHeight = state(0);
-
   private readonly width = state(0);
 
   private readonly cardsPerRow = computed(
-    (width, cardMinWidth, items, cardsPerRowProp) => {
+    (width, cardMinWidth, pageSize, cardsPerRowProp) => {
       if (cardsPerRowProp !== 'auto') {
         return cardsPerRowProp;
       }
@@ -56,7 +56,7 @@ export class ContentView extends View<ContentViewProps> {
         return res;
       }
 
-      const result = factors(items.length).reverse().find((cardsPerRow) => {
+      const result = factors(pageSize).reverse().find((cardsPerRow) => {
         const cardWidth = (width - 6 * (cardsPerRow - 1)) / cardsPerRow;
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         return cardMinWidth! <= cardWidth;
@@ -64,7 +64,7 @@ export class ContentView extends View<ContentViewProps> {
 
       return result ?? 1;
     },
-    [this.width, this.cardMinWidth, this.items, this.options.oneWay('cardsPerRow')],
+    [this.width, this.cardMinWidth, this.dataController.pageSize, this.options.oneWay('cardsPerRow')],
   );
 
   private readonly virtualState = computed(
@@ -126,6 +126,8 @@ export class ContentView extends View<ContentViewProps> {
         // items: computed((virtualState) => virtualState.virtualItems, [this.virtualState]),
         fieldTemplate: this.options.template('fieldTemplate'),
         cardsPerRow: this.cardsPerRow,
+        cardMinWidth: this.cardMinWidth,
+        cardMaxWidth: this.cardMaxWidth,
         onRowHeightChange: this.rowHeight.update.bind(this.rowHeight),
         onWidthChange: this.width.update.bind(this.width),
       }),
