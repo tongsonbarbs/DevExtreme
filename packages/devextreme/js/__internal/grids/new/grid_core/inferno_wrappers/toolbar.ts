@@ -1,4 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import '@js/ui/button';
+import '@js/ui/check_box';
+
 import type { dxToolbarOptions } from '@js/ui/toolbar';
 import dxToolbar from '@js/ui/toolbar';
 

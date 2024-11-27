@@ -7,9 +7,12 @@ import type { RefObject } from 'inferno';
 import { createRef } from 'inferno';
 
 import { Card } from './card/card';
+import type { CardHeaderItem } from './card/header';
 
 export interface ContentProps {
   items: DataRow[];
+
+  toolbar?: CardHeaderItem[];
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldTemplate?: any;
@@ -52,6 +55,7 @@ export class Content extends PureComponent<ContentProps> {
             elementRef={this.cardRefs[i]}
             row={item}
             fieldTemplate={this.props.fieldTemplate}
+            toolbar={this.props.toolbar}
           />
         ))}
       </div>
