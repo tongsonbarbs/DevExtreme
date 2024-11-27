@@ -2024,16 +2024,16 @@
         ]
       },
       {
-        "Name": "Markdown support",
+        "Name": "Markdown Support",
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Markdown support",
+            "Title": "Markdown Support",
             "Name": "MarkdownSupport",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
             "Modules": "unified",
-            "Badge": "New"
+            "Badge": "Updated"
           }
         ]
       },
