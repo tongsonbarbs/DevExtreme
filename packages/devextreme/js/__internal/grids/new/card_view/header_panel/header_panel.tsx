@@ -18,6 +18,8 @@ export interface HeaderPanelProps {
 
   onReorder?: (fromIndex: number, toIndex: number) => void;
   onAdd?: (fromIndex: number, toIndex: number) => void;
+
+  onHeaderRemoveButtonClicked?: (name: string) => void;
 }
 
 export class HeaderPanel extends Component<HeaderPanelProps> {
@@ -34,6 +36,9 @@ export class HeaderPanel extends Component<HeaderPanelProps> {
           {this.props.columns.map((column) => (
             <Item
               column={column}
+              onRemoveButtonClicked={
+                (): void => this.props.onHeaderRemoveButtonClicked?.(column.name)
+              }
             />
           ))}
         </Sortable>
