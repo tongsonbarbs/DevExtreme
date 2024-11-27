@@ -32,7 +32,7 @@ export class ContentView extends View<ContentViewProps> {
 
   public readonly scrollableRef = createRef<dxScrollable>();
 
-  private readonly cardsPerRow = this.options.oneWay('cardsPerRow');
+  private readonly cardMinWidth = this.options.oneWay('cardMinWidth');
 
   private readonly rowHeight = state(0);
 
@@ -42,10 +42,33 @@ export class ContentView extends View<ContentViewProps> {
 
   private readonly scrollHeight = state(0);
 
-  private readonly virtualState = computed(
-    (items, scrollTop, viewportHeight, rowHeight, _cardsPerRow) => {
-      const cardsPerRow = _cardsPerRow as number;
+  private readonly width = state(0);
 
+  private readonly cardsPerRow = computed(
+    (width, cardMinWidth, items, cardsPerRowProp) => {
+      if (cardsPerRowProp !== 'auto') {
+        return cardsPerRowProp;
+      }
+
+      function factors(n) {
+        const res: number[] = [];
+        for (let i = 1; i <= n; i += 1) if (n % i === 0) res.push(i);
+        return res;
+      }
+
+      const result = factors(items.length).reverse().find((cardsPerRow) => {
+        const cardWidth = (width - 6 * (cardsPerRow - 1)) / cardsPerRow;
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        return cardMinWidth! <= cardWidth;
+      });
+
+      return result ?? 1;
+    },
+    [this.width, this.cardMinWidth, this.items, this.options.oneWay('cardsPerRow')],
+  );
+
+  private readonly virtualState = computed(
+    (items, scrollTop, viewportHeight, rowHeight, cardsPerRow) => {
       const scrollHeight = (items.length / cardsPerRow) * rowHeight;
 
       const scrollBottom = scrollHeight - viewportHeight - scrollTop;
@@ -99,17 +122,18 @@ export class ContentView extends View<ContentViewProps> {
         errors: this.errorController.errors,
       }),
       contentProps: combined({
-        // items: this.items,
-        items: computed((virtualState) => virtualState.virtualItems, [this.virtualState]),
+        items: this.items,
+        // items: computed((virtualState) => virtualState.virtualItems, [this.virtualState]),
         fieldTemplate: this.options.template('fieldTemplate'),
         cardsPerRow: this.cardsPerRow,
         onRowHeightChange: this.rowHeight.update.bind(this.rowHeight),
+        onWidthChange: this.width.update.bind(this.width),
       }),
       virtualScrollingProps: combined({
         // heightUp: 0,
-        // heightDown: 0,
-        heightUp: computed((virtualState) => virtualState.virtualTop, [this.virtualState]),
-        heightDown: computed((virtualState) => virtualState.virtualBottom, [this.virtualState]),
+        heightDown: 0,
+        // heightUp: computed((virtualState) => virtualState.virtualTop, [this.virtualState]),
+        // heightDown: computed((virtualState) => virtualState.virtualBottom, [this.virtualState]),
       }),
       onViewportHeightChange: this.viewportHeight.update.bind(this.viewportHeight),
       scrollTop: this.scrollTop,

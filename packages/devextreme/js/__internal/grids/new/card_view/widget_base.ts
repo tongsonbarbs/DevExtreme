@@ -38,6 +38,15 @@ export class CardViewBase extends GridCoreNewBase {
     super._initDIContext();
     this.contentView = this.diContext.get(ContentView);
   }
+
+  // eslint-disable-next-line max-len
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
+  protected _getDefaultOptions() {
+    return {
+      ...super._getDefaultOptions(),
+      cardsPerRow: 3,
+    };
+  }
 }
 
 export class CardView extends DataControllerModule.PublicMethods(CardViewBase) {}

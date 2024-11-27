@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import { resizeObserverSingleton } from '@ts/core/m_resize_observer';
 import type { DataRow } from '@ts/grids/new/grid_core/columns_controller/types';
 import { PureComponent } from '@ts/grids/new/grid_core/core/pure_component';
 import { CollectionController } from '@ts/grids/new/grid_core/keyboard_navigation/collection_controller';
@@ -14,6 +15,8 @@ export interface ContentProps {
   fieldTemplate?: any;
 
   onRowHeightChange?: (value: number) => void;
+
+  onWidthChange?: (value: number) => void;
 
   cardsPerRow?: number;
 }
@@ -72,6 +75,13 @@ export class Content extends PureComponent<ContentProps> {
   }
 
   componentDidMount(): void {
+    resizeObserverSingleton.observe(
+      this.containerRef.current!,
+      (entry: ResizeObserverEntry) => {
+        this.props.onWidthChange?.(entry.contentRect.width);
+      },
+    );
+
     this.updateKeyboardController();
     this.updateSizesInfo();
   }
