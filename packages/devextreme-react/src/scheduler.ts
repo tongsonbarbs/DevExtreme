@@ -60,9 +60,9 @@ type ISchedulerOptions = React.PropsWithChildren<ReplaceFieldTypes<Properties, I
   timeCellRender?: (...params: any) => React.ReactNode;
   timeCellComponent?: React.ComponentType<any>;
   defaultCurrentDate?: Date | number | string;
-  defaultCurrentView?: "agenda" | "day" | "month" | "timelineDay" | "timelineMonth" | "timelineWeek" | "timelineWorkWeek" | "week" | "workWeek";
+  defaultCurrentView?: string | ViewType;
   onCurrentDateChange?: (value: Date | number | string) => void;
-  onCurrentViewChange?: (value: "agenda" | "day" | "month" | "timelineDay" | "timelineMonth" | "timelineWeek" | "timelineWorkWeek" | "week" | "workWeek") => void;
+  onCurrentViewChange?: (value: string | ViewType) => void;
 }>
 
 interface SchedulerRef {
