@@ -129,8 +129,8 @@ export class ContentView extends View<ContentViewProps> {
         cardMinWidth: this.cardMinWidth,
         cardMaxWidth: this.cardMaxWidth,
         onRowHeightChange: this.rowHeight.update.bind(this.rowHeight),
-        onWidthChange: this.width.update.bind(this.width),
       }),
+      onWidthChange: this.width.update.bind(this.width),
       virtualScrollingProps: combined({
         // heightUp: 0,
         heightDown: 0,
