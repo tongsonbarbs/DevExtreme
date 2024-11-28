@@ -2024,16 +2024,16 @@
         ]
       },
       {
-        "Name": "Markdown support",
+        "Name": "Markdown Support",
         "Equivalents": "",
         "Demos": [
           {
-            "Title": "Markdown support",
+            "Title": "Markdown Support",
             "Name": "MarkdownSupport",
             "Widget": "HtmlEditor",
             "DemoType": "Web",
             "Modules": "unified",
-            "Badge": "New"
+            "Badge": "Updated"
           }
         ]
       },
@@ -2067,7 +2067,13 @@
             "DocUrl": "Guide/UI_Components/Chat/Overview/",
             "Widget": "Chat",
             "DemoType": "Web",
-            "Badge": "New"
+            "Badge": "New",
+            "MvcAdditionalFiles": [
+              "/Models/SampleData/ChatData.cs",
+              "/Models/Chat/User.cs",
+              "/Models/Chat/Message.cs",
+              "/ViewModels/ChatViewModel.cs"
+            ]
           }
         ]
       }
