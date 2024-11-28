@@ -216,10 +216,10 @@ export class DxSchedulerComponent extends DxComponent implements OnDestroy, OnCh
     
      */
     @Input()
-    get currentView(): string | ViewType {
+    get currentView(): ViewType | string {
         return this._getOption('currentView');
     }
-    set currentView(value: string | ViewType) {
+    set currentView(value: ViewType | string) {
         this._setOption('currentView', value);
     }
 
@@ -1075,7 +1075,7 @@ export class DxSchedulerComponent extends DxComponent implements OnDestroy, OnCh
      * This member supports the internal infrastructure and is not intended to be used directly from your code.
     
      */
-    @Output() currentViewChange: EventEmitter<string | ViewType>;
+    @Output() currentViewChange: EventEmitter<ViewType | string>;
 
     /**
     
