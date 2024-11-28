@@ -195,6 +195,7 @@ export function iif<T>(
  * });
  *
  * obj.unreactive_get(); // {myValueA: 0, myValueB: 1}
+ * @returns
  */
 export function combined<T>(
   obj: MapMaybeSubscribable<T>,
