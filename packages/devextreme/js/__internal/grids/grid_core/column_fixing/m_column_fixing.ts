@@ -640,8 +640,9 @@ const columnHeadersView = (Base: ModuleType<ColumnHeadersView>) => class ColumnH
     const columnElements: any = that.getColumnElements();
     const $transparentColumnElement = that.getTransparentColumnElement();
     if (columnElements && $transparentColumnElement && $transparentColumnElement.length) {
-      const transparentColumnIndex = getTransparentColumnIndex(that.getFixedColumns());
-      columnElements.splice(transparentColumnIndex, $transparentColumnElement.get(0).colSpan, $transparentColumnElement.get(0));
+      const colSpan = $transparentColumnElement.get(0)?.colSpan || 1;
+      // @ts-expect-error
+      [].splice.apply(columnElements, [transparentColumnIndex, colSpan, $transparentColumnElement.get(0)]);
     }
 
     return columnElements;
