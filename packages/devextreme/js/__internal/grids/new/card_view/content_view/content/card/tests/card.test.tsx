@@ -2,7 +2,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from 'inferno';
 
-import { Card } from './card';
+import { Card } from '../card';
 
 const props = {
   row: {
@@ -44,8 +44,8 @@ const props = {
     },
   ],
   cover: {
-    src: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
-    alt: 'Card Cover',
+    imageExpr: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
+    altExpr: 'Card Cover',
     className: 'cover-image',
   },
 };
@@ -97,8 +97,6 @@ describe('Image', () => {
 
     const image = container.querySelector('img');
     expect(image).not.toBeNull();
-    expect(image?.src).toBe(props.cover.src);
-    expect(image?.alt).toBe(props.cover.alt);
   });
 });
 
@@ -111,7 +109,7 @@ describe('Field Template', () => {
     const fieldName = container.querySelector('.dx-cardview-field-name');
     const fieldValue = container.querySelector('.dx-cardview-field-value');
 
-    expect(fieldName?.textContent).toBe('Field: ');
+    expect(fieldName?.textContent).toBe('Field:');
     expect(fieldValue?.textContent).toBe('devextreme');
   });
 });

@@ -18,16 +18,25 @@ import { CardHeader } from './header';
 
 export const CLASSES = {
   card: 'dx-cardview-card',
+  cardHover: 'dx-cardview-card-hoverable',
 };
+
+export interface CardClickEvent {
+  event: MouseEvent;
+  row: DataRow;
+}
+
+export interface CardHoverEvent {
+  isHovered: boolean;
+  row: DataRow;
+}
+
+export interface CardPreparedEvent {
+  instance: Card;
+}
 
 export interface CardProps {
   row: DataRow;
-
-  minWidth?: number;
-
-  maxWidth?: number;
-
-  toolbar?: CardHeaderItem[];
 
   cover?: CoverProps;
 
@@ -35,6 +44,26 @@ export interface CardProps {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   fieldTemplate?: any;
+
+  hoverStateEnabled?: boolean;
+
+  maxWidth?: number;
+
+  minWidth?: number;
+
+  toolbar?: CardHeaderItem[];
+
+  width?: number;
+
+  template?: (row: DataRow) => JSX.Element;
+
+  onClick?: (e: CardClickEvent) => void;
+
+  onDblClick?: (e: CardClickEvent) => void;
+
+  onHoverChanged?: (e: CardHoverEvent) => void;
+
+  onPrepared?: (e: CardPreparedEvent) => void;
 }
 
 export class Card extends PureComponent<CardProps> {
@@ -44,6 +73,13 @@ export class Card extends PureComponent<CardProps> {
 
   private readonly keyboardController = new CollectionController();
 
+  constructor(props: CardProps) {
+    super(props);
+    this.state = {
+      isHovered: false,
+    };
+  }
+
   render(): InfernoNode {
     if (this.props.elementRef) {
       this.containerRef = this.props.elementRef;
@@ -51,26 +87,46 @@ export class Card extends PureComponent<CardProps> {
 
     this.fieldRefs = new Array(this.props.row.cells.length).fill(undefined).map(() => createRef());
 
-    const FieldTemplate = this.props.fieldTemplate ?? Field;
+    const {
+      fieldTemplate: FieldTemplate = Field,
+      width,
+      minWidth,
+      maxWidth,
+      hoverStateEnabled,
+    } = this.props;
+
+    const style = {
+      width: `${width}px`,
+      'min-width': `${minWidth}px`,
+      'max-width': `${maxWidth}px`,
+    };
+
+    const className = [
+      CLASSES.card,
+      hoverStateEnabled ? CLASSES.cardHover : '',
+    ].filter(Boolean).join(' ');
+
     return (
       <div
-        className={CLASSES.card}
+        className={className}
         tabIndex={0}
         ref={this.props.elementRef}
         onKeyDown={(e): void => this.keyboardController.onKeyDown(e)}
+        onClick={this.handleClick}
+        onDblClick={this.handleDoubleClick}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
         // TODO: move to scss
-        style={{ 'min-width': `${this.props.minWidth}px`, 'max-width': `${this.props.maxWidth}px` }}
+        style={style}
       >
         <CardHeader
           items={this.props.toolbar || []}
         />
-        {this.props.cover?.src && (
           <Cover
-            src={this.props.cover.src}
-            alt={this.props.cover.alt}
-            className={this.props.cover.className}
+            imageExpr={this.props.cover?.imageExpr || ''}
+            altExpr={this.props.cover?.altExpr}
+            className={this.props.cover?.className}
           />
-        )}
         {this.props.row.cells.map((cell, index) => (
           <FieldTemplate
             elementRef={this.fieldRefs[index]}
@@ -93,9 +149,47 @@ export class Card extends PureComponent<CardProps> {
 
   componentDidMount(): void {
     this.updateKeyboardController();
+    const { onPrepared } = this.props;
+    if (onPrepared) {
+      onPrepared({ instance: this });
+    }
   }
 
   componentDidUpdate(): void {
     this.updateKeyboardController();
   }
+
+  handleMouseEnter = (): void => {
+    const { onHoverChanged, hoverStateEnabled, row } = this.props;
+    if (!hoverStateEnabled) return;
+    this.setState({ isHovered: true });
+    if (onHoverChanged) {
+      onHoverChanged({ isHovered: true, row });
+    }
+  };
+
+  handleMouseLeave = (): void => {
+    const { onHoverChanged, hoverStateEnabled, row } = this.props;
+    if (!hoverStateEnabled) return;
+    this.setState({ isHovered: false });
+    if (onHoverChanged) {
+      onHoverChanged({ isHovered: false, row });
+    }
+  };
+
+  handleClick = (event: MouseEvent): void => {
+    const { onClick, row } = this.props;
+    if (onClick) {
+      onClick({ event, row });
+    }
+  };
+
+  handleDoubleClick = (event: MouseEvent): void => {
+    const { onDblClick, row } = this.props;
+    if (onDblClick) {
+      onDblClick({ event, row });
+    }
+  };
 }
+// @ts-expect-error
+window.renderCard = (obj, props): void => render(<Card {...props} />, obj);
