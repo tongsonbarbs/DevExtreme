@@ -11,6 +11,7 @@ import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget';
 import { ContentView } from './content_view/view';
 import { HeaderPanelView } from './header_panel/view';
 import { MainView } from './main_view';
+import { defaultOptions } from './options';
 import { OptionsController } from './options_controller';
 
 export class CardViewBase extends GridCoreNewBase {
@@ -40,11 +41,11 @@ export class CardViewBase extends GridCoreNewBase {
   }
 
   // eslint-disable-next-line max-len
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/explicit-function-return-type
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
   protected _getDefaultOptions() {
     return {
       ...super._getDefaultOptions(),
-      cardsPerRow: 3,
+      ...defaultOptions,
     };
   }
 }

@@ -9,6 +9,9 @@ import type { SearchProperties } from './search/types';
 import * as toolbar from './toolbar';
 import type { GridCoreNew } from './widget';
 
+/**
+ * @interface
+ */
 export type Options =
   & WidgetOptions<GridCoreNew>
   & dataController.Options
