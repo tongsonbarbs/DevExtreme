@@ -191,5 +191,3 @@ export class Card extends PureComponent<CardProps> {
     }
   };
 }
-// @ts-expect-error
-window.renderCard = (obj, props): void => render(<Card {...props} />, obj);
