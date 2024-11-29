@@ -7,7 +7,7 @@ import * as dataController from './data_controller';
 import { filterPanel } from './filtering';
 import type { SearchProperties } from './search/types';
 import * as toolbar from './toolbar';
-import type { GridCoreNew } from './widget_base';
+import type { GridCoreNew } from './widget';
 
 export type Options =
   & WidgetOptions<GridCoreNew>

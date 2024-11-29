@@ -6,7 +6,7 @@ import $ from '@js/core/renderer';
 import * as DataControllerModule from '@ts/grids/new/grid_core/data_controller';
 import { MainView as MainViewBase } from '@ts/grids/new/grid_core/main_view';
 import { OptionsController as OptionsControllerBase } from '@ts/grids/new/grid_core/options_controller/options_controller';
-import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget_base';
+import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget';
 
 import { ContentView } from './content_view/view';
 import { HeaderPanelView } from './header_panel/view';

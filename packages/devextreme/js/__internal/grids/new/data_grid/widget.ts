@@ -2,7 +2,7 @@
 import registerComponent from '@js/core/component_registrator';
 // import { MainView as MainViewBase } from '@ts/grids/new/grid_core/main_view';
 import { OptionsController as OptionsControllerBase } from '@ts/grids/new/grid_core/options_controller/options_controller';
-import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget_base';
+import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget';
 
 // import { MainView } from './main_view';
 import { OptionsController } from './options_controller';

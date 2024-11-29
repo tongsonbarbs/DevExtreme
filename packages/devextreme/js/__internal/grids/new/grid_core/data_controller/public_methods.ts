@@ -4,7 +4,7 @@
 import type DataSource from '@js/data/data_source';
 
 import type { Constructor } from '../types';
-import type { GridCoreNewBase } from '../widget_base';
+import type { GridCoreNewBase } from '../widget';
 import { DataController } from './data_controller';
 
 export function PublicMethods<T extends Constructor<GridCoreNewBase>>(GridCore: T) {
