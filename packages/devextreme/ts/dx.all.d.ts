@@ -23931,7 +23931,7 @@ declare module DevExpress.ui {
     /**
      * [descr:dxSchedulerOptions.currentView]
      */
-    currentView?: DevExpress.ui.dxScheduler.ViewType;
+    currentView?: DevExpress.ui.dxScheduler.ViewType | string;
     /**
      * [descr:dxSchedulerOptions.customizeDateNavigatorText]
      */
