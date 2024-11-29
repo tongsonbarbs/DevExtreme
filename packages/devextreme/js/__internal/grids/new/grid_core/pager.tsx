@@ -1,7 +1,7 @@
 /* eslint-disable spellcheck/spell-checker */
 import { computed } from '@ts/core/reactive/index';
 
-import { View } from './core/view';
+import { View } from './core/view_old';
 import { DataController } from './data_controller/index';
 import { Pager } from './inferno_wrappers/pager';
 

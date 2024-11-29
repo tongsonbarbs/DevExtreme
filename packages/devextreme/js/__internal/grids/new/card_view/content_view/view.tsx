@@ -6,7 +6,7 @@ import { combined, computed, state } from '@ts/core/reactive/index';
 import { OptionsController } from '@ts/grids/new/card_view/options_controller';
 import { ColumnsController } from '@ts/grids/new/grid_core/columns_controller/columns_controller';
 import type { Column } from '@ts/grids/new/grid_core/columns_controller/types';
-import { View } from '@ts/grids/new/grid_core/core/view4';
+import { View } from '@ts/grids/new/grid_core/core/view';
 import { DataController } from '@ts/grids/new/grid_core/data_controller';
 import { ErrorController } from '@ts/grids/new/grid_core/error_controller/error_controller';
 import { createRef } from 'inferno';
