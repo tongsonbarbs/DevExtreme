@@ -1,5 +1,9 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { resizeObserverSingleton } from '@ts/core/m_resize_observer';
+import type { ErrorRowProperties } from '@ts/grids/new/grid_core/content_view/error_row';
+import { ErrorRow } from '@ts/grids/new/grid_core/content_view/error_row';
+import type { NoDataTextProperties } from '@ts/grids/new/grid_core/content_view/no_data_text';
+import { NoDataText } from '@ts/grids/new/grid_core/content_view/no_data_text';
 import { LoadPanel, type LoadPanelProperties } from '@ts/grids/new/grid_core/inferno_wrappers/load_panel';
 import { Scrollable } from '@ts/grids/new/grid_core/inferno_wrappers/scrollable';
 import type { InfernoNode } from 'inferno';
@@ -7,10 +11,6 @@ import { Component, createRef } from 'inferno';
 
 import type { ContentProps } from './content/content';
 import { Content } from './content/content';
-import type { ErrorRowProperties } from './error_row';
-import { ErrorRow } from './error_row';
-import type { NoDataTextProperties } from './no_data_text';
-import { NoDataText } from './no_data_text';
 import { VirtualRow } from './virtual_scrolling/virtual_row';
 
 export const CLASSES = {

@@ -12,7 +12,6 @@ import { render } from 'inferno';
 import { ColumnsChooserView } from './columns_chooser/view';
 import { CompatibilityColumnsController } from './columns_controller/compatibility';
 import * as ColumnsControllerModule from './columns_controller/index';
-import { StatusView } from './content_view/status_view/status_view';
 import * as DataControllerModule from './data_controller/index';
 import { EditingController } from './editing/controller';
 import { ErrorController } from './error_controller/error_controller';
@@ -62,7 +61,6 @@ export class GridCoreNewBase<
     this.diContext.register(PagerView);
     this.diContext.register(ColumnsChooserView);
     this.diContext.register(Search);
-    this.diContext.register(StatusView);
     this.diContext.register(FilterPanelView);
     this.diContext.register(ErrorController);
   }
