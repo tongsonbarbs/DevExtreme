@@ -10,7 +10,7 @@ import { Sortable } from '../../grid_core/inferno_wrappers/sortable';
 import { Item } from './item';
 
 export const CLASSES = {
-  headers: 'dx-gridcore-headers',
+  headers: 'dx-cardview-headers',
 };
 
 export interface HeaderPanelProps {
