@@ -1,2 +1,3 @@
 export * from './options';
-export * from './view';
+export * from './public_methods';
+export { ContentView as View } from './view';

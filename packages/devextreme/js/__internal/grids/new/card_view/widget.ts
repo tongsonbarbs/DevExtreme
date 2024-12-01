@@ -3,25 +3,24 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import registerComponent from '@js/core/component_registrator';
 import $ from '@js/core/renderer';
-import * as DataControllerModule from '@ts/grids/new/grid_core/data_controller';
 import { MainView as MainViewBase } from '@ts/grids/new/grid_core/main_view';
 import { OptionsController as OptionsControllerBase } from '@ts/grids/new/grid_core/options_controller/options_controller';
-import { GridCoreNewBase } from '@ts/grids/new/grid_core/widget';
+import { GridCoreNew } from '@ts/grids/new/grid_core/widget';
 
-import { ContentView } from './content_view/view';
+import * as ContentViewModule from './content_view';
 import { HeaderPanelView } from './header_panel/view';
 import { MainView } from './main_view';
 import { defaultOptions } from './options';
 import { OptionsController } from './options_controller';
 
-export class CardViewBase extends GridCoreNewBase {
-  contentView!: ContentView;
+export class CardViewBase extends GridCoreNew {
+  contentView!: ContentViewModule.View;
 
   protected _registerDIContext(): void {
     super._registerDIContext();
     this.diContext.register(HeaderPanelView);
 
-    this.diContext.register(ContentView);
+    this.diContext.register(ContentViewModule.View);
     this.diContext.register(MainViewBase, MainView);
 
     const optionsController = new OptionsController(this);
@@ -37,7 +36,7 @@ export class CardViewBase extends GridCoreNewBase {
 
   protected _initDIContext(): void {
     super._initDIContext();
-    this.contentView = this.diContext.get(ContentView);
+    this.contentView = this.diContext.get(ContentViewModule.View);
   }
 
   // eslint-disable-next-line max-len
@@ -50,7 +49,7 @@ export class CardViewBase extends GridCoreNewBase {
   }
 }
 
-export class CardView extends DataControllerModule.PublicMethods(CardViewBase) {}
+export class CardView extends ContentViewModule.PublicMethods(CardViewBase) {}
 
 // @ts-expect-error
 registerComponent('dxCardView', CardView);

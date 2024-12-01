@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable spellcheck/spell-checker */
 import type dxScrollable from '@js/ui/scroll_view/ui.scrollable';
+import type { ScrollEventInfo } from '@js/ui/scroll_view/ui.scrollable';
 import { combined, computed, state } from '@ts/core/reactive/index';
 import { OptionsController } from '@ts/grids/new/card_view/options_controller';
 import { ColumnsController } from '@ts/grids/new/grid_core/columns_controller/columns_controller';
@@ -132,18 +133,29 @@ export class ContentView extends View<ContentViewProps> {
       }),
       onWidthChange: this.width.update.bind(this.width),
       virtualScrollingProps: combined({
-        // heightUp: 0,
+        heightUp: 0,
         heightDown: 0,
         // heightUp: computed((virtualState) => virtualState.virtualTop, [this.virtualState]),
         // heightDown: computed((virtualState) => virtualState.virtualBottom, [this.virtualState]),
       }),
       onViewportHeightChange: this.viewportHeight.update.bind(this.viewportHeight),
-      scrollTop: this.scrollTop,
-      onScroll: this.onScroll.bind(this),
+      scrollableRef: this.scrollableRef,
+      scrollableProps: combined({
+        onScroll: this.onScroll.bind(this),
+        direction: 'both' as const,
+        scrollTop: this.scrollTop,
+        scrollByContent: this.options.oneWay('scrolling.scrollByContent'),
+        scrollByThumb: this.options.oneWay('scrolling.scrollByThumb'),
+        showScrollbar: this.options.oneWay('scrolling.showScrollbar'),
+        useNative: computed(
+          (useNative) => (useNative === 'auto' ? undefined : useNative),
+          [this.options.oneWay('scrolling.useNative')],
+        ),
+      }),
     });
   }
 
-  private onScroll(scrollTop: number) {
-    this.scrollTop.update(scrollTop);
+  private onScroll(e: ScrollEventInfo<unknown>) {
+    this.scrollTop.update(e.scrollOffset.top);
   }
 }
