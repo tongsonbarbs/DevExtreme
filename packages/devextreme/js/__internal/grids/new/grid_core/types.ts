@@ -7,3 +7,7 @@ export type Constructor<T, TDeps extends readonly any[] = any[]> = new(...deps: 
 export interface WithDIContext {
   diContext: DIContext;
 }
+
+// TODO
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export type Template<T> = unknown;

@@ -52,9 +52,7 @@ export class ContentView extends Component<ContentViewProps> {
   render(props: ContentViewProps): InfernoNode {
     return (
       <div className={CLASSES.contentView} ref={this.containerRef}>
-        <ErrorRow {...props.errorRowProps} />
         <LoadPanel {...props.loadPanelProps} />
-
         <Scrollable
           ref={this.scrollableRef}
           componentRef={this.props.scrollableRef}
@@ -73,6 +71,7 @@ export class ContentView extends Component<ContentViewProps> {
               : undefined
           }
         </Scrollable>
+        <ErrorRow {...props.errorRowProps} />
       </div>
     );
   }

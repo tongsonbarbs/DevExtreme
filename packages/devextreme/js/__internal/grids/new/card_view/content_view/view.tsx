@@ -21,7 +21,7 @@ export class ContentView extends View<ContentViewProps> {
     [this.dataController.isLoading, this.dataController.items],
   );
 
-  private readonly items = computed(
+  public readonly items = computed(
     (dataItems, columns: Column[]) => dataItems.map(
       (item) => this.columnsController.createDataRow(
         item,
@@ -32,6 +32,8 @@ export class ContentView extends View<ContentViewProps> {
   );
 
   public readonly scrollableRef = createRef<dxScrollable>();
+
+  public loadingText = this.options.twoWay('loadPanel.message');
 
   private readonly cardMinWidth = this.options.oneWay('cardMinWidth');
 
@@ -112,14 +114,23 @@ export class ContentView extends View<ContentViewProps> {
 
   protected override getProps() {
     return combined({
-      loadPanelProps: combined({
-        visible: this.dataController.isLoading,
-      }),
+      loadPanelProps: computed(
+        (visible, loadPanel) => ({
+          ...loadPanel,
+          visible,
+        }),
+        [
+          this.dataController.isLoading,
+          this.options.oneWay('loadPanel'),
+        ],
+      ),
       noDataTextProps: combined({
         text: this.options.oneWay('noDataText'),
+        template: this.options.template('noDataTemplate'),
         visible: this.isNoData,
       }),
       errorRowProps: combined({
+        enabled: this.options.oneWay('errorRowEnabled'),
         errors: this.errorController.errors,
       }),
       contentProps: combined({
