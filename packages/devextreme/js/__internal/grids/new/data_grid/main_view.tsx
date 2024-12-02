@@ -30,6 +30,7 @@ export class MainView extends View {
     this.vdom = <>
       <HeaderPanel/>
       <FilterPanel/>
+      {/* @ts-expect-error */}
       <Pager/>
       {/* @ts-expect-error */}
       <ColumnsChooser/>

@@ -166,7 +166,7 @@ export class ContentView extends View<ContentViewProps> {
     });
   }
 
-  private onScroll(e: ScrollEventInfo<unknown>) {
+  private onScroll(e: ScrollEventInfo<unknown>): void {
     this.scrollTop.update(e.scrollOffset.top);
   }
 }
