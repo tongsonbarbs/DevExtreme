@@ -8,8 +8,10 @@ import type {
   Gettable, Subscribable, SubsGetsUpd, Updatable,
 } from '@ts/core/reactive/index';
 import { computed, state } from '@ts/core/reactive/index';
+import type { ComponentType } from 'inferno';
 
 import { TemplateWrapper } from '../inferno_wrappers/template_wrapper';
+import type { Template } from '../types';
 
 type SubsGets<T> = Subscribable<T> & Gettable<T>;
 type SubsUpts<T> = Subscribable<T> & Updatable<T>;
@@ -33,6 +35,11 @@ export type PropertyWithDefaults<TProps, TDefaults, TProp extends string> =
   unknown extends PropertyType<TDefaults, TProp>
     ? PropertyType<TProps, TProp>
     : NonNullable<PropertyType<TProps, TProp>> | PropertyTypeBase<TDefaults, TProp>;
+
+type TemplateProperty<TProps, TProp extends string> =
+  NonNullable<PropertyType<TProps, TProp>> extends Template<infer TTemplateProps>
+    ? ComponentType<TTemplateProps> | undefined
+    : unknown;
 
 function cloneObjectValue<T extends Record<string, unknown> | unknown[]>(
   value: T,
@@ -94,10 +101,10 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
 
   public template<TProp extends string>(
     name: TProp,
-  ): SubsGets<any> {
+  ): SubsGets<TemplateProperty<TProps, TProp>> {
     return computed(
       // @ts-expect-error
-      (template) => template && TemplateWrapper(this.component._getTemplate(template)),
+      (template) => template && TemplateWrapper(this.component._getTemplate(template)) as any,
       [this.oneWay(name)],
     );
   }

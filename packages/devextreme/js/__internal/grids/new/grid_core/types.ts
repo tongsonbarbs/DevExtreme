@@ -1,4 +1,5 @@
 /* eslint-disable spellcheck/spell-checker */
+import type { template } from '@js/core/templates/template';
 import type { DIContext } from '@ts/core/di';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -10,4 +11,4 @@ export interface WithDIContext {
 
 // TODO
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export type Template<T> = unknown;
+export type Template<T> = (props: T) => HTMLDivElement | template;
