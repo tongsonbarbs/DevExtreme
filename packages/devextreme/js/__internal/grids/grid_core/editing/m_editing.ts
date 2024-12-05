@@ -945,7 +945,7 @@ class EditingControllerImpl extends modules.ViewController {
           visibleItemIndex++;
         }
 
-        const insertKey = dataController.getKeyByRowIndex(visibleItemIndex);
+        const insertKey = dataController.getLoadedKeyByRowIndex(visibleItemIndex);
 
         if (isDefined(insertKey)) {
           change.insertBeforeKey = insertKey;

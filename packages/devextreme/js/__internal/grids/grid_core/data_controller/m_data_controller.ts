@@ -80,6 +80,7 @@ interface Item {
   values?: unknown[];
   visible?: boolean;
   isExpanded?: boolean;
+  isNewRow: boolean;
   summaryCells?: unknown[];
   rowIndex?: number;
   cells?: unknown[];
@@ -1533,6 +1534,19 @@ export class DataController extends DataHelperMixin(modules.Controller) {
     if (item) {
       return item.key;
     }
+  }
+
+  public getLoadedKeyByRowIndex(rowIndex) {
+    const items = this.items();
+    while (rowIndex < items.length) {
+      const item = items[rowIndex];
+
+      if (item && !item.isNewRow) {
+        return item.key;
+      }
+      rowIndex++;
+    }
+    return undefined;
   }
 
   public getRowIndexByKey(key, byLoaded?) {
