@@ -16,7 +16,7 @@ export class Overlay {
   content: Selector;
 
   constructor(id?: Selector, index?: number) {
-    this.element = id?.nth(index ? index : 0) ?? Selector(`.${CLASS.overlayWrapper}`).nth(index ? index : 0);
+    this.element = (index ? id?.nth(index) : id) ?? Selector(`.${CLASS.overlayWrapper}`).nth(index ? index : 0);
 
     this.content = this.element.find(`.${CLASS.overlayContent}`);
   }
