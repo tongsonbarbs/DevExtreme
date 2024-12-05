@@ -1536,19 +1536,6 @@ export class DataController extends DataHelperMixin(modules.Controller) {
     }
   }
 
-  public getLoadedKeyByRowIndex(rowIndex) {
-    const items = this.items();
-    while (rowIndex < items.length) {
-      const item = items[rowIndex];
-
-      if (item && !item.isNewRow) {
-        return item.key;
-      }
-      rowIndex++;
-    }
-    return undefined;
-  }
-
   public getRowIndexByKey(key, byLoaded?) {
     return gridCoreUtils.getIndexByKey(key, this.items(byLoaded));
   }

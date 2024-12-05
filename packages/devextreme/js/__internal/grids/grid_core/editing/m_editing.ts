@@ -945,7 +945,7 @@ class EditingControllerImpl extends modules.ViewController {
           visibleItemIndex++;
         }
 
-        const insertKey = dataController.getLoadedKeyByRowIndex(visibleItemIndex);
+        const insertKey = dataController.getKeyByRowIndex(visibleItemIndex);
 
         if (isDefined(insertKey)) {
           change.insertBeforeKey = insertKey;
@@ -1699,6 +1699,23 @@ class EditingControllerImpl extends modules.ViewController {
         }
       } else if (this._processRemove(changes, editIndex, cancel)) {
         hasSavedData = !cancel;
+        if (!cancel && change && change.type === DATA_EDIT_DATA_INSERT_TYPE) {
+          const tmpKey = results[i].key;
+
+          const savedRows = this._dataController.items().filter((item) => !item.isNewRow);
+          const topSavedRowKey = savedRows.length ? savedRows[0].key : null;
+
+          if (topSavedRowKey) {
+            changes.forEach((unsavedChange) => {
+              if (
+                unsavedChange.type === DATA_EDIT_DATA_INSERT_TYPE
+                      && unsavedChange.insertBeforeKey === tmpKey
+              ) {
+                unsavedChange.insertBeforeKey = topSavedRowKey;
+              }
+            });
+          }
+        }
       }
     }
 
