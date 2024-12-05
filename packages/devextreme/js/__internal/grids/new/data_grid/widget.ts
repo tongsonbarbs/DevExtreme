@@ -15,7 +15,6 @@ class DataGridNew extends GridCoreNewBase<Options> {
 
     const optionsController = new OptionsController(this);
     this.diContext.registerInstance(OptionsController, optionsController);
-    // @ts-expect-error
     this.diContext.registerInstance(OptionsControllerBase, optionsController);
   }
 }
