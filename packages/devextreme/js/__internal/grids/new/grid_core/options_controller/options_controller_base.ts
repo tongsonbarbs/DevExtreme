@@ -5,16 +5,13 @@ import { Component } from '@js/core/component';
 import { getPathParts } from '@js/core/utils/data';
 import type { ChangedOptionInfo } from '@js/events';
 import type {
-  Gettable, Subscribable, SubsGetsUpd, Updatable,
+  SubsGets, SubsGetsUpd,
 } from '@ts/core/reactive/index';
 import { computed, state } from '@ts/core/reactive/index';
 import type { ComponentType } from 'inferno';
 
 import { TemplateWrapper } from '../inferno_wrappers/template_wrapper';
 import type { Template } from '../types';
-
-type SubsGets<T> = Subscribable<T> & Gettable<T>;
-type SubsUpts<T> = Subscribable<T> & Updatable<T>;
 
 type OwnProperty<T, TPropName extends string> =
   TPropName extends keyof Required<T>
@@ -26,12 +23,12 @@ type PropertyTypeBase<T, TProp extends string> =
     ? PropertyTypeBase<OwnProperty<T, TOwnProp>, TNestedProps>
     : OwnProperty<T, TProp>;
 
-export type PropertyType<TProps, TProp extends string> =
+type PropertyType<TProps, TProp extends string> =
   unknown extends PropertyTypeBase<TProps, TProp>
     ? unknown
     : PropertyTypeBase<TProps, TProp> | undefined;
 
-export type PropertyWithDefaults<TProps, TDefaults, TProp extends string> =
+type PropertyWithDefaults<TProps, TDefaults, TProp extends string> =
   unknown extends PropertyType<TDefaults, TProp>
     ? PropertyType<TProps, TProp>
     : NonNullable<PropertyType<TProps, TProp>> | PropertyTypeBase<TDefaults, TProp>;
@@ -73,7 +70,7 @@ function getValue<T>(obj: unknown, path: string): T {
 }
 
 export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
-  private readonly isControlledMode = false;
+  private isControlledMode = false;
 
   private readonly props: SubsGetsUpd<TProps>;
 
@@ -87,7 +84,11 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
     this.props = state(component.option());
     // @ts-expect-error
     this.defaults = component._getDefaultOptions();
+    this.updateIsControlledMode();
+
     component.on('optionChanged', (e: ChangedOptionInfo) => {
+      this.updateIsControlledMode();
+
       const pathParts = getPathParts(e.fullName);
       // @ts-expect-error
       this.props.updateFunc((oldValue) => updateImmutable(
@@ -99,14 +100,9 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
     });
   }
 
-  public template<TProp extends string>(
-    name: TProp,
-  ): SubsGets<TemplateProperty<TProps, TProp>> {
-    return computed(
-      // @ts-expect-error
-      (template) => template && TemplateWrapper(this.component._getTemplate(template)) as any,
-      [this.oneWay(name)],
-    );
+  private updateIsControlledMode(): void {
+    const isControlledMode = this.component.option('integrationOptions.isControlledMode');
+    this.isControlledMode = (isControlledMode as boolean | undefined) ?? false;
   }
 
   public oneWay<TProp extends string>(
@@ -130,7 +126,7 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
   public twoWay<TProp extends string>(
     name: TProp,
   // eslint-disable-next-line max-len
-  ): SubsUpts<PropertyWithDefaults<TProps, TDefaultProps, TProp>> & Gettable<PropertyWithDefaults<TProps, TDefaultProps, TProp>> {
+  ): SubsGetsUpd<PropertyWithDefaults<TProps, TDefaultProps, TProp>> {
     const obs = state(this.component.option(name));
     this.oneWay(name).subscribe(obs.update.bind(obs) as any);
     return {
@@ -150,5 +146,15 @@ export class OptionsController<TProps, TDefaultProps extends TProps = TProps> {
       // @ts-expect-error
       unreactive_get: obs.unreactive_get.bind(obs),
     };
+  }
+
+  public template<TProp extends string>(
+    name: TProp,
+  ): SubsGets<TemplateProperty<TProps, TProp>> {
+    return computed(
+      // @ts-expect-error
+      (template) => template && TemplateWrapper(this.component._getTemplate(template)) as any,
+      [this.oneWay(name)],
+    );
   }
 }
