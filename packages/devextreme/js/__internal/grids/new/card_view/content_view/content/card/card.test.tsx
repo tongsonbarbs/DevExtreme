@@ -46,7 +46,6 @@ const props = {
   cover: {
     imageExpr: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
     altExpr: 'Card Cover',
-    className: 'cover-image',
   },
 };
 

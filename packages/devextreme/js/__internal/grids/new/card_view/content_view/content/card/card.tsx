@@ -118,7 +118,6 @@ export class Card extends PureComponent<CardProps> {
           <Cover
             imageExpr={this.props.cover?.imageExpr || ''}
             altExpr={this.props.cover?.altExpr}
-            className={this.props.cover?.className}
           />
         {this.props.row.cells.map((cell, index) => (
           <FieldTemplate

@@ -123,7 +123,7 @@ exports[`Rendering should be rendered correctly 1`] = `
     >
       <img
         alt="Card Cover"
-        class="dx-card-cover-image cover-image"
+        class="dx-card-cover-image"
         src="https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png"
         style="width: 100%; height: auto;"
       />
