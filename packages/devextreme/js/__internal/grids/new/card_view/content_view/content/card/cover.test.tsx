@@ -2,7 +2,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from 'inferno';
 
-import { Cover } from '../cover';
+import { Cover } from './cover';
 
 describe('Image', () => {
   it('should render the image correctly', () => {

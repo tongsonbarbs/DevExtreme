@@ -2,7 +2,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from 'inferno';
 
-import { Card } from '../card';
+import { Card } from './card';
 
 const props = {
   row: {

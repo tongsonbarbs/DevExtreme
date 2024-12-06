@@ -5,7 +5,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from 'inferno';
 
-import { Card } from '../card';
+import { Card } from './card';
 
 const mockOnDblClick = {
   called: false,
@@ -165,7 +165,7 @@ describe('Events', () => {
     const fieldName = container.querySelector('.dx-cardview-field-name');
     const fieldValue = container.querySelector('.dx-cardview-field-value');
 
-    expect(fieldName?.textContent).toBe('Field: ');
+    expect(fieldName?.textContent).toBe('Field:');
     expect(fieldValue?.textContent).toBe('devextreme');
   });
 });

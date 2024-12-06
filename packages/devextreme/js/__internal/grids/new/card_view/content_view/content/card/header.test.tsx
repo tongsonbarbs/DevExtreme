@@ -4,7 +4,7 @@
 import { describe, expect, it } from '@jest/globals';
 import { render } from 'inferno';
 
-import { CardHeader } from '../header';
+import { CardHeader } from './header';
 
 describe('CardHeader', () => {
   it('should render with default properties', () => {

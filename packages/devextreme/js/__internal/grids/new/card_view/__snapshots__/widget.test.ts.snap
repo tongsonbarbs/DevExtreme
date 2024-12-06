@@ -180,11 +180,8 @@ exports[`common initial render should be successfull 1`] = `
     </div>
   </div>
   <div
-    class="dx-gridcore-content-view"
+    class="dx-cardview-contentview"
   >
-    <div
-      class="dx-gridcore-error-row"
-    />
     <div
       class="dx-overlay dx-widget dx-state-invisible dx-visibility-change-handler dx-loadpanel"
     >
@@ -208,68 +205,63 @@ exports[`common initial render should be successfull 1`] = `
             style="left: 0px; top: 0px; transform: none;"
           >
             <div
-              class="dx-gridcore-content"
+              class="dx-cardview-content dx-cardview-content-grid"
+              style="--dx-cardview-cardsperrow: 3;"
               tabindex="0"
             >
               <div
-                class="dx-cardview-content dx-cardview-content-grid"
-                style="--dx-cardview-cardsperrow: 3;"
+                class="dx-cardview-card"
+                style="min-width: undefinedpx; max-width: undefinedpx;"
                 tabindex="0"
               >
                 <div
-                  class="dx-cardview-card"
-                  style="min-width: undefinedpx; max-width: undefinedpx;"
-                  tabindex="0"
+                  class="dx-cardheader"
                 >
                   <div
-                    class="dx-cardheader"
+                    class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection dx-toolbar-mini"
+                    role="toolbar"
                   >
                     <div
-                      class="dx-toolbar dx-widget dx-visibility-change-handler dx-collection dx-toolbar-mini"
-                      role="toolbar"
+                      class="dx-toolbar-items-container"
                     >
                       <div
-                        class="dx-toolbar-items-container"
-                      >
-                        <div
-                          class="dx-toolbar-before"
-                          role="presentation"
-                        />
-                        <div
-                          class="dx-toolbar-center"
-                          role="presentation"
-                        />
-                        <div
-                          class="dx-toolbar-after"
-                          role="presentation"
-                        />
-                      </div>
+                        class="dx-toolbar-before"
+                        role="presentation"
+                      />
+                      <div
+                        class="dx-toolbar-center"
+                        role="presentation"
+                      />
+                      <div
+                        class="dx-toolbar-after"
+                        role="presentation"
+                      />
                     </div>
                   </div>
-                  
-                  <div
-                    class="dx-cardview-field"
-                    tabindex="0"
+                </div>
+                
+                <div
+                  class="dx-cardview-field"
+                  tabindex="0"
+                >
+                  <span
+                    class="dx-cardview-field-name"
                   >
-                    <span
-                      class="dx-cardview-field-name"
-                    >
-                      A
-                      :
-                    </span>
-                    <span
-                      class="dx-cardview-field-value"
-                      style="overflow: hidden;"
-                    >
-                      a
-                    </span>
-                  </div>
+                    A
+                    :
+                  </span>
+                  <span
+                    class="dx-cardview-field-value"
+                    style="overflow: hidden;"
+                  >
+                    a
+                  </span>
                 </div>
               </div>
             </div>
           </div>
           <div
-            class="dx-scrollable-scrollbar dx-widget dx-scrollbar-horizontal dx-scrollbar-hoverable"
+            class="dx-scrollable-scrollbar dx-widget dx-scrollbar-horizontal"
           >
             <div
               class="dx-scrollable-scroll dx-state-invisible"
@@ -281,7 +273,7 @@ exports[`common initial render should be successfull 1`] = `
             </div>
           </div>
           <div
-            class="dx-scrollable-scrollbar dx-widget dx-scrollbar-vertical dx-scrollbar-hoverable"
+            class="dx-scrollable-scrollbar dx-widget dx-scrollbar-vertical"
           >
             <div
               class="dx-scrollable-scroll dx-state-invisible"
@@ -296,9 +288,16 @@ exports[`common initial render should be successfull 1`] = `
       </div>
     </div>
     
+    <div
+      class="dx-gridcore-error-row"
+    />
   </div>
   
-  <div>
+  <div
+    aria-label="Page navigation"
+    class="dx-widget dx-pagination"
+    role="navigation"
+  >
     <div
       class="dx-page-sizes"
     >
