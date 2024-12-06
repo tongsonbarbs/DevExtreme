@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import { PureComponent } from '@ts/grids/new/grid_core/core/pure_component';
-import type { InfernoNode, RefObject } from 'inferno';
+import type { RefObject } from 'inferno';
 import { createRef } from 'inferno';
 
 export const CLASSES = {
@@ -17,14 +17,14 @@ export interface FieldProps {
   wordWrapEnabled?: boolean;
   cellHintEnabled?: boolean;
   elementRef?: RefObject<HTMLDivElement>;
-  fieldTemplate?: (props: FieldProps) => JSX.Element;
-  fieldCaptionTemplate?: (title: string) => JSX.Element;
-  fieldValueTemplate?: (value: unknown) => JSX.Element;
+  template?: (props: FieldProps) => JSX.Element;
+  captionTemplate?: (title: string) => JSX.Element;
+  valueTemplate?: (value: unknown) => JSX.Element;
 
-  onFieldClick?: (e: MouseEvent) => void;
-  onFieldDblClick?: (e: MouseEvent) => void;
-  onFieldHoverChanged?: (hovered: boolean) => void;
-  onFieldPrepared?: (element: HTMLElement) => void;
+  onClick?: (e: MouseEvent) => void;
+  onDblClick?: (e: MouseEvent) => void;
+  onHoverChanged?: (hovered: boolean) => void;
+  onPrepared?: (element: HTMLElement) => void;
 }
 
 export class Field extends PureComponent<FieldProps> {
@@ -36,55 +36,55 @@ export class Field extends PureComponent<FieldProps> {
   }
 
   componentDidMount(): void {
-    const { onFieldPrepared } = this.props;
-    if (onFieldPrepared && this.containerRef.current) {
-      onFieldPrepared(this.containerRef.current);
+    const { onPrepared } = this.props;
+    if (onPrepared && this.containerRef.current) {
+      onPrepared(this.containerRef.current);
     }
   }
 
   handleMouseEnter = (): void => {
-    const { onFieldHoverChanged } = this.props;
-    if (onFieldHoverChanged) {
-      onFieldHoverChanged(true);
+    const { onHoverChanged } = this.props;
+    if (onHoverChanged) {
+      onHoverChanged(true);
     }
   };
 
   handleMouseLeave = (): void => {
-    const { onFieldHoverChanged } = this.props;
-    if (onFieldHoverChanged) {
-      onFieldHoverChanged(false);
+    const { onHoverChanged } = this.props;
+    if (onHoverChanged) {
+      onHoverChanged(false);
     }
   };
 
   handleClick = (event: MouseEvent): void => {
-    const { onFieldClick } = this.props;
-    if (onFieldClick) {
-      onFieldClick(event);
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick(event);
     }
   };
 
   handleDblClick = (event: MouseEvent): void => {
-    const { onFieldDblClick } = this.props;
-    if (onFieldDblClick) {
-      onFieldDblClick(event);
+    const { onDblClick } = this.props;
+    if (onDblClick) {
+      onDblClick(event);
     }
   };
 
-  renderCaption(): JSX.Element | string {
-    const { title, fieldCaptionTemplate } = this.props;
-    if (fieldCaptionTemplate && title) {
-      return fieldCaptionTemplate(title);
+  renderCaption(): JSX.Element {
+    const { title, captionTemplate } = this.props;
+    if (captionTemplate && title) {
+      return captionTemplate(title);
     }
     return <span className={CLASSES.fieldName}>{title}:</span>;
   }
 
-  renderValue(): JSX.Element | string {
+  renderValue(): JSX.Element {
     const {
-      value, fieldValueTemplate, wordWrapEnabled, alignment, cellHintEnabled,
+      value, valueTemplate, wordWrapEnabled, alignment, cellHintEnabled,
     } = this.props;
 
-    if (fieldValueTemplate && value) {
-      return fieldValueTemplate(value);
+    if (valueTemplate && value) {
+      return valueTemplate(value);
     }
 
     const valueStyle = {
@@ -105,8 +105,8 @@ export class Field extends PureComponent<FieldProps> {
     );
   }
 
-  render(): InfernoNode {
-    const { fieldTemplate } = this.props;
+  render(): JSX.Element {
+    const { template } = this.props;
 
     const containerProps = {
       onMouseEnter: this.handleMouseEnter,
@@ -118,8 +118,8 @@ export class Field extends PureComponent<FieldProps> {
       className: `${CLASSES.field}`.trim(),
     };
 
-    if (fieldTemplate) {
-      return fieldTemplate(this.props);
+    if (template) {
+      return template(this.props);
     }
 
     return (
