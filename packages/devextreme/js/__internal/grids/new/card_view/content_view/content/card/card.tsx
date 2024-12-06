@@ -73,13 +73,6 @@ export class Card extends PureComponent<CardProps> {
 
   private readonly keyboardController = new CollectionController();
 
-  constructor(props: CardProps) {
-    super(props);
-    this.state = {
-      isHovered: false,
-    };
-  }
-
   render(): InfernoNode {
     if (this.props.elementRef) {
       this.containerRef = this.props.elementRef;
@@ -161,33 +154,29 @@ export class Card extends PureComponent<CardProps> {
 
   handleMouseEnter = (): void => {
     const { onHoverChanged, hoverStateEnabled, row } = this.props;
-    if (!hoverStateEnabled) return;
-    this.setState({ isHovered: true });
-    if (onHoverChanged) {
-      onHoverChanged({ isHovered: true, row });
+    if (!hoverStateEnabled) {
+      return;
     }
+
+    onHoverChanged?.({ isHovered: true, row });
   };
 
   handleMouseLeave = (): void => {
     const { onHoverChanged, hoverStateEnabled, row } = this.props;
-    if (!hoverStateEnabled) return;
-    this.setState({ isHovered: false });
-    if (onHoverChanged) {
-      onHoverChanged({ isHovered: false, row });
+    if (!hoverStateEnabled) {
+      return;
     }
+
+    onHoverChanged?.({ isHovered: false, row });
   };
 
   handleClick = (event: MouseEvent): void => {
     const { onClick, row } = this.props;
-    if (onClick) {
-      onClick({ event, row });
-    }
+    onClick?.({ event, row });
   };
 
   handleDoubleClick = (event: MouseEvent): void => {
     const { onDblClick, row } = this.props;
-    if (onDblClick) {
-      onDblClick({ event, row });
-    }
+    onDblClick?.({ event, row });
   };
 }
