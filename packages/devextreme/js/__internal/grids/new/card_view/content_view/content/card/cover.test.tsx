@@ -4,12 +4,12 @@ import { render } from 'inferno';
 
 import { Cover } from './cover';
 
-describe('Image', () => {
+describe('Cover', () => {
   it('should render the image correctly', () => {
     const container = document.createElement('div');
     const props = {
-      imageExpr: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
-      altExpr: 'Card Cover',
+      imageSrc: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
+      alt: 'Card Cover',
       className: 'cover-image',
     };
 
@@ -17,8 +17,8 @@ describe('Image', () => {
 
     const image = container.querySelector('img');
     expect(image).not.toBeNull();
-    expect(image?.src).toBe(props.imageExpr);
-    expect(image?.alt).toBe(props.altExpr);
+    expect(image?.src).toBe(props.imageSrc);
+    expect(image?.alt).toBe(props.alt);
     expect(image?.className).toContain(props.className);
   });
 });

@@ -16,6 +16,11 @@ const props = {
       },
     ],
     key: 0,
+    data: {
+      Field: 'Name',
+      img: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
+      alt: 'Card Cover',
+    },
   },
   toolbar: [
     {
@@ -44,8 +49,8 @@ const props = {
     },
   ],
   cover: {
-    imageExpr: 'https://www.devexpress.com/support/demos/i/demo-thumbs/aspnetcore-grid.png',
-    altExpr: 'Card Cover',
+    imageExpr: 'img',
+    altExpr: 'alt',
   },
 };
 

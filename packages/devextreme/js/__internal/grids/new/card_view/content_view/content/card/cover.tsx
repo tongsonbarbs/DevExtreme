@@ -8,18 +8,17 @@ const CLASSES = {
 };
 
 export interface CoverProps {
-  imageExpr?: string;
-  altExpr?: string;
-  template?: (src: string, alt: string, className: string) => JSX.Element;
+  imageSrc?: string;
+  alt?: string;
+  template?: (src: string, alt: string | undefined, className: string) => JSX.Element;
 }
 
 export class Cover extends PureComponent<CoverProps> {
   render(): InfernoNode {
     const {
-      imageExpr, altExpr, template,
+      imageSrc, alt, template,
     } = this.props;
-    const src = imageExpr;
-    const alt = altExpr || 'Devexpress';
+    const src = imageSrc;
 
     if (!src) {
       return null;

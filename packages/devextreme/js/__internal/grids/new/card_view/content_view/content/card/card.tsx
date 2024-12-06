@@ -8,7 +8,6 @@ import { CollectionController } from '@ts/grids/new/grid_core/keyboard_navigatio
 import type { InfernoNode, RefObject } from 'inferno';
 import { createRef, render } from 'inferno';
 
-import type { CoverProps } from './cover';
 import { Cover } from './cover';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { FieldProps } from './field';
@@ -38,7 +37,11 @@ export interface CardPreparedEvent {
 export interface CardProps {
   row: DataRow;
 
-  cover?: CoverProps;
+  cover?: {
+    altExpr?: string;
+
+    imageExpr?: string;
+  };
 
   elementRef?: RefObject<HTMLDivElement>;
 
@@ -86,6 +89,7 @@ export class Card extends PureComponent<CardProps> {
       minWidth,
       maxWidth,
       hoverStateEnabled,
+      cover,
     } = this.props;
 
     const style = {
@@ -98,6 +102,9 @@ export class Card extends PureComponent<CardProps> {
       CLASSES.card,
       hoverStateEnabled ? CLASSES.cardHover : '',
     ].filter(Boolean).join(' ');
+
+    const imageSrc = cover?.imageExpr && this.props.row.data[cover.imageExpr] as string;
+    const alt = cover?.altExpr && this.props.row.data[cover.altExpr] as string;
 
     return (
       <div
@@ -116,8 +123,8 @@ export class Card extends PureComponent<CardProps> {
           items={this.props.toolbar || []}
         />
           <Cover
-            imageExpr={this.props.cover?.imageExpr || ''}
-            altExpr={this.props.cover?.altExpr}
+            imageSrc={imageSrc}
+            alt={alt}
           />
         {this.props.row.cells.map((cell, index) => (
           <FieldTemplate
