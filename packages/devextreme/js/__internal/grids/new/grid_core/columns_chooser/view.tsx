@@ -3,7 +3,7 @@ import type { SubsGets } from '@ts/core/reactive/index';
 import { computed, state } from '@ts/core/reactive/index';
 
 import { ColumnsController } from '../columns_controller/columns_controller';
-import { View } from '../core/view4';
+import { View } from '../core/view';
 import { ToolbarController } from '../toolbar/controller';
 import type { ColumnChooserProps } from './column_chooser';
 import { ColumnChooser } from './column_chooser';

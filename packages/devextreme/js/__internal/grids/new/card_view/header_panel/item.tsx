@@ -3,8 +3,8 @@ import { Button } from '@ts/grids/new/grid_core/inferno_wrappers/button';
 import type { ComponentType } from 'inferno';
 
 export const CLASSES = {
-  item: 'dx-gridcore-header-item',
-  button: 'dx-gridcore-header-item-button',
+  item: 'dx-cardview-header-item',
+  button: 'dx-cardview-header-item-button',
 };
 
 export interface HeaderItemProps {

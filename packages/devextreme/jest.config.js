@@ -13,7 +13,7 @@ module.exports = {
     preset: 'ts-jest',
     reporters: [
         'default',
-        ['jest-json-reporter', {}],
+        // ['jest-json-reporter', {}],
     ],
     testMatch: [
         // TODO: change to '<rootDir>/**/*.test.(ts|tsx)' after removing renovation

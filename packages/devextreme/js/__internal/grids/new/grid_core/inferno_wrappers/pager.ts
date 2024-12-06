@@ -3,7 +3,7 @@ import PagerWidget from '@js/ui/pagination';
 import { InfernoWrapper } from './widget_wrapper';
 
 // TODO: remove when public .d.ts for pager is created
-interface PagerProps {
+export interface PagerProps {
   pageIndex?: number;
   pageSize?: number;
 

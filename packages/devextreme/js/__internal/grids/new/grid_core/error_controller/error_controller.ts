@@ -2,19 +2,26 @@
 import type { Subscribable } from '@ts/core/reactive/index';
 import { state } from '@ts/core/reactive/index';
 
-import { DataController } from '../data_controller/index';
+export interface GridError {
+  text: string;
+  id: number;
+}
 
 export class ErrorController {
-  private readonly _errors = state<string[]>([]);
+  private readonly _errors = state<GridError[]>([]);
 
-  public errors: Subscribable<string[]> = this._errors;
+  public errors: Subscribable<GridError[]> = this._errors;
 
-  public static dependencies = [DataController] as const;
+  public static dependencies = [] as const;
 
-  constructor(private readonly dataController: DataController) {}
+  private counter = 0;
 
-  public addError(error: string): void {
-    this._errors.updateFunc((errors) => [...errors, error]);
+  public showError(error: string): void {
+    this._errors.updateFunc((errors) => [...errors, {
+      text: error,
+      id: this.counter,
+    }]);
+    this.counter += 1;
   }
 
   public removeError(index: number): void {

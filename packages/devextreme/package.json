@@ -1,6 +1,6 @@
 {
   "name": "devextreme",
-  "version": "24.2.2",
+  "version": "24.2.3",
   "description": "HTML5 JavaScript Component Suite for Responsive Web Development",
   "keywords": [
     "html5",
@@ -53,7 +53,6 @@
     "@devextreme-generator/react": "3.0.12",
     "@devextreme-generator/vue": "3.0.12",
     "@jest/globals": "29.7.0",
-    "@sprucelabs/jest-json-reporter": "^8.0.546",
     "@testcafe-community/axe": "3.5.0",
     "@types/enzyme": "3.10.18",
     "@types/jquery": "3.5.29",
@@ -223,7 +222,7 @@
     "test-jest:watch": "jest --watch",
     "qunit-in-docker": "gulp qunit-in-docker --constel",
     "tcd-update": "tcd-update",
-    "gen-doc": "typedoc 'js/__internal/core/reactive/**/*.ts' --tsconfig js/__internal/tsconfig.json --excludePrivate false"
+    "gen-doc": "typedoc 'js/__internal/**/*.ts' 'js/__internal/**/*.tsx' --tsconfig js/__internal/tsconfig.json --excludePrivate false"
   },
   "browserslist": [
     "last 2 versions",

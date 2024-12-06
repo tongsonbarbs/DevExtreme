@@ -1,27 +1,30 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
+import type dxScrollable from '@js/ui/scroll_view/ui.scrollable';
 import { resizeObserverSingleton } from '@ts/core/m_resize_observer';
+import type { ErrorRowProperties } from '@ts/grids/new/grid_core/content_view/error_row';
+import { ErrorRow } from '@ts/grids/new/grid_core/content_view/error_row';
+import type { NoDataTextProperties } from '@ts/grids/new/grid_core/content_view/no_data_text';
+import { NoDataText } from '@ts/grids/new/grid_core/content_view/no_data_text';
 import { LoadPanel, type LoadPanelProperties } from '@ts/grids/new/grid_core/inferno_wrappers/load_panel';
+import type { Props as ScrollableProps } from '@ts/grids/new/grid_core/inferno_wrappers/scrollable';
 import { Scrollable } from '@ts/grids/new/grid_core/inferno_wrappers/scrollable';
-import type { InfernoNode } from 'inferno';
+import type { InfernoNode, RefObject } from 'inferno';
 import { Component, createRef } from 'inferno';
 
 import type { ContentProps } from './content/content';
 import { Content } from './content/content';
-import type { ErrorRowProperties } from './error_row';
-import { ErrorRow } from './error_row';
-import type { NoDataTextProperties } from './no_data_text';
-import { NoDataText } from './no_data_text';
 import { VirtualRow } from './virtual_scrolling/virtual_row';
 
 export const CLASSES = {
-  content: 'dx-gridcore-content',
-  contentView: 'dx-gridcore-content-view',
+  contentView: 'dx-cardview-contentview',
 };
 
 export interface ContentViewProps {
   errorRowProps: ErrorRowProperties;
   loadPanelProps: LoadPanelProperties & { visible: boolean };
   noDataTextProps: NoDataTextProperties & { visible: boolean };
+
+  scrollableProps: ScrollableProps;
 
   contentProps: ContentProps;
 
@@ -37,6 +40,8 @@ export interface ContentViewProps {
   onScroll?: (scrollTop: number) => void;
 
   onWidthChange?: (value: number) => void;
+
+  scrollableRef?: RefObject<dxScrollable>;
 }
 
 export class ContentView extends Component<ContentViewProps> {
@@ -47,30 +52,26 @@ export class ContentView extends Component<ContentViewProps> {
   render(props: ContentViewProps): InfernoNode {
     return (
       <div className={CLASSES.contentView} ref={this.containerRef}>
-        <ErrorRow {...props.errorRowProps} />
         <LoadPanel {...props.loadPanelProps} />
-
         <Scrollable
           ref={this.scrollableRef}
-          onScroll={(e): void => this.props.onScroll?.(e.scrollOffset.top)}
-          scrollTop={this.props.scrollTop}
-          direction={'both'}
+          componentRef={this.props.scrollableRef}
+          {...this.props.scrollableProps}
         >
           {props.noDataTextProps.visible && <NoDataText {...props.noDataTextProps} />}
-          <div className={CLASSES.content} tabIndex={0}>
-            {
-              props.virtualScrollingProps?.heightUp
-                ? <VirtualRow height={props.virtualScrollingProps?.heightUp}/>
-                : undefined
-            }
-            <Content {...props.contentProps} />
-            {
-              props.virtualScrollingProps?.heightDown
-                ? <VirtualRow height={props.virtualScrollingProps?.heightDown}/>
-                : undefined
-            }
-          </div>
+          {
+            props.virtualScrollingProps?.heightUp
+              ? <VirtualRow height={props.virtualScrollingProps?.heightUp}/>
+              : undefined
+          }
+          <Content {...props.contentProps} />
+          {
+            props.virtualScrollingProps?.heightDown
+              ? <VirtualRow height={props.virtualScrollingProps?.heightDown}/>
+              : undefined
+          }
         </Scrollable>
+        <ErrorRow {...props.errorRowProps} />
       </div>
     );
   }

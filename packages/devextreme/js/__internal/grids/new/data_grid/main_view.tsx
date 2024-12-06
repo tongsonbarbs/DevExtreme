@@ -2,8 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 import type { Subscribable } from '@ts/core/reactive/index';
 import { ColumnsChooserView } from '@ts/grids/new/grid_core/columns_chooser/view';
-import { ContentView } from '@ts/grids/new/grid_core/content_view/content_view';
-import { View } from '@ts/grids/new/grid_core/core/view';
+import { View } from '@ts/grids/new/grid_core/core/view_old';
 import { FilterPanelView } from '@ts/grids/new/grid_core/filtering/filter_panel/filter_panel';
 import { PagerView } from '@ts/grids/new/grid_core/pager';
 import { ToolbarView } from '@ts/grids/new/grid_core/toolbar/view';
@@ -13,11 +12,10 @@ export class MainView extends View {
   public vdom: InfernoNode | Subscribable<InfernoNode>;
 
   public static dependencies = [
-    ContentView, PagerView, ToolbarView, FilterPanelView, ColumnsChooserView,
+    PagerView, ToolbarView, FilterPanelView, ColumnsChooserView,
   ] as const;
 
   constructor(
-    _content: ContentView,
     _pager: PagerView,
     toolbar: ToolbarView,
     _filterPanel: FilterPanelView,
@@ -25,15 +23,14 @@ export class MainView extends View {
   ) {
     super();
     const HeaderPanel = toolbar.asInferno();
-    const Content = _content.asInferno();
     const Pager = _pager.asInferno();
     const FilterPanel = _filterPanel.asInferno();
     const ColumnsChooser = _columnsChooser.asInferno();
 
     this.vdom = <>
       <HeaderPanel/>
-      <Content/>
       <FilterPanel/>
+      {/* @ts-expect-error */}
       <Pager/>
       {/* @ts-expect-error */}
       <ColumnsChooser/>

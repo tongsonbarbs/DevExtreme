@@ -1,7 +1,7 @@
 /* eslint-disable spellcheck/spell-checker */
 import { computed } from '@ts/core/reactive/index';
 
-import { View } from '../core/view';
+import { View } from '../core/view_old';
 import { Toolbar } from '../inferno_wrappers/toolbar';
 import { OptionsController } from '../options_controller/options_controller';
 import { ToolbarController } from './controller';

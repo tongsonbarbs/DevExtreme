@@ -2,11 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable spellcheck/spell-checker */
 import type dxScrollable from '@js/ui/scroll_view/ui.scrollable';
+import type { ScrollEventInfo } from '@js/ui/scroll_view/ui.scrollable';
 import { combined, computed, state } from '@ts/core/reactive/index';
 import { OptionsController } from '@ts/grids/new/card_view/options_controller';
 import { ColumnsController } from '@ts/grids/new/grid_core/columns_controller/columns_controller';
 import type { Column } from '@ts/grids/new/grid_core/columns_controller/types';
-import { View } from '@ts/grids/new/grid_core/core/view4';
+import { View } from '@ts/grids/new/grid_core/core/view';
 import { DataController } from '@ts/grids/new/grid_core/data_controller';
 import { ErrorController } from '@ts/grids/new/grid_core/error_controller/error_controller';
 import { createRef } from 'inferno';
@@ -20,7 +21,7 @@ export class ContentView extends View<ContentViewProps> {
     [this.dataController.isLoading, this.dataController.items],
   );
 
-  private readonly items = computed(
+  public readonly items = computed(
     (dataItems, columns: Column[]) => dataItems.map(
       (item) => this.columnsController.createDataRow(
         item,
@@ -31,6 +32,8 @@ export class ContentView extends View<ContentViewProps> {
   );
 
   public readonly scrollableRef = createRef<dxScrollable>();
+
+  public loadingText = this.options.twoWay('loadPanel.message');
 
   private readonly cardMinWidth = this.options.oneWay('cardMinWidth');
 
@@ -111,14 +114,23 @@ export class ContentView extends View<ContentViewProps> {
 
   protected override getProps() {
     return combined({
-      loadPanelProps: combined({
-        visible: this.dataController.isLoading,
-      }),
+      loadPanelProps: computed(
+        (visible, loadPanel) => ({
+          ...loadPanel,
+          visible,
+        }),
+        [
+          this.dataController.isLoading,
+          this.options.oneWay('loadPanel'),
+        ],
+      ),
       noDataTextProps: combined({
         text: this.options.oneWay('noDataText'),
+        template: this.options.template('noDataTemplate'),
         visible: this.isNoData,
       }),
       errorRowProps: combined({
+        enabled: this.options.oneWay('errorRowEnabled'),
         errors: this.errorController.errors,
       }),
       contentProps: combined({
@@ -132,18 +144,29 @@ export class ContentView extends View<ContentViewProps> {
       }),
       onWidthChange: this.width.update.bind(this.width),
       virtualScrollingProps: combined({
-        // heightUp: 0,
+        heightUp: 0,
         heightDown: 0,
         // heightUp: computed((virtualState) => virtualState.virtualTop, [this.virtualState]),
         // heightDown: computed((virtualState) => virtualState.virtualBottom, [this.virtualState]),
       }),
       onViewportHeightChange: this.viewportHeight.update.bind(this.viewportHeight),
-      scrollTop: this.scrollTop,
-      onScroll: this.onScroll.bind(this),
+      scrollableRef: this.scrollableRef,
+      scrollableProps: combined({
+        onScroll: this.onScroll.bind(this),
+        direction: 'both' as const,
+        scrollTop: this.scrollTop,
+        scrollByContent: this.options.oneWay('scrolling.scrollByContent'),
+        scrollByThumb: this.options.oneWay('scrolling.scrollByThumb'),
+        showScrollbar: this.options.oneWay('scrolling.showScrollbar'),
+        useNative: computed(
+          (useNative) => (useNative === 'auto' ? undefined : useNative),
+          [this.options.oneWay('scrolling.useNative')],
+        ),
+      }),
     });
   }
 
-  private onScroll(scrollTop: number) {
-    this.scrollTop.update(scrollTop);
+  private onScroll(e: ScrollEventInfo<unknown>): void {
+    this.scrollTop.update(e.scrollOffset.top);
   }
 }

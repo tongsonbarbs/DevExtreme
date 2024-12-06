@@ -1,6 +1,6 @@
 import type { CompatibilityColumnsController } from './columns_controller/compatibility';
 import type { CompatibilityDataController } from './data_controller';
-import type { GridCoreNewBase } from './widget_base';
+import type { GridCoreNewBase } from './widget';
 
 export class WidgetMock {
   public NAME = 'dxDataGrid';

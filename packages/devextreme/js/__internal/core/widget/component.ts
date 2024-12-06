@@ -37,6 +37,11 @@ OptionChangedEventInfo<TComponent>
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   defaultOptionsRules?: DefaultOptionsRule<any>[];
+
+  integrationOptions?: {
+    // TODO: fill in remaining options
+    isControlledMode?: boolean;
+  };
 }
 
 // eslint-disable-next-line max-len

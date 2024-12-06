@@ -101,7 +101,15 @@
 
                 $("#cardview").dxCardView({
                     accessKey: 'q',
+                    // dataSource: [],
                     dataSource: store,
+                    noDataText: 'my text text text',
+                    noDataTemplate({text}) {
+                        return $('<div>').css({'background-color': 'red'})
+                            .append($('<span>').text('asd'))
+                            .append($('<span>').text(text).css({'background-color': 'green'}))
+                            .append($('<span>').text('asd'))
+                    },
                     width: "100%",
                     // width: 750,
                     height: 500,

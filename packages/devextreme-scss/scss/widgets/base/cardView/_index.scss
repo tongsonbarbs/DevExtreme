@@ -6,9 +6,12 @@
   display: flex;
   flex-direction: column;
 
-  > .dx-scrollable {
-    height: auto
-  }
+
+}
+
+.dx-cardview-contentview {
+  overflow: hidden;
+  flex-grow: 1;
 }
 
 .dx-cardview-content {
@@ -47,11 +50,11 @@
   white-space: nowrap;
 }
 
-.dx-gridcore-headers {
+.dx-cardview-headers {
   width: fit-content;
 }
 
-.dx-gridcore-header-item {
+.dx-cardview-header-item {
   background-color: $cardview-header-item-background-color;
   border: solid $cardview-header-item-border-width $cardview-header-item-border-color;
   border-radius: #{$cardview-header-item-border-radius}px;

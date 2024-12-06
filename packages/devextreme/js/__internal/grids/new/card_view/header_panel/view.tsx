@@ -1,7 +1,7 @@
 /* eslint-disable spellcheck/spell-checker */
 import { computed } from '@ts/core/reactive/index';
 import { ColumnsController } from '@ts/grids/new/grid_core/columns_controller/columns_controller';
-import { View } from '@ts/grids/new/grid_core/core/view';
+import { View } from '@ts/grids/new/grid_core/core/view_old';
 
 import { HeaderPanel } from './header_panel';
 

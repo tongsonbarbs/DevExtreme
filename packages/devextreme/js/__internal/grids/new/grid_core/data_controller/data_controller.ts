@@ -33,9 +33,7 @@ export class DataController {
 
   public readonly totalCount: Subscribable<number> = this._totalCount;
 
-  private readonly _isLoading = state(false);
-
-  public readonly isLoading: Subscribable<boolean> = this._isLoading;
+  public readonly isLoading = state(false);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public readonly filter = this.options.twoWay('filterValue');
@@ -69,7 +67,7 @@ export class DataController {
           this._totalCount.update(dataSource.totalCount());
         };
         const loadingChangedCallback = (): void => {
-          this._isLoading.update(dataSource.isLoading());
+          this.isLoading.update(dataSource.isLoading());
         };
         if (dataSource.isLoaded()) {
           changedCallback();

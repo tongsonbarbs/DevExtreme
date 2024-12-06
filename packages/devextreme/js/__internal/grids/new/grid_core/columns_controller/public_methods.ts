@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 
 import type { Constructor } from '../types';
-import type { GridCoreNewBase } from '../widget_base';
+import type { GridCoreNewBase } from '../widget';
 import { ColumnsController } from './columns_controller';
 import type { Column } from './types';
 

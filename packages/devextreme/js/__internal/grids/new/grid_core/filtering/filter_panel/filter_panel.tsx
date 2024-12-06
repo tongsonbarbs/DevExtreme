@@ -12,7 +12,7 @@ import { FilterBuilderView as OldFilterBuilderView } from '@ts/grids/grid_core/f
 import { FilterPanelView as OldFilterPanelView } from '@ts/grids/grid_core/filter/m_filter_panel';
 import { Component, createRef } from 'inferno';
 
-import { View } from '../../core/view';
+import { View } from '../../core/view_old';
 import { OptionsController } from '../../options_controller/options_controller';
 import { WidgetMock } from '../../widget_mock';
 

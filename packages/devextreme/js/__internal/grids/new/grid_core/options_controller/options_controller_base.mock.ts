@@ -8,7 +8,10 @@ import { Component } from '@js/core/component';
 
 import { OptionsController } from './options_controller_base';
 
-export class OptionsControllerMock<TProps> extends OptionsController<TProps> {
+export class OptionsControllerMock<
+  TProps,
+  TDefaultProps extends TProps,
+> extends OptionsController<TProps, TDefaultProps> {
   private readonly componentMock: Component<TProps>;
   constructor(options: TProps) {
     const componentMock = new Component(options);

@@ -5,7 +5,7 @@ import { createPortal, type InfernoNode } from 'inferno';
 
 import { InfernoWrapper } from './widget_wrapper';
 
-interface Props extends ScrollableProperties {
+export interface Props extends ScrollableProperties {
   scrollTop?: number;
 }
 
@@ -33,6 +33,10 @@ export class Scrollable extends InfernoWrapper<Props, dxScrollable> {
   }
 
   public componentDidMount(): void {
+    if (this.props.useNative === undefined) {
+      // @ts-expect-error
+      delete this.props.useNative;
+    }
     super.componentDidMount();
     // @ts-expect-error
     this.contentRef.current = this.component.$content().get(0);
