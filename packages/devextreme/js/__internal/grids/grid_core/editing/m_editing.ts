@@ -1701,8 +1701,7 @@ class EditingControllerImpl extends modules.ViewController {
         hasSavedData = !cancel;
 
         if (!cancel && change?.type === DATA_EDIT_DATA_INSERT_TYPE) {
-          const result = results[i];
-          this._updateUnsavedRowsInsertKey(result.key, changes);
+          this._updateUnsavedRowsInsertKey(results[i].key, changes);
         }
       }
     }
@@ -1714,7 +1713,7 @@ class EditingControllerImpl extends modules.ViewController {
     return hasSavedData;
   }
 
-  private _updateUnsavedRowsInsertKey(tempKey: any, changes: any[]) {
+  private _updateUnsavedRowsInsertKey(tempKey, changes: any[]) {
     const topSavedRowKey = this._getTopSavedRowKey();
     if (!topSavedRowKey) return;
 
@@ -1728,7 +1727,7 @@ class EditingControllerImpl extends modules.ViewController {
     });
   }
 
-  private _getTopSavedRowKey(): any {
+  private _getTopSavedRowKey() {
     const savedRows = this._dataController.items().filter((item) => !item.isNewRow);
     return savedRows.length ? savedRows[0].key : null;
   }
