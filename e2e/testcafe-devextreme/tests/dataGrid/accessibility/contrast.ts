@@ -22,8 +22,8 @@ fixture.disablePageReloads`DataGrid - contrast`
     await t
       .expect(dataGrid.isReady())
       .ok();
+    await t.hover(dataGrid.getFilterRowSearchIcon());
     await t
-      .hover(dataGrid.getFilterRowSearchIcon())
       .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}.png`, dataGrid.element))
       .ok()
       .expect(compareResults.isValid())
