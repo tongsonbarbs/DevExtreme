@@ -40,6 +40,9 @@ fixture.disablePageReloads`DataGrid - contrast`
     },
   ).after(
     async () => {
+      if (theme === Themes.genericLight) {
+        return;
+      }
       await changeTheme(Themes.genericLight);
     },
   );
