@@ -24,7 +24,7 @@ fixture.disablePageReloads`DataGrid - contrast`
       .ok();
 
     await t
-      .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}`, dataGrid.element))
+      .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}.png`, dataGrid.element))
       .ok()
       .expect(compareResults.isValid())
       .ok(compareResults.errorMessages());
