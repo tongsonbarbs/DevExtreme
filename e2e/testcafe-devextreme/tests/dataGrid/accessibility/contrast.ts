@@ -1,5 +1,6 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import DataGrid from 'devextreme-testcafe-models/dataGrid';
+import { data } from 'jquery';
 import url from '../../../helpers/getPageUrl';
 import { createWidget } from '../../../helpers/createWidget';
 import { getData } from '../helpers/generateDataSourceData';
@@ -22,8 +23,8 @@ fixture.disablePageReloads`DataGrid - contrast`
     await t
       .expect(dataGrid.isReady())
       .ok();
-
     await t
+      .hover(dataGrid.getFilterRowSearchIcon())
       .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}.png`, dataGrid.element))
       .ok()
       .expect(compareResults.isValid())

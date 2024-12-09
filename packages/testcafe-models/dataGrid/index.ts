@@ -35,6 +35,7 @@ export const CLASS = {
   filterPanel: 'filter-panel',
   filterRow: 'filter-row',
   filterRangeOverlay: 'filter-range-overlay',
+  filterMenuItem: 'dx-menu-item',
   focusOverlay: 'focus-overlay',
   pager: 'pager',
   editFormRow: 'edit-form',
@@ -215,6 +216,10 @@ export default class DataGrid extends Widget {
 
   getFilterRow(): Selector {
     return this.element.find(`.${this.addWidgetPrefix(CLASS.filterRow)}`);
+  }
+
+  getFilterRowSearchIcon(columnIndex?): Selector {
+    return this.getFilterCell(columnIndex ? columnIndex : 0).find(`.${CLASS.filterMenuItem}`);
   }
 
   getFilterCell(columnIndex: number): Selector {
