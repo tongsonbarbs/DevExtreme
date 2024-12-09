@@ -87,12 +87,6 @@ $datagrid-hover-bg: null !default;
 $datagrid-row-hovered-color: null !default;
 
 /**
-* $name 30. Context menu icon color
-* $type color
-*/
-$datagrid-menu-icon-color: null !default;
-
-/**
 * $name 40. Modified data border color
 * $type color
 */
@@ -219,7 +213,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-bg, $base-accent, 20%) !default;
   $datagrid-hover-bg: darken($base-bg, 2%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: $base-label-color !default;
   $datagrid-group-row-color: $base-label-color !default;
@@ -260,7 +253,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: $base-accent !default;
   $datagrid-row-hovered-color: $base-text-color !default;
   $datagrid-hover-bg: $base-bg !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: $base-text-color !default;
   $datagrid-nodata-color: $base-text-color !default;
   $datagrid-group-row-color: $base-text-color !default;
@@ -305,7 +297,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-accent, $base-bg, 20%) !default;
   $datagrid-hover-bg: lighten($datagrid-base-background-color, 4%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: darken($base-icon-color, 33.7%) !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: $datagrid-base-color !default;
   $datagrid-group-row-color: lighten($datagrid-base-color, 6.7%) !default;
@@ -348,7 +339,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-bg, $base-accent, 20%) !default;
   $datagrid-hover-bg: darken($base-bg, 2%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: $base-icon-color !default;
   $datagrid-group-row-color: $base-text-color !default;
@@ -391,7 +381,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-bg, $base-accent, 15%) !default;
   $datagrid-hover-bg: $base-row-alternation-background !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: darken($datagrid-base-color, 40%) !default;
   $datagrid-group-row-color: $base-header-color !default;
@@ -434,7 +423,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-bg, $base-accent, 20%) !default;
   $datagrid-hover-bg: darken($base-bg, 3%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: lighten($datagrid-base-color, 40%) !default;
   $datagrid-group-row-color: lighten($datagrid-base-color, 38.5%) !default;
@@ -477,7 +465,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-accent, $base-bg, 20%) !default;
   $datagrid-hover-bg: darken($datagrid-base-background-color, 4%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: lighten($base-icon-color, 33.7%) !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: $datagrid-base-color !default;
   $datagrid-group-row-color: darken($datagrid-base-color, 6.7%) !default;
@@ -520,7 +507,6 @@ $datagrid-draggable-column-text-color: null !default;
   $datagrid-row-focused-bg: mix($base-bg, $base-accent, 20%) !default;
   $datagrid-hover-bg: darken($datagrid-base-background-color, 2%) !default;
   $datagrid-row-hovered-color: $base-hover-color !default;
-  $datagrid-menu-icon-color: $base-icon-color !default;
   $datagrid-cell-modified-border-color: color.change($base-success, $alpha: 0.5) !default;
   $datagrid-nodata-color: $base-icon-color !default;
   $datagrid-group-row-color: $base-icon-color !default;
