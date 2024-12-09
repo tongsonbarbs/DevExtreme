@@ -17,12 +17,16 @@ fixture.disablePageReloads`DataGrid - contrast`
 ].forEach((theme) => {
   test('DataGrid - Contrast between icons in the Filter Row menu and their background doesn\'t comply with WCAG accessibility standards', async (t) => {
     const dataGrid = new DataGrid('#container');
+    const searchIcon = dataGrid.getFilterRowSearchIcon();
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
       .expect(dataGrid.isReady())
       .ok();
-    await t.hover(dataGrid.getFilterRowSearchIcon());
+    await t
+      .hover(searchIcon)
+      .expect(searchIcon.hasClass('dx-state-hover'))
+      .ok();
     await t
       .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}.png`, dataGrid.element))
       .ok()
