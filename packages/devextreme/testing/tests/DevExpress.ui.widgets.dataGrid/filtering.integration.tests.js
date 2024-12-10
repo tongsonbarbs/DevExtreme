@@ -105,7 +105,7 @@ QUnit.module('Initialization', baseModuleConfig, () => {
         for(let i = 0; i < $items.length; i++) {
             $currentItem = $items.eq(i);
 
-            assert.equal($currentItem.find('.dx-menu-item-text').css('color'), $currentItem.find('.dx-icon').css('color'), 'colors are different');
+            assert.equal($currentItem.find('.dx-menu-item-text').css('color'), $currentItem.find('.dx-icon').css('color'), 'colors are similar');
         }
     });
 
