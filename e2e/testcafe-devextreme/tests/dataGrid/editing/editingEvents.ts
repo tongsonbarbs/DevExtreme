@@ -181,6 +181,7 @@ test('DataGrid - Canceled rows are hidden when multiple rows are added in batch 
   const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
   const addBtn = dataGrid.getToolbar().getItem();
   const saveBtn = dataGrid.getToolbar().getItem(1);
+  await t.expect(dataGrid.isReady()).ok();
   await t
     .click(addBtn)
     .pressKey('1')
@@ -192,7 +193,7 @@ test('DataGrid - Canceled rows are hidden when multiple rows are added in batch 
   const overlay2 = new Overlay(Selector('.dx-overlay-wrapper'), 1);
   const cancelBtn = overlay2.getToolbar(1).getItem(1);
   const saveBtnPopup = overlay1.getToolbar(1).getItem(0);
-
+  await t.expect(dataGrid.isReady()).ok();
   await t
     .click(cancelBtn)
     .click(saveBtnPopup);
