@@ -35,6 +35,7 @@ export const CLASS = {
   filterPanel: 'filter-panel',
   filterRow: 'filter-row',
   filterRangeOverlay: 'filter-range-overlay',
+  filterMenu: 'dx-filter-menu',
   filterMenuItem: 'dx-menu-item',
   focusOverlay: 'focus-overlay',
   pager: 'pager',
@@ -229,6 +230,11 @@ export default class DataGrid extends Widget {
   getFilterRangeOverlay(): Selector {
     return this.body.find(`.${this.addWidgetPrefix(CLASS.filterRangeOverlay)}`);
   }
+
+  getFilterMenuOverlay(): Selector {
+    return this.body.find(`.dx-overlay-content.${CLASS.filterMenu}`);
+  }
+
   getFocusOverlay() {
     return this.body.find(`.${this.addWidgetPrefix(CLASS.focusOverlay)}`);
   }

@@ -1,5 +1,6 @@
 import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
 import DataGrid from 'devextreme-testcafe-models/dataGrid';
+import { data } from 'jquery';
 import url from '../../../helpers/getPageUrl';
 import { createWidget } from '../../../helpers/createWidget';
 import { getData } from '../helpers/generateDataSourceData';
@@ -18,14 +19,15 @@ fixture.disablePageReloads`DataGrid - contrast`
   test('DataGrid - Contrast between icons in the Filter Row menu and their background doesn\'t comply with WCAG accessibility standards', async (t) => {
     const dataGrid = new DataGrid('#container');
     const searchIcon = dataGrid.getFilterRowSearchIcon();
+    const filterMenu = dataGrid.getFilterMenuOverlay();
     const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
 
     await t
       .expect(dataGrid.isReady())
       .ok();
     await t
-      .hover(searchIcon)
-      .expect(searchIcon.hasClass('dx-state-hover'))
+      .click(searchIcon)
+      .expect(filterMenu.exists)
       .ok();
     await t
       .expect(await takeScreenshot(`T1257970-datagrid-menu-icon-contrast-${theme}.png`, dataGrid.element))
