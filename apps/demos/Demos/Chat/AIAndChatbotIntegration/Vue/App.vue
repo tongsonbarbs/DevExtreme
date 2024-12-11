@@ -53,10 +53,9 @@ import { ref, onBeforeMount } from 'vue';
 import DxChat from 'devextreme-vue/chat';
 import DxButton from 'devextreme-vue/button';
 import { loadMessages } from 'devextreme/localization';
-import { AzureOpenAI } from 'openai';
+import openai from 'openai';
 import {
   dictionary,
-  store,
   messages,
   user,
   assistant,
@@ -67,7 +66,7 @@ import {
   ALERT_TIMEOUT,
 } from './data.ts';
 
-const chatService = new AzureOpenAI(AzureOpenAIConfig);
+const chatService = new openai.AzureOpenAI(AzureOpenAIConfig);
 
 const typingUsers = ref([]);
 const alerts = ref([]);
@@ -81,6 +80,7 @@ onBeforeMount(() => {
 async function getAIResponse(messages) {
   const params = {
     messages,
+    model: AzureOpenAIConfig.deployment,
     max_tokens: 1000,
     temperature: 0.7,
   };
@@ -91,7 +91,7 @@ async function getAIResponse(messages) {
   return data.choices[0].message?.content;
 }
 
-function toggleDisabledState(disabled, event) {
+function toggleDisabledState(disabled, event = undefined) {
   isDisabled.value = disabled;
 
   if (disabled) {
