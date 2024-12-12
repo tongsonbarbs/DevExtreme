@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { ClientFunction } from 'testcafe';
+import { ClientFunction, Selector } from 'testcafe';
+import { createScreenshotsComparer } from 'devextreme-screenshot-comparer';
+import { Overlay } from '../../../model/dataGrid/overlay';
 import { createWidget } from '../../../helpers/createWidget';
 import url from '../../../helpers/getPageUrl';
 import DataGrid from '../../../model/dataGrid';
@@ -170,5 +172,54 @@ testCases.forEach(({ caseName, expected, onRowRemoving }) => {
       },
       onRowRemoving,
     });
+  });
+});
+
+// T1250405
+test('DataGrid - Canceled rows are hidden when multiple rows are added in batch mode', async (t) => {
+  const dataGrid = new DataGrid('#container');
+  const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+  const addBtn = dataGrid.getToolbar().getItem();
+  const saveBtn = dataGrid.getToolbar().getItem(1);
+  await t.expect(dataGrid.isReady()).ok();
+  await t
+    .click(addBtn)
+    .pressKey('1')
+    .click(addBtn)
+    .pressKey('2')
+    .click(saveBtn);
+
+  const overlay1 = new Overlay(Selector('.dx-overlay-wrapper'), 0);
+  const overlay2 = new Overlay(Selector('.dx-overlay-wrapper'), 1);
+  const cancelBtn = overlay2.getToolbar(1).getItem(1);
+  const saveBtnPopup = overlay1.getToolbar(1).getItem(0);
+  await t
+    .click(cancelBtn)
+    .click(saveBtnPopup);
+  await t
+    .expect(await takeScreenshot('T1250405-canceled-rows-hidden.png', dataGrid.element))
+    .ok()
+    .expect(compareResults.isValid())
+    .ok(compareResults.errorMessages());
+}).before(async () => {
+  await createWidget('dxDataGrid', {
+    dataSource: [
+      { ID: 1, Text: 'Item 1' },
+    ],
+    keyExpr: 'ID',
+    columns: ['Text'],
+    editing: {
+      mode: 'batch',
+      allowAdding: true,
+    },
+    onRowInserting(e: any) {
+      e.cancel = new Promise((resolve) => {
+        const dialog = (window as any).DevExpress.ui.dialog.confirm(
+          'Are you sure?',
+          'Confirm changes',
+        );
+        dialog.done((confirm) => resolve(!confirm));
+      });
+    },
   });
 });
