@@ -221,20 +221,12 @@ export default class DataGrid extends Widget {
     return this.element.find(`.${this.addWidgetPrefix(CLASS.filterRow)}`);
   }
 
-  getFilterRowSearchIcon(columnIndex?): FocusableElement {
-    return new FilterCell(this.getFilterCell(columnIndex ? columnIndex : 0)).getSearchIcon();
-  }
-
   getFilterCell(columnIndex: number): Selector {
     return this.getFilterRow().find(`[aria-colindex='${columnIndex + 1}']`);
   }
 
   getFilterRangeOverlay(): Selector {
     return this.body.find(`.${this.addWidgetPrefix(CLASS.filterRangeOverlay)}`);
-  }
-
-  getFilterMenuOverlay(): Selector {
-    return this.body.find(`.dx-overlay-content.${CLASS.filterMenu}`);
   }
 
   getFocusOverlay() {
