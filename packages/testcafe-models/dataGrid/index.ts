@@ -21,8 +21,6 @@ import AdaptiveDetailRow from './adaptiveDetailRow';
 import ColumnChooser from './columnChooser';
 import TextBox from '../textBox';
 import { GroupPanel } from './groupPanel';
-import FilterCell from './filter/cell';
-import FocusableElement from '../internal/focusable';
 
 export const CLASS = {
   dataGrid: 'dx-datagrid',
