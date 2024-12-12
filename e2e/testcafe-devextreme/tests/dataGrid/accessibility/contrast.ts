@@ -25,7 +25,7 @@ fixture.disablePageReloads`DataGrid - contrast`
       .expect(dataGrid.isReady())
       .ok();
     await t
-      .click(searchIcon)
+      .click(searchIcon.element)
       .expect(filterMenu.exists)
       .ok();
     await t
