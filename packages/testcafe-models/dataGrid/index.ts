@@ -21,6 +21,8 @@ import AdaptiveDetailRow from './adaptiveDetailRow';
 import ColumnChooser from './columnChooser';
 import TextBox from '../textBox';
 import { GroupPanel } from './groupPanel';
+import FilterCell from './filter/cell';
+import FocusableElement from '../internal/focusable';
 
 export const CLASS = {
   dataGrid: 'dx-datagrid',
@@ -219,8 +221,8 @@ export default class DataGrid extends Widget {
     return this.element.find(`.${this.addWidgetPrefix(CLASS.filterRow)}`);
   }
 
-  getFilterRowSearchIcon(columnIndex?): Selector {
-    return this.getFilterCell(columnIndex ? columnIndex : 0).find(`.${CLASS.filterMenuItem}`);
+  getFilterRowSearchIcon(columnIndex?): FocusableElement {
+    return new FilterCell(this.getFilterCell(columnIndex ? columnIndex : 0)).getSearchIcon();
   }
 
   getFilterCell(columnIndex: number): Selector {
