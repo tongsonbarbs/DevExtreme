@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
 /* eslint-disable @typescript-eslint/no-unused-vars, max-classes-per-file */
 import { name as clickEventName } from '@js/common/core/events/click';
 import eventsEngine from '@js/common/core/events/core/events_engine';
@@ -1336,10 +1337,12 @@ class EditingControllerImpl extends modules.ViewController {
     const removeChange = changes[index];
 
     changes.forEach((change) => {
-      const insertAfterOrBeforeKey = this._getInsertAfterOrBeforeKey(change);
+      if (change.type === DATA_EDIT_DATA_INSERT_TYPE) {
+        const insertAfterOrBeforeKey = this._getInsertAfterOrBeforeKey(change);
 
-      if (equalByValue(insertAfterOrBeforeKey, removeChange.key)) {
-        change[isDefined(change.insertAfterKey) ? 'insertAfterKey' : 'insertBeforeKey'] = this._getInsertAfterOrBeforeKey(removeChange);
+        if (equalByValue(insertAfterOrBeforeKey, removeChange.key)) {
+          change[isDefined(change.insertAfterKey) ? 'insertAfterKey' : 'insertBeforeKey'] = this._getInsertAfterOrBeforeKey(removeChange);
+        }
       }
     });
   }
@@ -1679,7 +1682,8 @@ class EditingControllerImpl extends modules.ViewController {
 
   private _processSaveEditDataResult(results) {
     let hasSavedData = false;
-    const changes = [...this.getChanges()];
+    const originalChanges = this.getChanges();
+    const changes = [...originalChanges];
     const changesLength = changes.length;
 
     for (let i = 0; i < results.length; i++) {
@@ -1699,10 +1703,9 @@ class EditingControllerImpl extends modules.ViewController {
         }
       } else if (this._processRemove(changes, editIndex, cancel)) {
         hasSavedData = !cancel;
+        const removedChangeIndex = gridCoreUtils.getIndexByKey(results[i].key, originalChanges);
 
-        if (!cancel && change?.type === DATA_EDIT_DATA_INSERT_TYPE) {
-          this._updateUnsavedRowsInsertKey(results[i].key, results, changes);
-        }
+        this._updateInsertAfterOrBeforeKeys(originalChanges, removedChangeIndex);
       }
     }
 
@@ -1711,36 +1714,6 @@ class EditingControllerImpl extends modules.ViewController {
     }
 
     return hasSavedData;
-  }
-
-  private _updateUnsavedRowsInsertKey(tempKey, results, changes: any[]) {
-    let topSavedRowKey = this._getTopSavedRowKey();
-    if (!topSavedRowKey) {
-      topSavedRowKey = this._getNewSavedTopRowKey(results);
-    }
-
-    changes.forEach((unsavedChange) => {
-      if (
-        unsavedChange.type === DATA_EDIT_DATA_INSERT_TYPE
-            && unsavedChange.insertBeforeKey === tempKey
-      ) {
-        unsavedChange.insertBeforeKey = topSavedRowKey;
-      }
-    });
-  }
-
-  private _getTopSavedRowKey() {
-    const savedRows = this._dataController.items().filter((item) => !item.isNewRow);
-    return savedRows.length ? savedRows[0].key : null;
-  }
-
-  private _getNewSavedTopRowKey(results) {
-    for (const result of results) {
-      if (result.result && result.result !== 'cancel' && result.result.ID) {
-        return result.result.ID;
-      }
-    }
-    return null;
   }
 
   private _fireSaveEditDataEvents(changes) {
