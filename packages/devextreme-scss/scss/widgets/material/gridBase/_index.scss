@@ -64,6 +64,7 @@ $material-grid-base-group-panel-message-line-height: $material-button-text-line-
       .dx-menu-item-content {
         .dx-icon {
           color: $datagrid-menu-icon-color;
+
           @include dx-icon-sizing($material-grid-base-filter-icon-size - 4);
 
           &.dx-icon-filter-operation-default {
