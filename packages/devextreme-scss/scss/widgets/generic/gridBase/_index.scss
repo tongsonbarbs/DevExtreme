@@ -45,6 +45,14 @@ $generic-grid-base-cell-input-height: round($generic-base-line-height * $generic
 @mixin grid-base($widget-name) {
   .dx-#{$widget-name},
   .dx-#{$widget-name}-container {
+    &.dx-filter-menu {
+      .dx-menu-item-has-icon {
+        .dx-icon {
+          color: $datagrid-menu-icon-color;
+        }
+      }
+    }
+
     &.dx-context-menu {
       .dx-menu-items-container {
         .dx-icon-context-menu-sort-asc {
@@ -544,6 +552,12 @@ $generic-grid-base-cell-input-height: round($generic-base-line-height * $generic
     .dx-#{$widget-name}-invalid {
       &::after {
         border-color: $datagrid-cell-modified-border-color;
+      }
+    }
+
+    .dx-menu-item-content {
+      .dx-icon {
+        color: $datagrid-menu-icon-color;
       }
     }
 
