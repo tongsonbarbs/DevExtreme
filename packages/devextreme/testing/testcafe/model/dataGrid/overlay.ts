@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/prefer-nullish-coalescing */
 import { Selector } from 'testcafe';
 import Toolbar from '../toolbar';
 
@@ -16,9 +17,11 @@ export class Overlay {
   content: Selector;
 
   constructor(id?: Selector, index?: number) {
-    this.element = id 
-      ? (index ? id.nth(index) : id) 
-      : Selector(`.${CLASS.overlayWrapper}`).nth(index ? index : 0);
+    if (id) {
+      this.element = index ? id.nth(index) : id;
+    } else {
+      this.element = Selector(`.${CLASS.overlayWrapper}`).nth(index || 0);
+    }
 
     this.content = this.element.find(`.${CLASS.overlayContent}`);
   }
@@ -36,6 +39,6 @@ export class Overlay {
   }
 
   getToolbar(idx?: number): Toolbar {
-    return new Toolbar(this.element.find(`.${CLASS.toolbar}`).nth(idx ? idx : 0));
+    return new Toolbar(this.element.find(`.${CLASS.toolbar}`).nth(idx || 0));
   }
 }
