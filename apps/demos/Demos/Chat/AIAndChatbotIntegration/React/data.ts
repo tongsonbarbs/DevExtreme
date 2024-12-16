@@ -1,8 +1,5 @@
 import { ChatTypes } from 'devextreme-react/chat';
 
-const date = new Date();
-date.setHours(0, 0, 0, 0);
-
 export const AzureOpenAIConfig = {
   dangerouslyAllowBrowser: true,
   deployment: 'gpt-4o-mini',
