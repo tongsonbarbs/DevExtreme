@@ -1862,7 +1862,7 @@ class SchedulerWorkSpace extends WidgetObserver {
 
   removeDroppableCellClass($cellElement?: any) {
     const $cell = $cellElement || this._getDroppableCell();
-    $cell?.removeClass(DATE_TABLE_DROPPABLE_CELL_CLASS);
+    $cell?.removeClass?.(DATE_TABLE_DROPPABLE_CELL_CLASS);
   }
 
   _getCoordinatesByCell($cell) {
@@ -2789,7 +2789,7 @@ class SchedulerWorkSpace extends WidgetObserver {
     [
       ...VERTICAL_GROUP_COUNT_CLASSES,
     ].forEach((className) => {
-      (this.$element() as any).removeClass(className);
+      (this.$element() as any).removeClass?.(className);
     });
   }
 
@@ -3390,7 +3390,7 @@ const createDragBehaviorConfig = (
     }
 
     removeDroppableCellClass();
-    e.itemElement.removeClass(APPOINTMENT_DRAG_SOURCE_CLASS);
+    e.itemElement?.removeClass?.(APPOINTMENT_DRAG_SOURCE_CLASS);
   };
 
   const cursorOffset = options.isSetCursorOffset
