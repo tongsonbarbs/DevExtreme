@@ -35,8 +35,6 @@ export const CLASS = {
   filterPanel: 'filter-panel',
   filterRow: 'filter-row',
   filterRangeOverlay: 'filter-range-overlay',
-  filterMenu: 'dx-filter-menu',
-  filterMenuItem: 'dx-menu-item',
   focusOverlay: 'focus-overlay',
   pager: 'pager',
   editFormRow: 'edit-form',
