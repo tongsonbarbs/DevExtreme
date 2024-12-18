@@ -1,4 +1,4 @@
-import TreeList from 'devextreme-testcafe-models/treeList';
+import TreeList from '../../../model/treeList';
 import url from '../../../helpers/getPageUrl';
 import { createWidget } from '../../../helpers/createWidget';
 
