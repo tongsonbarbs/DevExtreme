@@ -1,5 +1,5 @@
-import Scheduler from 'devextreme-testcafe-models/scheduler';
 import { ClientFunction, Selector } from 'testcafe';
+import Scheduler from '../../../model/scheduler';
 import { MouseAction, MouseUpEvents } from '../../../helpers/mouseUpEvents';
 import { createWidget } from '../../../helpers/createWidget';
 import url from '../../../helpers/getPageUrl';
