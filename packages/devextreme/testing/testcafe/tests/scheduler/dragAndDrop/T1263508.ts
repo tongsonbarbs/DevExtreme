@@ -14,6 +14,10 @@ const initList = ClientFunction(() => {
   $('<div>', { id: 'list' }).appendTo('#parentContainer');
 });
 
+const removeList = ClientFunction(() => {
+  $('#list').remove();
+});
+
 const addTasksToList = ClientFunction((tasks) => {
   tasks.forEach((task) => {
     $('<div>', {
@@ -94,4 +98,6 @@ test('Scheduler - The \'Cannot read properties of undefined (reading \'getTime\'
       },
     },
   });
+}).after(async () => {
+  await removeList();
 });
