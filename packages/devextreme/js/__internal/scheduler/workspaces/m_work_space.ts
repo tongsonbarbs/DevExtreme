@@ -51,6 +51,7 @@ import {
 import WidgetObserver from '../base/m_widget_observer';
 import AppointmentDragBehavior from '../m_appointment_drag_behavior';
 import {
+  APPOINTMENT_DRAG_SOURCE_CLASS,
   DATE_TABLE_CLASS,
   DATE_TABLE_ROW_CLASS,
   FIXED_CONTAINER_CLASS,
@@ -3386,6 +3387,15 @@ const createDragBehaviorConfig = (
     removeDroppableCellClass();
   };
 
+  const onDragCancel = (e) => {
+    if (!isDefaultDraggingMode) {
+      enableDefaultDragging();
+    }
+
+    removeDroppableCellClass();
+    e.itemElement?.removeClass?.(APPOINTMENT_DRAG_SOURCE_CLASS);
+  };
+
   const cursorOffset = options.isSetCursorOffset
     ? () => {
       const $dragElement = $(state.dragElement);
@@ -3402,6 +3412,7 @@ const createDragBehaviorConfig = (
     onDragStart,
     onDragMove,
     onDragEnd,
+    onDragCancel,
     cursorOffset,
     filter: options.filter,
   };
