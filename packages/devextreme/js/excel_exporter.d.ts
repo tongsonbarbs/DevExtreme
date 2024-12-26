@@ -98,6 +98,7 @@ export interface ExcelPivotGridCell extends Cell {
  * @docid
  * @namespace DevExpress.excelExporter
  * @type object
+ * @public
  */
 export interface CellAddress {
     /**
@@ -116,6 +117,7 @@ export interface CellAddress {
  * @docid
  * @namespace DevExpress.excelExporter
  * @type object
+ * @public
  */
 export interface CellRange {
     /**
