@@ -7026,32 +7026,6 @@ declare module DevExpress.excelExporter {
     column?: number;
   }
   /**
-   * [descr:CellAddress]
-   */
-  export interface CellAddress {
-    /**
-     * [descr:CellAddress.row]
-     */
-    row?: number;
-    /**
-     * [descr:CellAddress.column]
-     */
-    column?: number;
-  }
-  /**
-   * [descr:CellRange]
-   */
-  export interface CellRange {
-    /**
-     * [descr:CellRange.from]
-     */
-    from?: CellAddress;
-    /**
-     * [descr:CellRange.to]
-     */
-    to?: CellAddress;
-  }
-  /**
    * [descr:CellRange]
    */
   export interface CellRange {
@@ -7107,32 +7081,6 @@ declare module DevExpress.excelExporter {
      * [descr:ExcelDataGridCell.value]
      */
     value?: any;
-  }
-  /**
-   * [descr:ExcelExportBaseOptions]
-   * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
-   */
-  export interface ExcelExportBaseOptions {
-    /**
-     * [descr:ExcelExportBaseOptions.worksheet]
-     */
-    worksheet?: object | undefined;
-    /**
-     * [descr:ExcelExportBaseOptions.topLeftCell]
-     */
-    topLeftCell?: CellAddress | string;
-    /**
-     * [descr:ExcelExportBaseOptions.keepColumnWidths]
-     */
-    keepColumnWidths?: boolean;
-    /**
-     * [descr:ExcelExportBaseOptions.loadPanel]
-     */
-    loadPanel?: ExportLoadPanel;
-    /**
-     * [descr:ExcelExportBaseOptions.encodeExecutableContent]
-     */
-    encodeExecutableContent?: boolean;
   }
   /**
    * [descr:ExcelExportBaseProps]
