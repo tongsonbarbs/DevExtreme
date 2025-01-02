@@ -98,7 +98,7 @@ test('Focused cell should be switched to the editing mode after onSaving\'s prom
   });
 });
 
-test.only('Focused cell should be switched to the editing mode after onSaving\'s promise is resolved (T1190566)', async (t) => {
+test('Focused cell should be switched to the editing mode after onSaving\'s promise is resolved (T1190566)', async (t) => {
   const dataGrid = new DataGrid('#container');
   const resolveOnSavingDeferred = ClientFunction(() => (window as any).deferred.resolve());
 
