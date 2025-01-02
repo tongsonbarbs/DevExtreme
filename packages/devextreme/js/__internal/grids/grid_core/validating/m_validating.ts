@@ -844,12 +844,16 @@ export const validatingEditingExtender = (Base: ModuleType<EditingController>) =
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   protected _beforeSaveEditData(change, editIndex?) {
     let result: any = super._beforeSaveEditData.apply(this, arguments as any);
-    const validationData = this._validatingController._getValidationData(change?.key);
 
-    if (change) {
-      const isValid = change.type === 'remove' || validationData.isValid;
-      result = result || !isValid;
+    if (change?.key != null) {
+      const validationData = this._validatingController._getValidationData(change.key);
+      const isValid = validationData ? change.type === 'remove' || validationData.isValid : false;
+      result ||= !isValid;
     } else {
+      result ||= false;
+    }
+
+    if (!change) {
       const disposeValidators = this._createInvisibleColumnValidators(this.getChanges());
       // @ts-expect-error
       result = new Deferred();
@@ -877,6 +881,7 @@ export const validatingEditingExtender = (Base: ModuleType<EditingController>) =
         });
       });
     }
+
     return result.promise ? result.promise() : result;
   }
 

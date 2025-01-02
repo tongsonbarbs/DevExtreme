@@ -67,15 +67,47 @@ test('Focused cell should be switched to the editing mode after onSaving\'s prom
   const dataGrid = new DataGrid('#container');
   const resolveOnSavingDeferred = ClientFunction(() => (window as any).deferred.resolve());
 
-  // act
   await t
     .click(dataGrid.getDataCell(0, 0).element)
     .typeText(dataGrid.getDataCell(0, 0).element, 'new_value')
     .pressKey('tab tab');
   await resolveOnSavingDeferred();
-
-  // assert
   await t.expect(dataGrid.getDataCell(2, 0).isEditCell).ok();
+}).before(async () => {
+  await ClientFunction(() => {
+    (window as any).deferred = $.Deferred();
+  })();
+
+  return createWidget('dxDataGrid', {
+    dataSource: [
+      { id: 1, field1: 'value1' },
+      { id: 2, field1: 'value2' },
+      { id: 3, field1: 'value3' },
+      { id: 4, field1: 'value4' },
+    ],
+    keyExpr: 'id',
+    showBorders: true,
+    columns: ['field1'],
+    editing: {
+      mode: 'cell',
+      allowUpdating: true,
+    },
+    onSaving(e) {
+      e.promise = (window as any).deferred;
+    },
+  });
+});
+
+test.only('Focused cell should be switched to the editing mode after onSaving\'s promise is resolved (T1190566)', async (t) => {
+  const dataGrid = new DataGrid('#container');
+  const resolveOnSavingDeferred = ClientFunction(() => (window as any).deferred.resolve());
+
+  await t
+    .click(dataGrid.getDataCell(0, 0).element)
+    .typeText(dataGrid.getDataCell(0, 0).element, 'new_value')
+    .pressKey('enter tab tab');
+  await resolveOnSavingDeferred();
+  await t.expect(dataGrid.getDataCell(0, 0).isEditCell).ok();
 }).before(async () => {
   await ClientFunction(() => {
     (window as any).deferred = $.Deferred();
