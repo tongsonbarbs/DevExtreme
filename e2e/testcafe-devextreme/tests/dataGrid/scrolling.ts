@@ -1721,7 +1721,7 @@ test('The row alternation should display correctly when grouping and virtual scr
   scrolling: { mode: 'virtual', useNative: false },
 })));
 
-test.only('DataGrid - Gray boxes appear when the push method is used to remove rows in infinite scrolling mode (T1240079)', async (t) => {
+test('DataGrid - Gray boxes appear when the push method is used to remove rows in infinite scrolling mode (T1240079)', async (t) => {
   const dataGrid = new DataGrid('#container');
   const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
   await t
