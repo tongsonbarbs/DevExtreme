@@ -793,7 +793,9 @@ export class RowsView extends ColumnsView {
 
     that._checkRowKeys(options.change);
 
-    that._renderFreeSpaceRow($table, options.change);
+    if (!that._dataController.isEmpty()) {
+      that._renderFreeSpaceRow($table, options.change);
+    }
     if (!that._hasHeight) {
       that.updateFreeSpaceRowHeight($table);
     }

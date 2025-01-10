@@ -1720,3 +1720,47 @@ test('The row alternation should display correctly when grouping and virtual scr
   grouping: { autoExpandAll: true },
   scrolling: { mode: 'virtual', useNative: false },
 })));
+
+test.only('DataGrid - Gray boxes appear when the push method is used to remove rows in infinite scrolling mode (T1240079)', async (t) => {
+  const dataGrid = new DataGrid('#container');
+  const { takeScreenshot, compareResults } = createScreenshotsComparer(t);
+  await t
+    .click(dataGrid.getDataCell(0, 0).element)
+    .expect(await takeScreenshot('T1240079', dataGrid.element))
+    .ok()
+    .expect(compareResults.isValid())
+    .ok(compareResults.errorMessages());
+}).before(async () => {
+  await createWidget('dxDataGrid', () => {
+    const data = [
+      { id: 1, text: 'text 1' },
+      { id: 2, text: 'text 2' },
+    ];
+
+    const dataSource = {
+      reshapeOnPush: true,
+      store: new (window as any).DevExpress.data.CustomStore({
+        key: 'id',
+        loadMode: 'raw',
+        load: () => Promise.resolve(data),
+      }),
+    };
+
+    return {
+      dataSource,
+      onCellClick(e) {
+        const changes = data.map((item) => ({
+          type: 'remove',
+          key: item.id,
+        }));
+        // @ts-expect-error changes
+        e.component.getDataSource().store().push(changes);
+      },
+      showBorders: true,
+      scrolling: {
+        mode: 'infinite',
+      },
+      height: 300,
+    };
+  });
+});
