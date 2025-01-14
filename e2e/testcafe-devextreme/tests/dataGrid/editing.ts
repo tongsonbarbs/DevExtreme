@@ -98,8 +98,7 @@ test('Focused cell should be switched to the editing mode after onSaving\'s prom
   });
 });
 
-// T1190566
-test('DataGrid - The "Cannot read properties of undefined error" occurs when using Tab while saving a promise', async (t) => {
+test('DataGrid - The "Cannot read properties of undefined error" occurs when using Tab while saving a promise (T1190566)', async (t) => {
   const dataGrid = new DataGrid('#container');
   const resolveOnSavingDeferred = ClientFunction(() => (window as any).deferred.resolve());
 
