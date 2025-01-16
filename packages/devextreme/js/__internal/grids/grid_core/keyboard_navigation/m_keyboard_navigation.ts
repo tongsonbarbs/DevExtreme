@@ -287,8 +287,16 @@ export class KeyboardNavigationController extends modules.ViewController {
     // @ts-expect-error
     const root = $(domAdapter.getRootNode($rowsView.get && $rowsView.get(0)));
     const $focusedElement = root.find(':focus');
-    const isFocusedElementCorrect = !$focusedElement.length || $focusedElement.closest($rowsView).length;
+    let $isFocusedElementVisible = true;
 
+    if (!$focusedElement.length && e?.virtualColumnsScrolling) {
+      const cellPosition = this._focusedCellPosition;
+      const visibleColumns = this._focusedView?.getColumns(cellPosition.rowIndex);
+      const focusedCell = visibleColumns.find((col) => col.index === cellPosition.columnIndex);
+      $isFocusedElementVisible = focusedCell?.visible || false;
+    }
+
+    const isFocusedElementCorrect = !$focusedElement.length || $focusedElement.closest($rowsView).length;
     this.unsubscribeFromRowsViewFocusEvent();
     this.subscribeToRowsViewFocusEvent();
 
@@ -296,7 +304,7 @@ export class KeyboardNavigationController extends modules.ViewController {
     this.initRowsViewKeyDownHandler();
     this._setRowsViewAttributes();
 
-    if (isFocusedViewCorrect && isFocusedElementCorrect) {
+    if (isFocusedViewCorrect && isFocusedElementCorrect && $isFocusedElementVisible) {
       needUpdateFocus = this._isNeedFocus
         ? !isAppend
         : this._isHiddenFocus && isFullUpdate && !e?.virtualColumnsScrolling;
@@ -1538,14 +1546,6 @@ export class KeyboardNavigationController extends modules.ViewController {
     this._updateFocusTimeout = setTimeout(() => {
       if (this._needFocusEditingCell()) {
         this._editingController._focusEditingCell();
-        return;
-      }
-
-      const cellPosition = this._focusedCellPosition;
-      const visibleColumns = this._focusedView?.getColumns(cellPosition.rowIndex);
-      const column = visibleColumns.find((col) => col.index === cellPosition.columnIndex);
-
-      if (!column || !column.visible) {
         return;
       }
 
