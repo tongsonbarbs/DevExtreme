@@ -1721,7 +1721,7 @@ test('The row alternation should display correctly when grouping and virtual scr
   scrolling: { mode: 'virtual', useNative: false },
 })));
 
-test.only('DataGrid - Focused cell moves to the end of the table after horizontal scrolling (T1262288)', async (t) => {
+test('DataGrid - Focused cell moves to the end of the table after horizontal scrolling (T1262288)', async (t) => {
   const dataGrid = new DataGrid('#container');
 
   await t
