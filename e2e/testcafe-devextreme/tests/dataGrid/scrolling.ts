@@ -1720,3 +1720,32 @@ test('The row alternation should display correctly when grouping and virtual scr
   grouping: { autoExpandAll: true },
   scrolling: { mode: 'virtual', useNative: false },
 })));
+
+test.only('DataGrid - Focused cell moves to the end of the table after horizontal scrolling (T1262288)', async (t) => {
+  const dataGrid = new DataGrid('#container');
+
+  await t
+    .click(dataGrid.getDataCell(0, 0).element)
+    .pressKey('left');
+
+  await t.expect(dataGrid.getDataCell(0, 0).isFocused).ok();
+
+  await dataGrid.scrollBy({ x: 1000 });
+  await dataGrid.scrollBy({ x: -1000 });
+
+  await t.expect(dataGrid.getDataCell(0, 0).isFocused).ok();
+}).before(async () => createWidget('dxDataGrid', {
+  dataSource: getData(1, 20).map((item, index) => ({ ...item, id: index })),
+  keyExpr: 'id',
+  columnWidth: 100,
+  showBorders: true,
+  focusedRowEnabled: true,
+  scrolling: {
+    columnRenderingMode: 'virtual',
+    mode: 'virtual',
+    showScrollbar: 'always',
+  },
+  paging: {
+    enabled: false,
+  },
+}));

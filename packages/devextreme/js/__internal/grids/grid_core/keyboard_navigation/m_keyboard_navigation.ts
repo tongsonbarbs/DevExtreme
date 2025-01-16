@@ -1541,6 +1541,14 @@ export class KeyboardNavigationController extends modules.ViewController {
         return;
       }
 
+      const cellPosition = this._focusedCellPosition;
+      const visibleColumns = this._focusedView?.getColumns(cellPosition.rowIndex);
+      const column = visibleColumns.find((col) => col.index === cellPosition.columnIndex);
+
+      if (!column || !column.visible) {
+        return;
+      }
+
       let $cell = this._getFocusedCell();
       const isEditing = this._editingController.isEditing();
 
