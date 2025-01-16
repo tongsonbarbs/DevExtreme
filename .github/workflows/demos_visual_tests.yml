@@ -17,7 +17,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Build devextreme
     timeout-minutes: 20
 
@@ -55,7 +55,7 @@ jobs:
     env:
       ACCESSIBILITY_TESTCAFE_REPORT_PATH: "accessibility_testcafe_report"
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: ${{ matrix.CONSTEL }}-${{ matrix.STRATEGY }}-${{ matrix.THEME }}
     timeout-minutes: 30
 
@@ -117,8 +117,10 @@ jobs:
       if: matrix.STRATEGY == 'accessibility'
       working-directory: apps/demos
       run: |
-        message=$(cat $ACCESSIBILITY_TESTCAFE_REPORT_PATH)
-        echo "::warning ::$message"
+        if [ -f $ACCESSIBILITY_TESTCAFE_REPORT_PATH ]; then
+          message=$(cat $ACCESSIBILITY_TESTCAFE_REPORT_PATH)
+          echo "::warning ::$message"
+        fi
 
     - name: Copy screenshots artifacts
       if: failure() && matrix.STRATEGY == 'screenshots'
