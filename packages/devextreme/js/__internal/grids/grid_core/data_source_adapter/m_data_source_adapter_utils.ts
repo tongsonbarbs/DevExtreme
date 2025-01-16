@@ -17,15 +17,16 @@ export const cloneItems = function (items, groupCount) {
   return items;
 };
 
-export const calculateOperationTypes = function (loadOptions, lastLoadOptions, isFullReload?) {
+export const calculateOperationTypes = function (loadOptions, lastLoadOptions, isFullReload?, options?) {
   let operationTypes: any = { reload: true, fullReload: true };
 
   if (lastLoadOptions) {
+    const collatorSensitivity = options?.collatorOptions?.sensitivity === 'case';
     operationTypes = {
       sorting: !gridCoreUtils.equalSortParameters(loadOptions.sort, lastLoadOptions.sort),
       grouping: !gridCoreUtils.equalSortParameters(loadOptions.group, lastLoadOptions.group, true),
       groupExpanding: !gridCoreUtils.equalSortParameters(loadOptions.group, lastLoadOptions.group) || lastLoadOptions.groupExpand,
-      filtering: !gridCoreUtils.equalFilterParameters(loadOptions.filter, lastLoadOptions.filter),
+      filtering: !gridCoreUtils.equalFilterParameters(loadOptions.filter, lastLoadOptions.filter, collatorSensitivity),
       pageIndex: loadOptions.pageIndex !== lastLoadOptions.pageIndex,
       skip: loadOptions.skip !== lastLoadOptions.skip,
       take: loadOptions.take !== lastLoadOptions.take,

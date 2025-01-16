@@ -134,13 +134,13 @@ const getWidgetInstance = function ($element) {
   return widgetName && editorData[widgetName];
 };
 
-const equalFilterParameters = function (filter1, filter2) {
+const equalFilterParameters = function (filter1, filter2, caseSensitive?) {
   if (Array.isArray(filter1) && Array.isArray(filter2)) {
     if (filter1.length !== filter2.length) {
       return false;
     }
     for (let i = 0; i < filter1.length; i++) {
-      if (!equalFilterParameters(filter1[i], filter2[i])) {
+      if (!equalFilterParameters(filter1[i], filter2[i], caseSensitive)) {
         return false;
       }
     }
@@ -151,7 +151,8 @@ const equalFilterParameters = function (filter1, filter2) {
       && toComparable(filter1.filterValue) === toComparable(filter2.filterValue)
       && toComparable(filter1.selectedFilterOperation) === toComparable(filter2.selectedFilterOperation);
   }
-  return toComparable(filter1) == toComparable(filter2); // eslint-disable-line eqeqeq
+
+  return toComparable(filter1, caseSensitive) == toComparable(filter2, caseSensitive); // eslint-disable-line eqeqeq
 };
 
 const createPoint = function (options): Record<string, any> {

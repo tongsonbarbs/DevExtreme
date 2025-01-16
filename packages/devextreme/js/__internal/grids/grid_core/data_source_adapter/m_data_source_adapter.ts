@@ -412,7 +412,7 @@ export default class DataSourceAdapter extends modules.Controller {
 
     const loadOptions = extend({ pageIndex: this.pageIndex(), pageSize: this.pageSize() }, options.storeLoadOptions);
 
-    const operationTypes = calculateOperationTypes(loadOptions, lastLoadOptions, isFullReload);
+    const operationTypes = calculateOperationTypes(loadOptions, lastLoadOptions, isFullReload, options.storeLoadOptions.langParams);
 
     this._customizeRemoteOperations(options, operationTypes);
 
