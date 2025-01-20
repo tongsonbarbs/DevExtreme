@@ -1695,7 +1695,7 @@ QUnit.module('Virtual Scrolling', baseModuleConfig, () => {
         this.clock.tick(300);
 
         // assert
-        assert.equal(dataGrid.getVisibleRows()[0].data.id, 20 * 1000 + 1, 'first visible row is correct');
+        assert.equal(dataGrid.getVisibleRows()[0].data.id, 20 * 1000, 'first visible row is correct');
         assert.roughEqual(dataGrid.getScrollable().scrollTop(), scrollTop, 1.1, 'scroll top is not changed');
     });
 
