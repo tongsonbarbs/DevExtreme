@@ -6,6 +6,7 @@ import type { dxElementWrapper } from '@js/core/renderer';
 import $ from '@js/core/renderer';
 import browser from '@js/core/utils/browser';
 import { Deferred, when } from '@js/core/utils/deferred';
+import { isElementInDom } from '@js/core/utils/dom';
 import {
   getHeight,
   getOuterHeight,
@@ -71,6 +72,7 @@ import {
   REVERT_BUTTON_CLASS,
   ROWS_VIEW,
   ROWS_VIEW_CLASS,
+  TABLE_CLASS,
   WIDGET_CLASS,
 } from './const';
 import { GridCoreKeyboardNavigationDom } from './dom';
@@ -307,18 +309,32 @@ export class KeyboardNavigationController extends modules.ViewController {
 
     this._documentClickHandler = this._documentClickHandler || this.createAction((e) => {
       const $target = $(e.event.target);
-      const isCurrentRowsViewClick = this._isEventInCurrentGrid(e.event)
-        && $target.closest(`.${this.addWidgetPrefix(ROWS_VIEW_CLASS)}`).length;
-      const isEditorOverlay = $target.closest(
-        `.${DROPDOWN_EDITOR_OVERLAY_CLASS}`,
-      ).length;
-      const isColumnResizing = !!this._columnResizerController && this._columnResizerController.isResizing();
-      if (!isCurrentRowsViewClick && !isEditorOverlay && !isColumnResizing) {
-        const targetInsideFocusedView = this._focusedView
-          ? $target.parents().filter(this._focusedView.element()).length > 0
-          : false;
 
-        !targetInsideFocusedView && this._resetFocusedCell(true);
+      const tableSelector = `.${this.addWidgetPrefix(TABLE_CLASS)}`;
+      const rowsViewSelector = `.${this.addWidgetPrefix(ROWS_VIEW_CLASS)}`;
+      const editorOverlaySelector = `.${DROPDOWN_EDITOR_OVERLAY_CLASS}`;
+
+      // if click was on the datagrid table, but the target element is no more presented in the DOM
+      const needKeepFocus = !!$target.closest(tableSelector).length && !isElementInDom($target);
+
+      if (needKeepFocus) {
+        e.event.preventDefault();
+        return;
+      }
+
+      const isRowsViewClick = this._isEventInCurrentGrid(e.event) && !!$target.closest(rowsViewSelector).length;
+      const isEditorOverlayClick = !!$target.closest(editorOverlaySelector).length;
+      const isColumnResizing = !!this._columnResizerController?.isResizing();
+
+      if (!isRowsViewClick && !isEditorOverlayClick && !isColumnResizing) {
+        const isClickOutsideFocusedView = this._focusedView
+          ? $target.closest(this._focusedView.element()).length === 0
+          : true;
+
+        if (isClickOutsideFocusedView) {
+          this._resetFocusedCell(true);
+        }
+
         this._resetFocusedView();
       }
     });
