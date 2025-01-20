@@ -1765,7 +1765,8 @@ test('DataGrid - Gray boxes appear when the push method is used to remove rows i
   });
 });
 
-test('DataGrid - Focused cell moves to the end of the table after horizontal scrolling (T1262288)', async (t) => {
+// T1262288
+test('DataGrid - Focused cell moves to the end of the table after horizontal scrolling', async (t) => {
   const dataGrid = new DataGrid('#container');
 
   await t
