@@ -298,16 +298,7 @@ export class KeyboardNavigationController extends modules.ViewController {
     this.initRowsViewKeyDownHandler();
     this._setRowsViewAttributes();
 
-    let isFocusedElementVisible = true;
-
-    if (!$focusedElement.length && e?.virtualColumnsScrolling) {
-      const cellPosition = this._focusedCellPosition;
-      const visibleColumns = cellPosition ? this._focusedView?.getColumns(cellPosition.rowIndex) : null;
-      const focusedCell = visibleColumns?.find((col) => col.index === cellPosition.columnIndex);
-      isFocusedElementVisible = focusedCell?.visible || false;
-    }
-
-    if (isFocusedViewCorrect && isFocusedElementCorrect && isFocusedElementVisible) {
+    if (isFocusedViewCorrect && isFocusedElementCorrect) {
       needUpdateFocus = this._isNeedFocus
         ? !isAppend
         : this._isHiddenFocus && isFullUpdate && !e?.virtualColumnsScrolling;
