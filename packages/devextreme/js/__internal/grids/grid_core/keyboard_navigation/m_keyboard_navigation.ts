@@ -289,7 +289,7 @@ export class KeyboardNavigationController extends modules.ViewController {
     // @ts-expect-error
     const root = $(domAdapter.getRootNode($rowsView.get && $rowsView.get(0)));
     const $focusedElement = root.find(':focus');
-    const isFocusedElementCorrect = !$focusedElement.length || $focusedElement.closest($rowsView).length;
+    const isFocusedElementCorrect = this._isFocusedElementCorrect($focusedElement, $rowsView, e);
 
     this.unsubscribeFromRowsViewFocusEvent();
     this.subscribeToRowsViewFocusEvent();
@@ -315,6 +315,21 @@ export class KeyboardNavigationController extends modules.ViewController {
         this._updateFocus(true);
       }
     }
+  }
+
+  private _isFocusedElementCorrect($focusedElement, $rowsView, e) {
+    if ($focusedElement.length && !$focusedElement.closest($rowsView).length) {
+      return false;
+    }
+
+    if (!$focusedElement.length && e?.virtualColumnsScrolling) {
+      const focusedColumnIndex = this._focusedCellPosition?.columnIndex ?? -1;
+      const focusedColumnIndexWithoutOffset = focusedColumnIndex - this._getFocusedColumnIndexOffset(focusedColumnIndex);
+
+      return focusedColumnIndexWithoutOffset >= 0;
+    }
+
+    return true;
   }
 
   private initColumnHeadersViewHandler(): void {
