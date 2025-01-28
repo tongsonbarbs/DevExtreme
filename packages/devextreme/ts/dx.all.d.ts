@@ -10839,6 +10839,14 @@ declare module DevExpress.ui {
        */
       column?: Column<TRowData, TKey>;
     };
+    /**
+     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+     */
+    export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+      component?: dxDataGrid<TRowData, TKey>;
+      row?: Row<TRowData, TKey>;
+      column?: Column<TRowData, TKey>;
+    };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
       readonly component: dxDataGrid<TRowData, TKey>;
       readonly data?: TRowData;
@@ -11037,19 +11045,13 @@ declare module DevExpress.ui {
        */
       allowDeleting?:
         | boolean
-        | ((options: {
-            component?: dxDataGrid<TRowData, TKey>;
-            row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.allowUpdating]
        */
       allowUpdating?:
         | boolean
-        | ((options: {
-            component?: dxDataGrid<TRowData, TKey>;
-            row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.texts]
        */
@@ -11067,6 +11069,13 @@ declare module DevExpress.ui {
       TRowData = any,
       TKey = any
     > = DevExpress.common.grids.EditingBase<TRowData, TKey>;
+    /**
+     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+     */
+    export type EditingOptions<TRowData, TKey> = {
+      component?: dxDataGrid<TRowData, TKey>;
+      row?: Row<TRowData, TKey>;
+    };
     /**
      * [descr:_ui_data_grid_EditingStartEvent]
      */
@@ -12427,21 +12436,13 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((options: {
-          component?: dxDataGrid<TRowData, TKey>;
-          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
-          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((options: DevExpress.ui.dxDataGrid.ColumnButtonOptions) => boolean);
     /**
      * [descr:dxDataGridColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((options: {
-          component?: dxDataGrid<TRowData, TKey>;
-          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
-          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((options: DevExpress.ui.dxDataGrid.ColumnButtonOptions) => boolean);
   }
   /**
    * [descr:dxDataGridOptions]
@@ -16816,6 +16817,14 @@ declare module DevExpress.ui {
     /**
      * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
      */
+    export type FieldInfo = {
+      value?: string | number | Date;
+      valueText?: string;
+      field?: Field;
+    };
+    /**
+     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+     */
     export type FilterBuilderOperation =
       | '='
       | '<>'
@@ -16884,11 +16893,9 @@ declare module DevExpress.ui {
     /**
      * [descr:dxFilterBuilderCustomOperation.customizeText]
      */
-    customizeText?: (fieldInfo: {
-      value?: string | number | Date;
-      valueText?: string;
-      field?: Field;
-    }) => string;
+    customizeText?: (
+      fieldInfo: DevExpress.ui.dxFilterBuilder.FieldInfo
+    ) => string;
     /**
      * [descr:dxFilterBuilderCustomOperation.dataTypes]
      */
@@ -16934,10 +16941,9 @@ declare module DevExpress.ui {
     /**
      * [descr:dxFilterBuilderField.customizeText]
      */
-    customizeText?: (fieldInfo: {
-      value?: string | number | Date;
-      valueText?: string;
-    }) => string;
+    customizeText?: (
+      fieldInfo: DevExpress.ui.dxFilterBuilder.FieldInfo
+    ) => string;
     /**
      * [descr:dxFilterBuilderField.dataField]
      */
@@ -28657,6 +28663,14 @@ declare module DevExpress.ui {
       row?: Row<TRowData, TKey>;
       column?: Column<TRowData, TKey>;
     };
+    /**
+     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
+     */
+    export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+      readonly component: dxTreeList<TRowData, TKey>;
+      readonly row?: Row<TRowData, TKey>;
+      readonly column: Column<TRowData, TKey>;
+    };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
       readonly component: dxTreeList<TRowData, TKey>;
       readonly data: TRowData;
@@ -29808,21 +29822,17 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((options: {
-          readonly component: dxTreeList<TRowData, TKey>;
-          readonly row?: DevExpress.ui.dxTreeList.Row<TRowData, TKey>;
-          readonly column: DevExpress.ui.dxTreeList.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((
+          options: DevExpress.ui.dxTreeList.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
     /**
      * [descr:dxTreeListColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((options: {
-          readonly component: dxTreeList<TRowData, TKey>;
-          readonly row?: DevExpress.ui.dxTreeList.Row<TRowData, TKey>;
-          readonly column: DevExpress.ui.dxTreeList.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((
+          options: DevExpress.ui.dxTreeList.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
   }
   /**
    * @deprecated Use DevExpress.ui.dxTreeList.Node instead

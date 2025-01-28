@@ -357,7 +357,11 @@ export default class dxFilterBuilder extends Widget<dxFilterBuilderOptions> {
  * @public
  */
 export type CustomOperation = dxFilterBuilderCustomOperation;
-
+export type FieldInfo = {
+    value?: string | number | Date;
+    valueText?: string;
+    field?: Field;
+};
 /**
  * @namespace DevExpress.ui
  * @deprecated Use the CustomOperation type instead
@@ -381,7 +385,7 @@ export interface dxFilterBuilderCustomOperation {
      * @type_function_param1_field field:dxFilterBuilderField:optional
      * @public
      */
-    customizeText?: ((fieldInfo: { value?: string | number | Date; valueText?: string; field?: Field }) => string);
+    customizeText?: ((fieldInfo: FieldInfo) => string);
     /**
      * @docid
      * @default undefined
@@ -447,7 +451,7 @@ export interface dxFilterBuilderField {
      * @docid
      * @public
      */
-    customizeText?: ((fieldInfo: { value?: string | number | Date; valueText?: string }) => string);
+    customizeText?: ((fieldInfo: FieldInfo) => string);
     /**
      * @docid
      * @default undefined

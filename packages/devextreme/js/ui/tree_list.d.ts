@@ -1589,7 +1589,11 @@ export interface dxTreeListColumn<TRowData = any, TKey = any> extends ColumnBase
  * @public
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxTreeListColumnButton<TRowData, TKey>;
-
+export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+    readonly component: dxTreeList<TRowData, TKey>;
+    readonly row?: Row<TRowData, TKey>;
+    readonly column: Column<TRowData, TKey>;
+};
 /**
  * @namespace DevExpress.ui
  * @deprecated Use the TreeList's ColumnButton type instead
@@ -1630,7 +1634,7 @@ export interface dxTreeListColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxTreeListColumn
      * @public
      */
-    visible?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey>; readonly column: Column<TRowData, TKey> }) => boolean);
+    visible?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListColumnButton.disabled
      * @default false
@@ -1640,7 +1644,7 @@ export interface dxTreeListColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxTreeListColumn
      * @public
      */
-    disabled?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey>; readonly column: Column<TRowData, TKey> }) => boolean);
+    disabled?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
 }
 
 /**
