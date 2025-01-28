@@ -200,7 +200,7 @@ const DxFieldConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string)>,
     dataField: String,
     dataType: String as PropType<DataType>,
     editorOptions: {},

@@ -976,8 +976,8 @@ const DataGridSelection = Object.assign<typeof _componentDataGridSelection, Nest
 // DataGrid
 type IEditingProps = React.PropsWithChildren<{
   allowAdding?: boolean;
-  allowDeleting?: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
-  allowUpdating?: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  allowDeleting?: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  allowUpdating?: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
   changes?: Array<DataChange>;
   confirmDelete?: boolean;
   editColumnName?: string;
@@ -1142,7 +1142,7 @@ const ExportTexts = Object.assign<typeof _componentExportTexts, NestedComponentM
 type IFieldProps = React.PropsWithChildren<{
   calculateFilterExpression?: ((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>);
   caption?: string | undefined;
-  customizeText?: ((fieldInfo: { value: string | number | Date, valueText: string }) => string);
+  customizeText?: ((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string);
   dataField?: string | undefined;
   dataType?: DataType;
   editorOptions?: any;

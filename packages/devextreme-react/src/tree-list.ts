@@ -271,14 +271,14 @@ const BoundaryOffset = Object.assign<typeof _componentBoundaryOffset, NestedComp
 // Column
 type IButtonProps = React.PropsWithChildren<{
   cssClass?: string;
-  disabled?: boolean | ((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  disabled?: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
   hint?: string;
   icon?: string;
   name?: string | TreeListPredefinedColumnButton;
   onClick?: ((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void);
   template?: ((cellElement: any, cellInfo: { column: dxTreeListColumn, columnIndex: number, component: dxTreeList, data: Record<string, any>, key: any, row: dxTreeListRowObject, rowIndex: number, rowType: string }) => string | any) | template;
   text?: string;
-  visible?: boolean | ((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  visible?: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
   render?: (...params: any) => React.ReactNode;
   component?: React.ComponentType<any>;
 }>
@@ -832,9 +832,9 @@ const CustomRule = Object.assign<typeof _componentCustomRule, NestedComponentMet
 // owners:
 // TreeList
 type IEditingProps = React.PropsWithChildren<{
-  allowAdding?: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
-  allowDeleting?: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
-  allowUpdating?: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  allowAdding?: boolean | ((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  allowDeleting?: boolean | ((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  allowUpdating?: boolean | ((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean);
   changes?: Array<DataChange>;
   confirmDelete?: boolean;
   editColumnName?: string;
@@ -951,7 +951,7 @@ const EmailRule = Object.assign<typeof _componentEmailRule, NestedComponentMeta>
 type IFieldProps = React.PropsWithChildren<{
   calculateFilterExpression?: ((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>);
   caption?: string | undefined;
-  customizeText?: ((fieldInfo: { value: string | number | Date, valueText: string }) => string);
+  customizeText?: ((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string);
   dataField?: string | undefined;
   dataType?: DataType;
   editorOptions?: any;

@@ -118,7 +118,7 @@ const CustomOperation = Object.assign<typeof _componentCustomOperation, NestedCo
 type IFieldProps = React.PropsWithChildren<{
   calculateFilterExpression?: ((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>);
   caption?: string | undefined;
-  customizeText?: ((fieldInfo: { value: string | number | Date, valueText: string }) => string);
+  customizeText?: ((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string);
   dataField?: string | undefined;
   dataType?: DataType;
   editorOptions?: any;

@@ -692,14 +692,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<string | TreeListPredefinedColumnButton>,
     onClick: Function as PropType<((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
   }
 };
 
@@ -1279,9 +1279,9 @@ const DxEditingConfig = {
     "update:useIcons": null,
   },
   props: {
-    allowAdding: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowAdding: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,
@@ -1395,7 +1395,7 @@ const DxFieldConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string)>,
     dataField: String,
     dataType: String as PropType<DataType>,
     editorOptions: {},
