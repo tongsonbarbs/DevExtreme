@@ -357,6 +357,9 @@ export default class dxFilterBuilder extends Widget<dxFilterBuilderOptions> {
  * @public
  */
 export type CustomOperation = dxFilterBuilderCustomOperation;
+/**
+ * @public
+ */
 export type FieldInfo = {
     value?: string | number | Date;
     valueText?: string;

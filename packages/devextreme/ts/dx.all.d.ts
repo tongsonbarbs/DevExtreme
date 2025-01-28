@@ -10839,9 +10839,6 @@ declare module DevExpress.ui {
        */
       column?: Column<TRowData, TKey>;
     };
-    /**
-     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
-     */
     export type ColumnButtonOptions<TRowData = any, TKey = any> = {
       component?: dxDataGrid<TRowData, TKey>;
       row?: Row<TRowData, TKey>;
@@ -11069,9 +11066,6 @@ declare module DevExpress.ui {
       TRowData = any,
       TKey = any
     > = DevExpress.common.grids.EditingBase<TRowData, TKey>;
-    /**
-     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
-     */
     export type EditingOptions<TRowData, TKey> = {
       component?: dxDataGrid<TRowData, TKey>;
       row?: Row<TRowData, TKey>;
@@ -16814,9 +16808,6 @@ declare module DevExpress.ui {
       readonly field: Field;
       readonly setValue: Function;
     };
-    /**
-     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
-     */
     export type FieldInfo = {
       value?: string | number | Date;
       valueText?: string;
@@ -28663,9 +28654,6 @@ declare module DevExpress.ui {
       row?: Row<TRowData, TKey>;
       column?: Column<TRowData, TKey>;
     };
-    /**
-     * @deprecated Attention! This type is for internal purposes only. If you used it previously, please submit a ticket to our {@link https://supportcenter.devexpress.com/ticket/create Support Center}. We will check if there is an alternative solution.
-     */
     export type ColumnButtonOptions<TRowData = any, TKey = any> = {
       readonly component: dxTreeList<TRowData, TKey>;
       readonly row?: Row<TRowData, TKey>;
@@ -28810,33 +28798,28 @@ declare module DevExpress.ui {
        */
       allowAdding?:
         | boolean
-        | ((options: {
-            readonly component: dxTreeList<TRowData, TKey>;
-            readonly row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.allowDeleting]
        */
       allowDeleting?:
         | boolean
-        | ((options: {
-            readonly component: dxTreeList<TRowData, TKey>;
-            readonly row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.allowUpdating]
        */
       allowUpdating?:
         | boolean
-        | ((options: {
-            readonly component: dxTreeList<TRowData, TKey>;
-            readonly row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.texts]
        */
       texts?: EditingTexts;
     }
+    export type EditingOptions<TRowData = any, TKey = any> = {
+      readonly component: dxTreeList<TRowData, TKey>;
+      readonly row?: Row<TRowData, TKey>;
+    };
     /**
      * [descr:_ui_tree_list_EditingStartEvent]
      */

@@ -1907,6 +1907,9 @@ export type Toolbar = {
  * @deprecated Use Editing instead
  */
 export type dxDataGridEditing<TRowData, TKey = any> = Editing<TRowData, TKey>;
+/**
+ * @public
+ */
 export type EditingOptions<TRowData, TKey> = {
   component?: dxDataGrid<TRowData, TKey>;
   row?: Row<TRowData, TKey>;
@@ -2311,6 +2314,9 @@ export interface dxDataGridColumn<TRowData = any, TKey = any> extends ColumnBase
  * @public
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxDataGridColumnButton<TRowData, TKey>;
+/**
+ * @public
+ */
 export type ColumnButtonOptions<TRowData = any, TKey = any> = {
   component?: dxDataGrid<TRowData, TKey>;
   row?: Row<TRowData, TKey>;
