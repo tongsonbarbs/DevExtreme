@@ -545,8 +545,6 @@ class CollectionWidget<
     const { addedItemKeys, removedItemKeys } = args;
 
     if (this._rendered && (addedItemKeys.length || removedItemKeys.length)) {
-      // @ts-expect-error ts-error
-      const selectionChangePromise = this._selectionChangePromise;
       if (!this._rendering) {
         const addedSelection = [];
         const removedSelection = [];
@@ -574,12 +572,9 @@ class CollectionWidget<
         this._updateSelection(addedSelection, removedSelection);
       }
 
-      // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      when(selectionChangePromise).done(() => {
-        this._actions.onSelectionChanged({
-          addedItems: args.addedItems,
-          removedItems: args.removedItems,
-        });
+      this._actions.onSelectionChanged({
+        addedItems: args.addedItems,
+        removedItems: args.removedItems,
       });
     }
   }
