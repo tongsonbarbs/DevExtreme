@@ -216,6 +216,7 @@ export class PaginationContent extends InfernoComponent<PaginationContentProps> 
       hoverStateEnabled,
     } = this.props;
 
+    const isLargeDisplayMode = this.getIsLargeDisplayMode();
     const content = (
       <Widget
         rootElementRef={this.widgetRootElementRef}
@@ -240,7 +241,7 @@ export class PaginationContent extends InfernoComponent<PaginationContentProps> 
         {showPageSizeSelector && (
           <PageSizeSelector
             rootElementRef={allowedPageSizesRef}
-            isLargeDisplayMode={this.getIsLargeDisplayMode()}
+            isLargeDisplayMode={isLargeDisplayMode}
             pageSize={pageSize}
             pageSizeChangedInternal={pageSizeChangedInternal}
             allowedPageSizes={allowedPageSizes}
@@ -267,7 +268,7 @@ export class PaginationContent extends InfernoComponent<PaginationContentProps> 
               >
                 <PageIndexSelector
                   hasKnownLastPage={hasKnownLastPage}
-                  isLargeDisplayMode={this.getIsLargeDisplayMode()}
+                  isLargeDisplayMode={isLargeDisplayMode}
                   maxPagesCount={maxPagesCount}
                   pageCount={pageCount}
                   pageIndex={pageIndex}

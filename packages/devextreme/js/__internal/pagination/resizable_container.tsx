@@ -129,7 +129,7 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
 
   effectUpdateChildProps(): void {
     if (this.getParentWidth() > 0) {
-      this.updateAdaptivityProps();
+      setTimeout(() => { this.updateAdaptivityProps(); }, 100);
     }
   }
 
