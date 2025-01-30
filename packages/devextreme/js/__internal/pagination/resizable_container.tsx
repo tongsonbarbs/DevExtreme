@@ -80,7 +80,7 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
 
   public actualInfoTextVisible = true;
 
-  public delayTimer: ReturnType<typeof setTimeout> | undefined;
+  public delayTimer: ReturnType<typeof setTimeout> | null = null;
 
   constructor(props) {
     super(props);
@@ -130,13 +130,14 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
   }
 
   effectUpdateChildProps(): void {
-    if (this.delayTimer !== undefined) {
+    if (this.delayTimer) {
       clearTimeout(this.delayTimer);
     }
 
     if (this.getParentWidth() > 0) {
       this.delayTimer = setTimeout(() => {
         this.updateAdaptivityProps();
+        this.delayTimer = null;
       }, 100);
     }
   }
