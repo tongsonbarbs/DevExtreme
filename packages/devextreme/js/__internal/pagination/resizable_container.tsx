@@ -130,8 +130,6 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
   }
 
   effectUpdateChildProps(): void {
-    clearTimeout(this.delayTimer);
-
     if (this.getParentWidth() > 0) {
       this.delayTimer = setTimeout(() => {
         this.updateAdaptivityProps();
