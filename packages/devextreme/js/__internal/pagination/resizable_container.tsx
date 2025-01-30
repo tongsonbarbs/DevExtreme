@@ -80,7 +80,7 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
 
   public actualInfoTextVisible = true;
 
-  public delayTimer: ReturnType<typeof setTimeout> | null = null;
+  public delayTimer: any;
 
   constructor(props) {
     super(props);
@@ -130,15 +130,12 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
   }
 
   effectUpdateChildProps(): void {
-    if (this.delayTimer) {
-      clearTimeout(this.delayTimer);
-    }
+    clearTimeout(this.delayTimer);
 
     if (this.getParentWidth() > 0) {
       this.delayTimer = setTimeout(() => {
         this.updateAdaptivityProps();
-        this.delayTimer = null;
-      }, 100);
+      });
     }
   }
 
@@ -227,6 +224,7 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
   }
 
   updateAdaptivityProps(): void {
+    clearTimeout(this.delayTimer);
     const currentElementsWidth = getElementsWidth({
       parent: this.parentRef?.current,
       allowedPageSizes: this.allowedPageSizesRef?.current,
