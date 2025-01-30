@@ -48,10 +48,10 @@ export class DxiTreeListFieldComponent extends CollectionNestedOption {
     }
 
     @Input()
-    get customizeText(): ((fieldInfo: { value: string | number | Date, valueText: string }) => string) {
+    get customizeText(): ((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string) {
         return this._getOption('customizeText');
     }
-    set customizeText(value: ((fieldInfo: { value: string | number | Date, valueText: string }) => string)) {
+    set customizeText(value: ((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string)) {
         this._setOption('customizeText', value);
     }
 
