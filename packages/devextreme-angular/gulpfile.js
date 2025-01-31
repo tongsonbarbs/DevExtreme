@@ -101,7 +101,7 @@ gulp.task('before-generate.preserve-component-files', (done) => {
     return () => gulp.src(src).pipe(gulp.dest(dest));
   });
 
-  gulp.parallel(...tasks)(done)
+  gulp.parallel(...tasks)(done);
 });
 
 gulp.task('generate.facades', gulp.series('generate.moduleFacades', (done) => {
@@ -213,16 +213,16 @@ gulp.task('npm.content', gulp.series(
 
     return gulp.src([`${cmpConfig.outputPath}/**/collection.json`, ...npmConfig.content])
       .pipe(gulp.dest(npmConfig.distPath));
-  }
+  },
 ));
 
 gulp.task('npm.package-json', (cb) => {
   const pkgPath = path.join('.', buildConfig.npm.distPath, 'package.json');
   const pkg = require(`./${pkgPath}`);
   delete pkg.publishConfig;
-  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2))
+  fs.writeFileSync(pkgPath, JSON.stringify(pkg, null, 2));
   cb();
-})
+});
 
 gulp.task('npm.pack', gulp.series(
   'npm.content',
@@ -298,6 +298,8 @@ gulp.task('test.components.client', gulp.series('build.tests', (done) => {
 
 gulp.task('test.components.server', gulp.series('build.tests', (done) => {
   new karmaServer(getKarmaConfig('./karma.server.test.shim.js'), done).start();
+}, (done) => {
+  new karmaServer(getKarmaConfig('./karma.hydration.test.shim.js'), done).start();
 }));
 
 gulp.task('test.components.client.debug', (done) => {
