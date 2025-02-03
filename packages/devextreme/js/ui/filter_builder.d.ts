@@ -358,12 +358,30 @@ export default class dxFilterBuilder extends Widget<dxFilterBuilderOptions> {
  */
 export type CustomOperation = dxFilterBuilderCustomOperation;
 /**
+ * @docid FieldInfo
  * @public
  */
 export type FieldInfo = {
-    value?: string | number | Date;
-    valueText?: string;
-    field?: Field;
+  /**
+   * @docid FieldInfo.value
+   * @public
+   * @type string | number | Date
+   */
+  value?: string | number | Date;
+
+  /**
+   * @docid FieldInfo.valueText
+   * @public
+   * @type string
+   */
+  valueText?: string;
+
+  /**
+   * @docid FieldInfo.field
+   * @public
+   * @type Field
+   */
+  field?: Field;
 };
 /**
  * @namespace DevExpress.ui

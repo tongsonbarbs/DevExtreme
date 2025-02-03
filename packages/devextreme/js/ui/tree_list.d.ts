@@ -1150,12 +1150,25 @@ export type dxTreeListOptions<TRowData = any, TKey = any> = Omit<GridBaseOptions
  */
 export type dxTreeListEditing<TRowData = any, TKey = any> = Editing<TRowData, TKey>;
 /**
+ * @docid EditingOptions
  * @public
  */
 export type EditingOptions<TRowData = any, TKey = any> = {
+    /**
+     * @docid EditingOptions.component
+     * @public
+     * @type dxTreeList
+     */
     readonly component: dxTreeList<TRowData, TKey>;
+
+    /**
+     * @docid EditingOptions.row
+     * @public
+     * @type Row
+     */
     readonly row?: Row<TRowData, TKey>;
 };
+
 /**
  * @docid dxTreeListEditing
  * @public
@@ -1596,13 +1609,32 @@ export interface dxTreeListColumn<TRowData = any, TKey = any> extends ColumnBase
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxTreeListColumnButton<TRowData, TKey>;
 /**
+ * @docid ColumnButtonOptions
  * @public
  */
 export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+    /**
+     * @docid ColumnButtonOptions.component
+     * @public
+     * @type dxTreeList
+     */
     readonly component: dxTreeList<TRowData, TKey>;
+
+    /**
+     * @docid ColumnButtonOptions.row
+     * @public
+     * @type Row
+     */
     readonly row?: Row<TRowData, TKey>;
+
+    /**
+     * @docid ColumnButtonOptions.column
+     * @public
+     * @type Column
+     */
     readonly column: Column<TRowData, TKey>;
-};
+  };
+
 /**
  * @namespace DevExpress.ui
  * @deprecated Use the TreeList's ColumnButton type instead

@@ -1908,10 +1908,22 @@ export type Toolbar = {
  */
 export type dxDataGridEditing<TRowData, TKey = any> = Editing<TRowData, TKey>;
 /**
+ * @docid EditingOptions
  * @public
  */
 export type EditingOptions<TRowData, TKey> = {
+  /**
+   * @docid EditingOptions.component
+   * @public
+   * @type dxDataGrid
+   */
   component?: dxDataGrid<TRowData, TKey>;
+
+  /**
+   * @docid EditingOptions.row
+   * @public
+   * @type Row
+   */
   row?: Row<TRowData, TKey>;
 };
 /**
@@ -2315,11 +2327,29 @@ export interface dxDataGridColumn<TRowData = any, TKey = any> extends ColumnBase
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxDataGridColumnButton<TRowData, TKey>;
 /**
+ * @docid ColumnButtonOptions
  * @public
  */
 export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+  /**
+   * @docid ColumnButtonOptions.component
+   * @public
+   * @type dxDataGrid
+   */
   component?: dxDataGrid<TRowData, TKey>;
+
+  /**
+   * @docid ColumnButtonOptions.row
+   * @public
+   * @type Row
+   */
   row?: Row<TRowData, TKey>;
+
+  /**
+   * @docid ColumnButtonOptions.column
+   * @public
+   * @type Column
+   */
   column?: Column<TRowData, TKey>;
 };
 /**
