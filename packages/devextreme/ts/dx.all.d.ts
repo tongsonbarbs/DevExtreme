@@ -10839,9 +10839,23 @@ declare module DevExpress.ui {
        */
       column?: Column<TRowData, TKey>;
     };
+    /**
+     * [descr:ColumnButtonOptions]
+     */
     export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+      /**
+       * [descr:ColumnButtonOptions.component]
+       */
       component?: dxDataGrid<TRowData, TKey>;
+
+      /**
+       * [descr:ColumnButtonOptions.row]
+       */
       row?: Row<TRowData, TKey>;
+
+      /**
+       * [descr:ColumnButtonOptions.column]
+       */
       column?: Column<TRowData, TKey>;
     };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
@@ -11066,8 +11080,18 @@ declare module DevExpress.ui {
       TRowData = any,
       TKey = any
     > = DevExpress.common.grids.EditingBase<TRowData, TKey>;
+    /**
+     * [descr:EditingOptions]
+     */
     export type EditingOptions<TRowData, TKey> = {
+      /**
+       * [descr:EditingOptions.component]
+       */
       component?: dxDataGrid<TRowData, TKey>;
+
+      /**
+       * [descr:EditingOptions.row]
+       */
       row?: Row<TRowData, TKey>;
     };
     /**
@@ -16808,9 +16832,23 @@ declare module DevExpress.ui {
       readonly field: Field;
       readonly setValue: Function;
     };
+    /**
+     * [descr:FieldInfo]
+     */
     export type FieldInfo = {
+      /**
+       * [descr:FieldInfo.value]
+       */
       value?: string | number | Date;
+
+      /**
+       * [descr:FieldInfo.valueText]
+       */
       valueText?: string;
+
+      /**
+       * [descr:FieldInfo.field]
+       */
       field?: Field;
     };
     /**
@@ -28654,9 +28692,23 @@ declare module DevExpress.ui {
       row?: Row<TRowData, TKey>;
       column?: Column<TRowData, TKey>;
     };
+    /**
+     * [descr:ColumnButtonOptions]
+     */
     export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+      /**
+       * [descr:ColumnButtonOptions.component]
+       */
       readonly component: dxTreeList<TRowData, TKey>;
+
+      /**
+       * [descr:ColumnButtonOptions.row]
+       */
       readonly row?: Row<TRowData, TKey>;
+
+      /**
+       * [descr:ColumnButtonOptions.column]
+       */
       readonly column: Column<TRowData, TKey>;
     };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
@@ -28816,8 +28868,18 @@ declare module DevExpress.ui {
        */
       texts?: EditingTexts;
     }
+    /**
+     * [descr:EditingOptions]
+     */
     export type EditingOptions<TRowData = any, TKey = any> = {
+      /**
+       * [descr:EditingOptions.component]
+       */
       readonly component: dxTreeList<TRowData, TKey>;
+
+      /**
+       * [descr:EditingOptions.row]
+       */
       readonly row?: Row<TRowData, TKey>;
     };
     /**
