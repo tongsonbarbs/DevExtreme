@@ -17,6 +17,7 @@ import { DOCUMENT } from '@angular/common';
 
 
 import dxTreeList from 'devextreme/ui/tree_list';
+import { ColumnButtonOptions } from 'devextreme/ui/data_grid';
 import { dxTreeListColumn, dxTreeListRowObject, TreeListPredefinedColumnButton } from 'devextreme/ui/tree_list';
 import { event } from 'devextreme/events/events.types';
 
@@ -47,10 +48,10 @@ export class DxiTreeListButtonComponent extends CollectionNestedOption implement
     }
 
     @Input()
-    get disabled(): boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
+    get disabled(): boolean | ((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
         return this._getOption('disabled');
     }
-    set disabled(value: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
+    set disabled(value: boolean | ((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
         this._setOption('disabled', value);
     }
 
@@ -103,10 +104,10 @@ export class DxiTreeListButtonComponent extends CollectionNestedOption implement
     }
 
     @Input()
-    get visible(): boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
+    get visible(): boolean | ((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
         return this._getOption('visible');
     }
-    set visible(value: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
+    set visible(value: boolean | ((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
         this._setOption('visible', value);
     }
 
