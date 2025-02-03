@@ -119,6 +119,7 @@ import {
 import {
  dxFilterBuilderOptions,
  dxFilterBuilderField,
+ FieldInfo,
  FilterBuilderOperation,
  dxFilterBuilderCustomOperation,
  GroupOperation,
@@ -146,6 +147,10 @@ import {
  AnimationType,
  CollisionResolutionCombination,
 } from "devextreme/common/core/animation";
+import {
+ ColumnButtonOptions,
+ EditingOptions,
+} from "devextreme/ui/data_grid";
 import {
  event,
 } from "devextreme/events/events.types";
@@ -692,14 +697,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<string | TreeListPredefinedColumnButton>,
     onClick: Function as PropType<((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
   }
 };
 
@@ -1213,7 +1218,7 @@ const DxCustomOperationConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, field: dxFilterBuilderField) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { field: dxFilterBuilderField, value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string)>,
     dataTypes: Array as PropType<Array<DataType>>,
     editorTemplate: {},
     hasValue: Boolean,
@@ -1279,9 +1284,9 @@ const DxEditingConfig = {
     "update:useIcons": null,
   },
   props: {
-    allowAdding: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowAdding: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,
@@ -1395,7 +1400,7 @@ const DxFieldConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: FieldInfo) => string)>,
     dataField: String,
     dataType: String as PropType<DataType>,
     editorOptions: {},

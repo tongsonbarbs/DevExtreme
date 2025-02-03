@@ -84,12 +84,14 @@ import {
  SelectionChangedEvent,
  ToolbarPreparingEvent,
  dxDataGridToolbar,
+ ColumnButtonOptions,
  dxDataGridRowObject,
  DataGridPredefinedColumnButton,
  ColumnButtonClickEvent,
  dxDataGridColumnButton,
  DataGridCommandColumnType,
  SelectionSensitivity,
+ EditingOptions,
  DataGridExportFormat,
  DataGridPredefinedToolbarItem,
  DataGridScrollMode,
@@ -125,6 +127,7 @@ import {
 import {
  dxFilterBuilderOptions,
  dxFilterBuilderField,
+ FieldInfo,
  FilterBuilderOperation,
  dxFilterBuilderCustomOperation,
  GroupOperation,
@@ -704,14 +707,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<DataGridPredefinedColumnButton | string>,
     onClick: Function as PropType<((e: ColumnButtonClickEvent) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>
   }
 };
 
@@ -1239,7 +1242,7 @@ const DxCustomOperationConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, field: dxFilterBuilderField) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { field: dxFilterBuilderField, value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string)>,
     dataTypes: Array as PropType<Array<DataType>>,
     editorTemplate: {},
     hasValue: Boolean,
@@ -1415,8 +1418,8 @@ const DxEditingConfig = {
   },
   props: {
     allowAdding: Boolean,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,
@@ -1577,7 +1580,7 @@ const DxFieldConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, selectedFilterOperation: string) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: { field: any, value: string | number | Date, valueText: string }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: FieldInfo) => string)>,
     dataField: String,
     dataType: String as PropType<DataType>,
     editorOptions: {},
