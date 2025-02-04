@@ -1157,14 +1157,13 @@ export type EditingOptions<TRowData = any, TKey = any> = {
     /**
      * @docid EditingOptions.component
      * @public
-     * @type dxTreeList
      */
     readonly component: dxTreeList<TRowData, TKey>;
 
     /**
      * @docid EditingOptions.row
      * @public
-     * @type Row
+     * @type dxTreeListRowObject
      */
     readonly row?: Row<TRowData, TKey>;
 };
@@ -1616,14 +1615,13 @@ export type ColumnButtonOptions<TRowData = any, TKey = any> = {
     /**
      * @docid ColumnButtonOptions.component
      * @public
-     * @type dxTreeList
      */
     readonly component: dxTreeList<TRowData, TKey>;
 
     /**
      * @docid ColumnButtonOptions.row
      * @public
-     * @type Row
+     * @type dxTreeListRowObject
      */
     readonly row?: Row<TRowData, TKey>;
 

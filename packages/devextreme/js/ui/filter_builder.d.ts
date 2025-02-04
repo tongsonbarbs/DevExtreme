@@ -379,7 +379,7 @@ export type FieldInfo = {
   /**
    * @docid FieldInfo.field
    * @public
-   * @type Field
+   * @type dxFilterBuilderField
    */
   field?: Field;
 };

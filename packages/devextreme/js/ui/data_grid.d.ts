@@ -1915,14 +1915,13 @@ export type EditingOptions<TRowData = any, TKey = any> = {
   /**
    * @docid EditingOptions.component
    * @public
-   * @type dxDataGrid
    */
   component?: dxDataGrid<TRowData, TKey>;
 
   /**
    * @docid EditingOptions.row
    * @public
-   * @type Row
+   * @type dxDataGridRowObject
    */
   row?: Row<TRowData, TKey>;
 };
