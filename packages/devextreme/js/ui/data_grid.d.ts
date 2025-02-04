@@ -1911,7 +1911,7 @@ export type dxDataGridEditing<TRowData, TKey = any> = Editing<TRowData, TKey>;
  * @docid EditingOptions
  * @public
  */
-export type EditingOptions<TRowData, TKey> = {
+export type EditingOptions<TRowData = any, TKey = any> = {
   /**
    * @docid EditingOptions.component
    * @public
@@ -1942,6 +1942,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @docid dxDataGridOptions.editing.allowDeleting
      * @default false
      * @type boolean|function
+     * @type_function_param1 options: EditingOptions<TRowData, TKey>
      * @type_function_param1_field component:dxDataGrid
      * @type_function_param1_field row:dxDataGridRowObject
      * @public
@@ -1951,6 +1952,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @docid dxDataGridOptions.editing.allowUpdating
      * @default false
      * @type boolean|function
+     * @type_function_param1 options: EditingOptions<TRowData, TKey>
      * @type_function_param1_field component:dxDataGrid
      * @type_function_param1_field row:dxDataGridRowObject
      * @public

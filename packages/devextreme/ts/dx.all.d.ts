@@ -11083,7 +11083,7 @@ declare module DevExpress.ui {
     /**
      * [descr:EditingOptions]
      */
-    export type EditingOptions<TRowData, TKey> = {
+    export type EditingOptions<TRowData = any, TKey = any> = {
       /**
        * [descr:EditingOptions.component]
        */

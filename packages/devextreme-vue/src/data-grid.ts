@@ -91,7 +91,6 @@ import {
  dxDataGridColumnButton,
  DataGridCommandColumnType,
  SelectionSensitivity,
- EditingOptions,
  DataGridExportFormat,
  DataGridPredefinedToolbarItem,
  DataGridScrollMode,
@@ -1418,8 +1417,8 @@ const DxEditingConfig = {
   },
   props: {
     allowAdding: Boolean,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,
