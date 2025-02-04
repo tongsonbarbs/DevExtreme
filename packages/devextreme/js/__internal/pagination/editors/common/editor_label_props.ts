@@ -1,3 +1,5 @@
+import { themeReadyCallback } from '@js/ui/themes_callback';
+
 import { current, isMaterial } from '../../../../ui/themes';
 
 export interface EditorLabelProps {
@@ -7,5 +9,9 @@ export interface EditorLabelProps {
 
 export const EditorLabelDefaultProps: EditorLabelProps = {
   label: '',
-  labelMode: isMaterial(current()) ? 'floating' : 'static',
+  labelMode: 'static',
 };
+
+themeReadyCallback.add(() => {
+  EditorLabelDefaultProps.labelMode = isMaterial(current() || 'default') ? 'floating' : 'static';
+});

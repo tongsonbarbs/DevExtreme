@@ -80,8 +80,6 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
 
   public actualInfoTextVisible = true;
 
-  public delayTimer: any;
-
   constructor(props) {
     super(props);
     this.subscribeToResize = this.subscribeToResize.bind(this);
@@ -131,7 +129,7 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
 
   effectUpdateChildProps(): void {
     if (this.getParentWidth() > 0) {
-      this.delayTimer = setTimeout(() => {
+      requestAnimationFrame(() => {
         this.updateAdaptivityProps();
       });
     }
@@ -222,7 +220,6 @@ export class ResizableContainer extends InfernoComponent<ResizableContainerProps
   }
 
   updateAdaptivityProps(): void {
-    clearTimeout(this.delayTimer);
     const currentElementsWidth = getElementsWidth({
       parent: this.parentRef?.current,
       allowedPageSizes: this.allowedPageSizesRef?.current,
