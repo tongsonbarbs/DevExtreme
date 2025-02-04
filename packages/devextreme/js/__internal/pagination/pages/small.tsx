@@ -57,9 +57,8 @@ export class PagesSmall extends InfernoComponent<PaginationSmallPropsType> {
   updateWidth(): void {
     requestAnimationFrame(() => {
       const el = this.pageIndexRef.current?.querySelector(`.${PAGER_PAGE_INDEX_CLASS}`);
-      const minWidth = el ? getElementMinWidth(el) : 0;
       this.setState((state) => ({
-        minWidth: minWidth > 0 ? minWidth : state.minWidth,
+        minWidth: el ? getElementMinWidth(el) : state.minWidth,
       }));
     });
   }
