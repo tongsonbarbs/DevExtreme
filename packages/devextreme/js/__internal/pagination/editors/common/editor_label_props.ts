@@ -13,5 +13,5 @@ export const EditorLabelDefaultProps: EditorLabelProps = {
 };
 
 themeReadyCallback.add(() => {
-  EditorLabelDefaultProps.labelMode = isMaterial(current() || 'default') ? 'floating' : 'static';
+  EditorLabelDefaultProps.labelMode = isMaterial(current() || 'generic.light') ? 'floating' : 'static';
 });
