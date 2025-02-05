@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import type { RefObject } from '@devextreme/runtime/inferno';
 import { InfernoComponent, InfernoEffect } from '@devextreme/runtime/inferno';
+import { isMaterial } from '@js/ui/themes';
 
 import { PaginationDefaultProps, type PaginationProps } from '../common/pagination_props';
 import type { FullPageSize } from '../common/types';
@@ -30,7 +31,10 @@ const PageSizeSmallDefaultProps: PageSizeSmallPropsType = {
 
 export class PageSizeSmall extends InfernoComponent<PageSizeSmallPropsType> {
   public state = {
-    minWidth: 10,
+    get minWidth(): number {
+      // @ts-expect-error
+      return isMaterial() ? 20 : 10;
+    },
   };
 
   public refs: any = null;
@@ -67,8 +71,9 @@ export class PageSizeSmall extends InfernoComponent<PageSizeSmallPropsType> {
   }
 
   updateWidth(): void {
+    const minWidth = getElementMinWidth(this.props.parentRef?.current);
     this.setState((state) => ({
-      minWidth: getElementMinWidth(this.props.parentRef?.current) || state.minWidth,
+      minWidth: minWidth > 0 ? minWidth : state.minWidth,
     }));
   }
 
