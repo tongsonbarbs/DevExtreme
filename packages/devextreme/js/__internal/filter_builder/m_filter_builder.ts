@@ -866,7 +866,7 @@ class FilterBuilder extends Widget<any> {
       visible: true,
       focusStateEnabled: false,
       preventScrollEvents: false,
-      container: $container,
+      container: $popup,
       hideOnOutsideClick: true,
       onShown: options.popup.onShown,
       shading: false,
