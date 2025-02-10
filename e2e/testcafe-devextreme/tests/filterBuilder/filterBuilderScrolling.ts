@@ -22,8 +22,10 @@ safeSizeTest('FilterBuilder - The field drop-down window moves with the page scr
     .scrollIntoView(filterBuilder.getItem('operation', 4))
     .scrollIntoView(filterBuilder.getItem('operation', 0));
 
-  await takeScreenshot('filterBuilder_scroll_with_popup.png', filterBuilder.element);
-  await t.expect(compareResults.isValid())
+  await t
+    .expect(await takeScreenshot('filterBuilder_scroll_with_popup.png', filterBuilder.element))
+    .ok()
+    .expect(compareResults.isValid())
     .ok(compareResults.errorMessages());
 }).before(async () => {
   const shrinkContainer = ClientFunction(() => {
