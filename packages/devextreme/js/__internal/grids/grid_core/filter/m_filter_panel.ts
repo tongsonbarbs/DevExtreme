@@ -18,7 +18,6 @@ import type { DataController } from '../data_controller/m_data_controller';
 import { registerKeyboardAction } from '../m_accessibility';
 import modules from '../m_modules';
 import type { ModuleType } from '../m_types';
-import gridUtils from '../m_utils';
 
 const FILTER_PANEL_CLASS = 'filter-panel';
 const FILTER_PANEL_TEXT_CLASS = `${FILTER_PANEL_CLASS}-text`;
@@ -214,21 +213,36 @@ export class FilterPanelView extends modules.View {
   private _getValueText(field, customOperation, value) {
     // @ts-expect-error
     const deferred = new Deferred();
-    const hasCustomOperation = customOperation && customOperation.customizeText;
+    const hasCustomOperation = !!customOperation;
+
     if (isDefined(value) || hasCustomOperation) {
-      if (!hasCustomOperation && field.lookup) {
+      if (Array.isArray(value)) {
+        const promises = value.map((val) => new Promise((resolve) => {
+          if (field.lookup) {
+            getCurrentLookupValueText(field, val, (data) => {
+              resolve(this._getValueMaskedText(data));
+            });
+          } else {
+            when(getCurrentValueText(field, val, customOperation, FILTER_PANEL_TARGET)).done(resolve);
+          }
+        }));
+
+        Promise.all(promises).then((results) => {
+          deferred.resolve(results.join(', '));
+        });
+      } else if (field.lookup) {
         getCurrentLookupValueText(field, value, (data) => {
           deferred.resolve(this._getValueMaskedText(data));
         });
       } else {
-        const displayValue = Array.isArray(value) ? value : gridUtils.getDisplayValue(field, value, null);
-        when(getCurrentValueText(field, displayValue, customOperation, FILTER_PANEL_TARGET)).done((data) => {
+        when(getCurrentValueText(field, value, customOperation, FILTER_PANEL_TARGET)).done((data) => {
           deferred.resolve(this._getValueMaskedText(data));
         });
       }
     } else {
       deferred.resolve('');
     }
+
     return deferred.promise();
   }
 
