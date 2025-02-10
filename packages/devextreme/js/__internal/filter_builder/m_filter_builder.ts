@@ -859,13 +859,14 @@ class FilterBuilder extends Widget<any> {
         this.repaint();
       },
       _ignoreFunctionValueDeprecation: true,
+      _ignorePreventScrollEventsDeprecation: true,
       maxHeight() {
         return getElementMaxHeightByWindow(options.menu.position.of);
       },
       visible: true,
       focusStateEnabled: false,
       preventScrollEvents: false,
-      hideOnParentScroll: this.option('closePopupOnTargetScroll'),
+      container: $container,
       hideOnOutsideClick: true,
       onShown: options.popup.onShown,
       shading: false,
@@ -873,7 +874,6 @@ class FilterBuilder extends Widget<any> {
       height: 'auto',
       showTitle: false,
       _wrapperClassExternal: options.menu.cssClass,
-      _ignorePreventScrollEventsDeprecation: true,
     });
   }
 
