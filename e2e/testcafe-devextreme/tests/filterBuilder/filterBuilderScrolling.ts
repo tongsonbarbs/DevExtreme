@@ -5,6 +5,7 @@ import url from '../../helpers/getPageUrl';
 import { fields, filter } from './data';
 import { safeSizeTest } from '../../helpers/safeSizeTest';
 import { createWidget } from '../../helpers/createWidget';
+import { testScreenshot } from '../../helpers/themeUtils';
 
 fixture`Filter Builder Scrolling Test`.page(
   url(__dirname, '../container.html'),
@@ -22,9 +23,8 @@ safeSizeTest('FilterBuilder - The field drop-down window moves with the page scr
     .scrollIntoView(filterBuilder.getItem('operation', 4))
     .scrollIntoView(filterBuilder.getItem('operation', 0));
 
+  await testScreenshot(t, takeScreenshot, 'filterBuilder_scroll_with_popup.png', { element: filterBuilder.element });
   await t
-    .expect(await takeScreenshot('filterBuilder_scroll_with_popup.png', filterBuilder.element))
-    .ok()
     .expect(compareResults.isValid())
     .ok(compareResults.errorMessages());
 }).before(async () => {
