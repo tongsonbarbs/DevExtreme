@@ -75,7 +75,7 @@ QUnit.module('Rendering', function() {
         });
 
         container.find('.' + FILTER_BUILDER_GROUP_OPERATION_CLASS).trigger('dxclick');
-        const popupInstance = container.find('.' + FILTER_BUILDER_OVERLAY_CLASS + '.dx-popup').dxPopup('instance');
+        const popupInstance = container.find(`.${FILTER_BUILDER_OVERLAY_CLASS}.dx-popup`).dxPopup('instance');
         assert.ok(popupInstance.option('deferRendering'));
     });
 
