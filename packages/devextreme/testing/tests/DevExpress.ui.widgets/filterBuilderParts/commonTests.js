@@ -409,7 +409,7 @@ QUnit.module('Rendering', function() {
         $('.' + FILTER_BUILDER_GROUP_OPERATION_CLASS).trigger('dxclick');
 
         // assert
-        assert.notOk($container.find('.' + FILTER_BUILDER_OVERLAY_CLASS + '.dx-popup').dxPopup('instance').option('target'), 'popup target shoud not be set');
+        assert.notOk($container.find(`.${FILTER_BUILDER_OVERLAY_CLASS}.dx-popup`).dxPopup('instance').option('target'), 'popup target shoud not be set');
     });
 
     QUnit.test('Menu wrapper has filter builder overlay class', function(assert) {

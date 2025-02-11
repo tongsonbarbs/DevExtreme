@@ -859,7 +859,6 @@ class FilterBuilder extends Widget<any> {
         this.repaint();
       },
       _ignoreFunctionValueDeprecation: true,
-      _ignorePreventScrollEventsDeprecation: true,
       maxHeight() {
         return getElementMaxHeightByWindow(options.menu.position.of);
       },
@@ -874,6 +873,7 @@ class FilterBuilder extends Widget<any> {
       height: 'auto',
       showTitle: false,
       _wrapperClassExternal: options.menu.cssClass,
+      _ignorePreventScrollEventsDeprecation: true,
     });
   }
 
