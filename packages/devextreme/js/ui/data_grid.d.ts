@@ -181,6 +181,12 @@ export type ScrollingBase = ComponentScrollingBase;
 export type SelectionBase = ComponentSelectionBase;
 
 /** @public */
+export type DataGridColumnButtonOptions<TRowData, TKey> = {
+  component?: dxDataGrid<TRowData, TKey>;
+  row?: Row<TRowData, TKey>;
+  column?: Column<TRowData, TKey>;
+};
+/** @public */
 export type DataGridCommandColumnType = 'adaptive' | 'buttons' | 'detailExpand' | 'groupExpand' | 'selection' | 'drag';
 /** @public */
 export type DataGridExportFormat = 'pdf' | 'xlsx';
@@ -1908,6 +1914,12 @@ export type Toolbar = {
  */
 export type dxDataGridEditing<TRowData, TKey = any> = Editing<TRowData, TKey>;
 
+/** @public */
+export type dxDataGridEditingOptions<TRowData, TKey> = {
+  component?: dxDataGrid<TRowData, TKey>;
+  row?: Row<TRowData, TKey>;
+};
+
 /**
  * @docid dxDataGridEditing
  * @public
@@ -1928,7 +1940,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @type_function_param1_field row:dxDataGridRowObject
      * @public
      */
-    allowDeleting?: boolean | ((options: { component?: dxDataGrid<TRowData, TKey>; row?: Row<TRowData, TKey> }) => boolean);
+    allowDeleting?: boolean | ((options: dxDataGridEditingOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxDataGridOptions.editing.allowUpdating
      * @default false
@@ -1937,7 +1949,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @type_function_param1_field row:dxDataGridRowObject
      * @public
      */
-    allowUpdating?: boolean | ((options: { component?: dxDataGrid<TRowData, TKey>; row?: Row<TRowData, TKey> }) => boolean);
+    allowUpdating?: boolean | ((options: dxDataGridEditingOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxDataGridOptions.editing.texts
      * @public
@@ -2344,7 +2356,7 @@ export interface dxDataGridColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxDataGridColumn
      * @public
      */
-    visible?: boolean | ((options: { component?: dxDataGrid<TRowData, TKey>; row?: Row<TRowData, TKey>; column?: Column<TRowData, TKey> }) => boolean);
+    visible?: boolean | ((options: DataGridColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxDataGridColumnButton.disabled
      * @default false
@@ -2354,7 +2366,7 @@ export interface dxDataGridColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxDataGridColumn
      * @public
      */
-    disabled?: boolean | ((options: { component?: dxDataGrid<TRowData, TKey>; row?: Row<TRowData, TKey>; column?: Column<TRowData, TKey> }) => boolean);
+    disabled?: boolean | ((options: DataGridColumnButtonOptions<TRowData, TKey>) => boolean);
 }
 
 /**

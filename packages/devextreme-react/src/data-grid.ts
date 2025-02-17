@@ -300,14 +300,14 @@ const BoundaryOffset = Object.assign<typeof _componentBoundaryOffset, NestedComp
 // Column
 type IButtonProps = React.PropsWithChildren<{
   cssClass?: string;
-  disabled?: boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  disabled?: boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
   hint?: string;
   icon?: string;
   name?: DataGridPredefinedColumnButton | string;
   onClick?: ((e: ColumnButtonClickEvent) => void);
   template?: ((cellElement: any, cellInfo: { column: dxDataGridColumn, columnIndex: number, component: dxDataGrid, data: Record<string, any>, key: any, row: dxDataGridRowObject, rowIndex: number, rowType: string }) => string | any) | template;
   text?: string;
-  visible?: boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  visible?: boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
   render?: (...params: any) => React.ReactNode;
   component?: React.ComponentType<any>;
 }>
@@ -977,8 +977,8 @@ const DataGridSelection = Object.assign<typeof _componentDataGridSelection, Nest
 // DataGrid
 type IEditingProps = React.PropsWithChildren<{
   allowAdding?: boolean;
-  allowDeleting?: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
-  allowUpdating?: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  allowDeleting?: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
+  allowUpdating?: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean);
   changes?: Array<DataChange>;
   confirmDelete?: boolean;
   editColumnName?: string;

@@ -116,6 +116,7 @@ export {
   Toolbar,
   Column,
   ColumnButton,
+  dxTreeListColumnButtonOptions,
   Node,
   Row,
   Properties,

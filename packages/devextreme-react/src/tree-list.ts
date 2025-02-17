@@ -272,14 +272,14 @@ const BoundaryOffset = Object.assign<typeof _componentBoundaryOffset, NestedComp
 // Column
 type IButtonProps = React.PropsWithChildren<{
   cssClass?: string;
-  disabled?: boolean | ((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  disabled?: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
   hint?: string;
   icon?: string;
   name?: string | TreeListPredefinedColumnButton;
   onClick?: ((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void);
   template?: ((cellElement: any, cellInfo: { column: dxTreeListColumn, columnIndex: number, component: dxTreeList, data: Record<string, any>, key: any, row: dxTreeListRowObject, rowIndex: number, rowType: string }) => string | any) | template;
   text?: string;
-  visible?: boolean | ((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
+  visible?: boolean | ((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean);
   render?: (...params: any) => React.ReactNode;
   component?: React.ComponentType<any>;
 }>

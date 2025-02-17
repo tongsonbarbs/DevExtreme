@@ -46,10 +46,10 @@ export class DxiDataGridButtonComponent extends CollectionNestedOption implement
     }
 
     @Input()
-    get disabled(): boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get disabled(): boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
         return this._getOption('disabled');
     }
-    set disabled(value: boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set disabled(value: boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
         this._setOption('disabled', value);
     }
 
@@ -102,10 +102,10 @@ export class DxiDataGridButtonComponent extends CollectionNestedOption implement
     }
 
     @Input()
-    get visible(): boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get visible(): boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
         return this._getOption('visible');
     }
-    set visible(value: boolean | ((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set visible(value: boolean | ((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
         this._setOption('visible', value);
     }
 

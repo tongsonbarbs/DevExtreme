@@ -692,14 +692,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<string | TreeListPredefinedColumnButton>,
     onClick: Function as PropType<((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
   }
 };
 

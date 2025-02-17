@@ -704,14 +704,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<DataGridPredefinedColumnButton | string>,
     onClick: Function as PropType<((e: ColumnButtonClickEvent) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: any | { column: dxDataGridColumn, component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>
   }
 };
 
@@ -1415,8 +1415,8 @@ const DxEditingConfig = {
   },
   props: {
     allowAdding: Boolean,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,
