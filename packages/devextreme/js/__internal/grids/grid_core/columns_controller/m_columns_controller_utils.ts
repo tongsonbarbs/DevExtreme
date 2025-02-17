@@ -655,7 +655,8 @@ export const columnOptionCore = function (that: ColumnsController, column, optio
     return optionGetter(column, { functionsAsIs: true });
   }
   // @ts-expect-error
-  const prevValue = optionGetter(column, { functionsAsIs: true }) ?? that.option('filterValue');
+  const getPrevValue = optionGetter(column, { functionsAsIs: true });
+  const prevValue = getPrevValue === null ? that.option('filterValue') : getPrevValue;
   if (!equalByValue(prevValue, value, { maxDepth: 5 })) {
     if (optionName === 'groupIndex' || optionName === 'calculateGroupValue') {
       changeType = 'grouping';
