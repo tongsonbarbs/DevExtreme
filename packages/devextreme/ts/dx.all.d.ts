@@ -10839,6 +10839,23 @@ declare module DevExpress.ui {
        */
       column?: Column<TRowData, TKey>;
     };
+    /**
+     * [descr:dxDataGridColumnButtonOptions]
+     */
+    export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+      /**
+       * [descr:dxDataGridColumnButtonOptions.component]
+       */
+      component?: dxDataGrid<TRowData, TKey>;
+      /**
+       * [descr:dxDataGridColumnButtonOptions.row]
+       */
+      row?: Row<TRowData, TKey>;
+      /**
+       * [descr:dxDataGridColumnButtonOptions.column]
+       */
+      column?: Column<TRowData, TKey>;
+    };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
       readonly component: dxDataGrid<TRowData, TKey>;
       readonly data?: TRowData;
@@ -11037,19 +11054,13 @@ declare module DevExpress.ui {
        */
       allowDeleting?:
         | boolean
-        | ((options: {
-            component?: dxDataGrid<TRowData, TKey>;
-            row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.allowUpdating]
        */
       allowUpdating?:
         | boolean
-        | ((options: {
-            component?: dxDataGrid<TRowData, TKey>;
-            row?: Row<TRowData, TKey>;
-          }) => boolean);
+        | ((options: EditingOptions<TRowData, TKey>) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.texts]
        */
@@ -11067,6 +11078,19 @@ declare module DevExpress.ui {
       TRowData = any,
       TKey = any
     > = DevExpress.common.grids.EditingBase<TRowData, TKey>;
+    /**
+     * [descr:dxDataGridEditingOptions]
+     */
+    export type EditingOptions<TRowData = any, TKey = any> = {
+      /**
+       * [descr:dxDataGridEditingOptions.component]
+       */
+      component?: dxDataGrid<TRowData, TKey>;
+      /**
+       * [descr:dxDataGridEditingOptions.row]
+       */
+      row?: Row<TRowData, TKey>;
+    };
     /**
      * [descr:_ui_data_grid_EditingStartEvent]
      */
@@ -12427,21 +12451,17 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((options: {
-          component?: dxDataGrid<TRowData, TKey>;
-          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
-          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((
+          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
     /**
      * [descr:dxDataGridColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((options: {
-          component?: dxDataGrid<TRowData, TKey>;
-          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
-          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
-        }) => boolean);
+      | ((
+          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
   }
   /**
    * [descr:dxDataGridOptions]

@@ -138,6 +138,7 @@ export {
   SummaryTexts,
   ToolbarItem,
   Toolbar,
+  EditingOptions,
   Editing,
   EditingTexts,
   Scrolling,
@@ -145,6 +146,7 @@ export {
   Selection,
   Column,
   ColumnButton,
+  ColumnButtonOptions,
   Row,
   Properties,
 } from './data_grid';

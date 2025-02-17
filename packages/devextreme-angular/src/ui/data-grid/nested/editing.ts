@@ -19,8 +19,7 @@ import {
 
 
 
-import dxDataGrid from 'devextreme/ui/data_grid';
-import { dxDataGridRowObject } from 'devextreme/ui/data_grid';
+import { dxDataGridEditingOptions } from 'devextreme/ui/data_grid';
 import { DataChange, GridsEditMode, NewRowPosition, GridsEditRefreshMode, StartEditAction } from 'devextreme/common/grids';
 import { dxFormOptions } from 'devextreme/ui/form';
 import { dxPopupOptions } from 'devextreme/ui/popup';
@@ -48,18 +47,18 @@ export class DxoDataGridEditingComponent extends NestedOption implements OnDestr
     }
 
     @Input()
-    get allowDeleting(): boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get allowDeleting(): boolean | ((options: dxDataGridEditingOptions) => boolean) {
         return this._getOption('allowDeleting');
     }
-    set allowDeleting(value: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set allowDeleting(value: boolean | ((options: dxDataGridEditingOptions) => boolean)) {
         this._setOption('allowDeleting', value);
     }
 
     @Input()
-    get allowUpdating(): boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get allowUpdating(): boolean | ((options: dxDataGridEditingOptions) => boolean) {
         return this._getOption('allowUpdating');
     }
-    set allowUpdating(value: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set allowUpdating(value: boolean | ((options: dxDataGridEditingOptions) => boolean)) {
         this._setOption('allowUpdating', value);
     }
 
