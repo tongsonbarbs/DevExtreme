@@ -12454,13 +12454,17 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((options: DevExpress.ui.dxDataGrid.ColumnButtonOptions) => boolean);
+      | ((
+          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
     /**
      * [descr:dxDataGridColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((options: DevExpress.ui.dxDataGrid.ColumnButtonOptions) => boolean);
+      | ((
+          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
+        ) => boolean);
   }
   /**
    * [descr:dxDataGridOptions]

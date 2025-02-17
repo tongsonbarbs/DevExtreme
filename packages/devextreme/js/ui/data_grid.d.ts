@@ -2389,7 +2389,7 @@ export interface dxDataGridColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxDataGridColumn
      * @public
      */
-    visible?: boolean | ((options: ColumnButtonOptions) => boolean);
+    visible?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxDataGridColumnButton.disabled
      * @default false
@@ -2399,7 +2399,7 @@ export interface dxDataGridColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxDataGridColumn
      * @public
      */
-    disabled?: boolean | ((options: ColumnButtonOptions) => boolean);
+    disabled?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
 }
 
 /**
