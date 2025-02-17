@@ -1907,24 +1907,25 @@ export type Toolbar = {
  * @deprecated Use Editing instead
  */
 export type dxDataGridEditing<TRowData, TKey = any> = Editing<TRowData, TKey>;
+
 /**
- * @docid EditingOptions
+ * @docid dxDataGridEditingOptions
  * @public
  */
 export type EditingOptions<TRowData = any, TKey = any> = {
   /**
-   * @docid EditingOptions.component
+   * @docid dxDataGridEditingOptions.component
    * @public
    */
   component?: dxDataGrid<TRowData, TKey>;
-
   /**
-   * @docid EditingOptions.row
+   * @docid dxDataGridEditingOptions.row
    * @public
    * @type dxDataGridRowObject
    */
   row?: Row<TRowData, TKey>;
 };
+
 /**
  * @docid dxDataGridEditing
  * @public
@@ -1941,9 +1942,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @docid dxDataGridOptions.editing.allowDeleting
      * @default false
      * @type boolean|function
-     * @type_function_param1 options: EditingOptions<TRowData, TKey>
-     * @type_function_param1_field component:dxDataGrid
-     * @type_function_param1_field row:dxDataGridRowObject
+     * @type_function_param1 options:dxDataGridEditingOptions
      * @public
      */
     allowDeleting?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
@@ -1951,9 +1950,7 @@ export type Editing<TRowData = any, TKey = any> = EditingBase<TRowData, TKey> & 
      * @docid dxDataGridOptions.editing.allowUpdating
      * @default false
      * @type boolean|function
-     * @type_function_param1 options: EditingOptions<TRowData, TKey>
-     * @type_function_param1_field component:dxDataGrid
-     * @type_function_param1_field row:dxDataGridRowObject
+     * @type_function_param1 options:dxDataGridEditingOptions
      * @public
      */
     allowUpdating?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
@@ -2327,32 +2324,32 @@ export interface dxDataGridColumn<TRowData = any, TKey = any> extends ColumnBase
  * @public
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxDataGridColumnButton<TRowData, TKey>;
+
 /**
- * @docid ColumnButtonOptions
+ * @docid dxDataGridColumnButtonOptions
  * @public
  */
 export type ColumnButtonOptions<TRowData = any, TKey = any> = {
   /**
-   * @docid ColumnButtonOptions.component
+   * @docid dxDataGridColumnButtonOptions.component
    * @public
    * @type dxDataGrid
    */
   component?: dxDataGrid<TRowData, TKey>;
-
   /**
-   * @docid ColumnButtonOptions.row
+   * @docid dxDataGridColumnButtonOptions.row
    * @public
-   * @type Row
+   * @type dxDataGridRowObject
    */
   row?: Row<TRowData, TKey>;
-
   /**
-   * @docid ColumnButtonOptions.column
+   * @docid dxDataGridColumnButtonOptions.column
    * @public
-   * @type Column
+   * @type dxDataGridColumn
    */
   column?: Column<TRowData, TKey>;
 };
+
 /**
  * @namespace DevExpress.ui
  * @deprecated Use the DataGrid's ColumnButton type instead
@@ -2383,20 +2380,16 @@ export interface dxDataGridColumnButton<TRowData = any, TKey = any> extends Colu
     /**
      * @docid dxDataGridColumnButton.visible
      * @default true
-     * @type boolean | function
-     * @type_function_param1_field component:dxDataGrid
-     * @type_function_param1_field row:dxDataGridRowObject
-     * @type_function_param1_field column:dxDataGridColumn
+     * @type boolean|function
+     * @type_function_param1 options:dxDataGridColumnButtonOptions
      * @public
      */
     visible?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxDataGridColumnButton.disabled
      * @default false
-     * @type boolean | function
-     * @type_function_param1_field component:dxDataGrid
-     * @type_function_param1_field row:dxDataGridRowObject
-     * @type_function_param1_field column:dxDataGridColumn
+     * @type boolean|function
+     * @type_function_param1 options:dxDataGridColumnButtonOptions
      * @public
      */
     disabled?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
