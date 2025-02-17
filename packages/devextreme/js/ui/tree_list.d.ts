@@ -1149,19 +1149,20 @@ export type dxTreeListOptions<TRowData = any, TKey = any> = Omit<GridBaseOptions
  * @deprecated Use Editing instead
  */
 export type dxTreeListEditing<TRowData = any, TKey = any> = Editing<TRowData, TKey>;
+
 /**
- * @docid EditingOptions
+ * @docid dxTreeListEditingOptions
  * @public
  */
 export type EditingOptions<TRowData = any, TKey = any> = {
     /**
-     * @docid EditingOptions.component
+     * @docid dxTreeListEditingOptions.component
      * @public
+     * @type dxTreeList
      */
     readonly component: dxTreeList<TRowData, TKey>;
-
     /**
-     * @docid EditingOptions.row
+     * @docid dxTreeListEditingOptions.row
      * @public
      * @type dxTreeListRowObject
      */
@@ -1178,8 +1179,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @docid dxTreeListOptions.editing.allowAdding
      * @default false
      * @type boolean|function
-     * @type_function_param1_field component:dxTreeList
-     * @type_function_param1_field row:dxTreeListRowObject
+     * @type_function_param1 options:dxTreeListEditingOptions
      * @public
      */
     allowAdding?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
@@ -1187,8 +1187,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @docid dxTreeListOptions.editing.allowDeleting
      * @default false
      * @type boolean|function
-     * @type_function_param1_field component:dxTreeList
-     * @type_function_param1_field row:dxTreeListRowObject
+     * @type_function_param1 options:dxTreeListEditingOptions
      * @public
      */
     allowDeleting?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
@@ -1196,8 +1195,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @docid dxTreeListOptions.editing.allowUpdating
      * @default false
      * @type boolean|function
-     * @type_function_param1_field component:dxTreeList
-     * @type_function_param1_field row:dxTreeListRowObject
+     * @type_function_param1 options:dxTreeListEditingOptions
      * @public
      */
     allowUpdating?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
@@ -1607,31 +1605,30 @@ export interface dxTreeListColumn<TRowData = any, TKey = any> extends ColumnBase
  * @public
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxTreeListColumnButton<TRowData, TKey>;
+
 /**
- * @docid ColumnButtonOptions
+ * @docid dxTreeListColumnButtonOptions
  * @public
  */
 export type ColumnButtonOptions<TRowData = any, TKey = any> = {
     /**
-     * @docid ColumnButtonOptions.component
+     * @docid dxTreeListColumnButtonOptions.component
      * @public
      */
     readonly component: dxTreeList<TRowData, TKey>;
-
     /**
-     * @docid ColumnButtonOptions.row
+     * @docid dxTreeListColumnButtonOptions.row
      * @public
      * @type dxTreeListRowObject
      */
     readonly row?: Row<TRowData, TKey>;
-
     /**
-     * @docid ColumnButtonOptions.column
+     * @docid dxTreeListColumnButtonOptions.column
      * @public
-     * @type Column
+     * @type dxTreeListColumn
      */
     readonly column: Column<TRowData, TKey>;
-  };
+};
 
 /**
  * @namespace DevExpress.ui
@@ -1667,20 +1664,16 @@ export interface dxTreeListColumnButton<TRowData = any, TKey = any> extends Colu
     /**
      * @docid dxTreeListColumnButton.visible
      * @default true
-     * @type boolean | function
-     * @type_function_param1_field component:dxTreeList
-     * @type_function_param1_field row:dxTreeListRowObject
-     * @type_function_param1_field column:dxTreeListColumn
+     * @type boolean|function
+     * @type_function_param1 options:dxTreeListColumnButtonOptions
      * @public
      */
     visible?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListColumnButton.disabled
      * @default false
-     * @type boolean | function
-     * @type_function_param1_field component:dxTreeList
-     * @type_function_param1_field row:dxTreeListRowObject
-     * @type_function_param1_field column:dxTreeListColumn
+     * @type boolean|function
+     * @type_function_param1 options:dxTreeListColumnButtonOptions
      * @public
      */
     disabled?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
