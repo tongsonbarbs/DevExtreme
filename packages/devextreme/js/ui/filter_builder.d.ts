@@ -357,32 +357,30 @@ export default class dxFilterBuilder extends Widget<dxFilterBuilderOptions> {
  * @public
  */
 export type CustomOperation = dxFilterBuilderCustomOperation;
+
 /**
- * @docid FieldInfo
+ * @docid
  * @public
  */
 export type FieldInfo = {
   /**
-   * @docid FieldInfo.value
+   * @docid
    * @public
-   * @type string | number | Date
    */
   value?: string | number | Date;
-
   /**
-   * @docid FieldInfo.valueText
+   * @docid
    * @public
-   * @type string
    */
   valueText?: string;
-
   /**
-   * @docid FieldInfo.field
+   * @docid
    * @public
    * @type dxFilterBuilderField
    */
   field?: Field;
 };
+
 /**
  * @namespace DevExpress.ui
  * @deprecated Use the CustomOperation type instead
@@ -403,7 +401,6 @@ export interface dxFilterBuilderCustomOperation {
     caption?: string | undefined;
     /**
      * @docid
-     * @type_function_param1_field field:dxFilterBuilderField:optional
      * @public
      */
     customizeText?: ((fieldInfo: FieldInfo) => string);
