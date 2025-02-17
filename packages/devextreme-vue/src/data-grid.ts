@@ -1819,6 +1819,11 @@ prepareConfigurationComponentConfig(DxFilterBuilderPopupConfig);
 const DxFilterBuilderPopup = defineComponent(DxFilterBuilderPopupConfig);
 
 (DxFilterBuilderPopup as any).$_optionName = "filterBuilderPopup";
+(DxFilterBuilderPopup as any).$_expectedChildren = {
+  animation: { isCollectionItem: false, optionName: "animation" },
+  position: { isCollectionItem: false, optionName: "position" },
+  toolbarItem: { isCollectionItem: true, optionName: "toolbarItems" }
+};
 
 const DxFilterOperationDescriptionsConfig = {
   emits: {
@@ -2897,6 +2902,13 @@ prepareConfigurationComponentConfig(DxPositionConfig);
 const DxPosition = defineComponent(DxPositionConfig);
 
 (DxPosition as any).$_optionName = "position";
+(DxPosition as any).$_expectedChildren = {
+  at: { isCollectionItem: false, optionName: "at" },
+  boundaryOffset: { isCollectionItem: false, optionName: "boundaryOffset" },
+  collision: { isCollectionItem: false, optionName: "collision" },
+  my: { isCollectionItem: false, optionName: "my" },
+  offset: { isCollectionItem: false, optionName: "offset" }
+};
 
 const DxRangeRuleConfig = {
   emits: {
@@ -3197,6 +3209,10 @@ prepareConfigurationComponentConfig(DxShowConfig);
 const DxShow = defineComponent(DxShowConfig);
 
 (DxShow as any).$_optionName = "show";
+(DxShow as any).$_expectedChildren = {
+  from: { isCollectionItem: false, optionName: "from" },
+  to: { isCollectionItem: false, optionName: "to" }
+};
 
 const DxSortByGroupSummaryInfoConfig = {
   emits: {
@@ -3486,6 +3502,9 @@ prepareConfigurationComponentConfig(DxToConfig);
 const DxTo = defineComponent(DxToConfig);
 
 (DxTo as any).$_optionName = "to";
+(DxTo as any).$_expectedChildren = {
+  position: { isCollectionItem: false, optionName: "position" }
+};
 
 const DxToolbarConfig = {
   emits: {
