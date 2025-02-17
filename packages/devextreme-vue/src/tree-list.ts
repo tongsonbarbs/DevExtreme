@@ -1214,7 +1214,7 @@ const DxCustomOperationConfig = {
   props: {
     calculateFilterExpression: Function as PropType<((filterValue: any, field: dxFilterBuilderField) => string | (() => any) | Array<any>)>,
     caption: String,
-    customizeText: Function as PropType<((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string)>,
+    customizeText: Function as PropType<((fieldInfo: FieldInfo) => string)>,
     dataTypes: Array as PropType<Array<DataType>>,
     editorTemplate: {},
     hasValue: Boolean,

@@ -16821,12 +16821,10 @@ declare module DevExpress.ui {
        * [descr:FieldInfo.value]
        */
       value?: string | number | Date;
-
       /**
        * [descr:FieldInfo.valueText]
        */
       valueText?: string;
-
       /**
        * [descr:FieldInfo.field]
        */

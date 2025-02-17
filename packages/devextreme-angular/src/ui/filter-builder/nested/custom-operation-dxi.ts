@@ -45,10 +45,10 @@ export class DxiFilterBuilderCustomOperationComponent extends CollectionNestedOp
     }
 
     @Input()
-    get customizeText(): ((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string) {
+    get customizeText(): ((fieldInfo: FieldInfo) => string) {
         return this._getOption('customizeText');
     }
-    set customizeText(value: ((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string)) {
+    set customizeText(value: ((fieldInfo: FieldInfo) => string)) {
         this._setOption('customizeText', value);
     }
 

@@ -775,7 +775,7 @@ const CursorOffset = Object.assign<typeof _componentCursorOffset, NestedComponen
 type ICustomOperationProps = React.PropsWithChildren<{
   calculateFilterExpression?: ((filterValue: any, field: dxFilterBuilderField) => string | (() => any) | Array<any>);
   caption?: string | undefined;
-  customizeText?: ((fieldInfo: FieldInfo | { field: dxFilterBuilderField }) => string);
+  customizeText?: ((fieldInfo: FieldInfo) => string);
   dataTypes?: Array<DataType> | undefined;
   editorTemplate?: ((conditionInfo: { field: dxFilterBuilderField, setValue: (() => void), value: string | number | Date }, container: any) => string | any) | template;
   hasValue?: boolean;
