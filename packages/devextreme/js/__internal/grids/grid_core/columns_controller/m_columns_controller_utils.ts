@@ -655,8 +655,12 @@ export const columnOptionCore = function (that: ColumnsController, column, optio
     return optionGetter(column, { functionsAsIs: true });
   }
   // @ts-expect-error
-  const getPrevValue = optionGetter(column, { functionsAsIs: true });
-  const prevValue = getPrevValue === null ? that.option('filterValue') : getPrevValue;
+  let prevValue = optionGetter(column, { functionsAsIs: true });
+  const filterValue = that.option('filterValue');
+
+  if (optionName === 'filterValue') {
+    prevValue = filterValue === null ? prevValue : filterValue;
+  }
   if (!equalByValue(prevValue, value, { maxDepth: 5 })) {
     if (optionName === 'groupIndex' || optionName === 'calculateGroupValue') {
       changeType = 'grouping';

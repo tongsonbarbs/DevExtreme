@@ -1583,7 +1583,7 @@ QUnit.module('Initialization', baseModuleConfig, () => {
 
         // assert
 
-        assert.equal(onOptionChanged.callCount, 4, 'onOptionChanged call count');
+        assert.equal(onOptionChanged.callCount, 5, 'onOptionChanged call count');
         assert.equal(onOptionChanged.getCall(0).args[0].fullName, 'columns[0].filterValue', 'option fullName');
         assert.equal(onOptionChanged.getCall(1).args[0].fullName, 'filterValue', 'option fullName');
         assert.equal(onOptionChanged.getCall(2).args[0].fullName, 'columns[0].filterType', 'option fullName');
