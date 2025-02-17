@@ -148,10 +148,6 @@ import {
  CollisionResolutionCombination,
 } from "devextreme/common/core/animation";
 import {
- ColumnButtonOptions,
- EditingOptions,
-} from "devextreme/ui/data_grid";
-import {
  event,
 } from "devextreme/events/events.types";
 import {
@@ -697,14 +693,14 @@ const DxButtonConfig = {
   },
   props: {
     cssClass: String,
-    disabled: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    disabled: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     hint: String,
     icon: String,
     name: String as PropType<string | TreeListPredefinedColumnButton>,
     onClick: Function as PropType<((e: { column: dxTreeListColumn, component: dxTreeList, element: any, event: event, model: any, row: dxTreeListRowObject }) => void)>,
     template: {},
     text: String,
-    visible: [Boolean, Function] as PropType<boolean | (((options: ColumnButtonOptions | { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
+    visible: [Boolean, Function] as PropType<boolean | (((options: { column: dxTreeListColumn, component: dxTreeList, row: dxTreeListRowObject }) => boolean))>
   }
 };
 
@@ -1284,9 +1280,9 @@ const DxEditingConfig = {
     "update:useIcons": null,
   },
   props: {
-    allowAdding: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
-    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowAdding: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowDeleting: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
+    allowUpdating: [Boolean, Function] as PropType<boolean | (((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean))>,
     changes: Array as PropType<Array<DataChange>>,
     confirmDelete: Boolean,
     editColumnName: String,

@@ -20,7 +20,6 @@ import {
 
 
 import dxTreeList from 'devextreme/ui/tree_list';
-import { EditingOptions } from 'devextreme/ui/data_grid';
 import { dxTreeListRowObject } from 'devextreme/ui/tree_list';
 import { DataChange, GridsEditMode, GridsEditRefreshMode, StartEditAction } from 'devextreme/common/grids';
 import { dxFormOptions } from 'devextreme/ui/form';
@@ -41,26 +40,26 @@ import { DxiTreeListChangeComponent } from './change-dxi';
 })
 export class DxoTreeListEditingComponent extends NestedOption implements OnDestroy, OnInit  {
     @Input()
-    get allowAdding(): boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
+    get allowAdding(): boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
         return this._getOption('allowAdding');
     }
-    set allowAdding(value: boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
+    set allowAdding(value: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
         this._setOption('allowAdding', value);
     }
 
     @Input()
-    get allowDeleting(): boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
+    get allowDeleting(): boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
         return this._getOption('allowDeleting');
     }
-    set allowDeleting(value: boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
+    set allowDeleting(value: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
         this._setOption('allowDeleting', value);
     }
 
     @Input()
-    get allowUpdating(): boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
+    get allowUpdating(): boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean) {
         return this._getOption('allowUpdating');
     }
-    set allowUpdating(value: boolean | ((options: EditingOptions | { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
+    set allowUpdating(value: boolean | ((options: { component: dxTreeList, row: dxTreeListRowObject }) => boolean)) {
         this._setOption('allowUpdating', value);
     }
 

@@ -48,18 +48,18 @@ export class DxoDataGridEditingComponent extends NestedOption implements OnDestr
     }
 
     @Input()
-    get allowDeleting(): boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get allowDeleting(): boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
         return this._getOption('allowDeleting');
     }
-    set allowDeleting(value: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set allowDeleting(value: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
         this._setOption('allowDeleting', value);
     }
 
     @Input()
-    get allowUpdating(): boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
+    get allowUpdating(): boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean) {
         return this._getOption('allowUpdating');
     }
-    set allowUpdating(value: boolean | ((options: any | { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
+    set allowUpdating(value: boolean | ((options: { component: dxDataGrid, row: dxDataGridRowObject }) => boolean)) {
         this._setOption('allowUpdating', value);
     }
 

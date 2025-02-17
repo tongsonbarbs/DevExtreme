@@ -10839,25 +10839,6 @@ declare module DevExpress.ui {
        */
       column?: Column<TRowData, TKey>;
     };
-    /**
-     * [descr:ColumnButtonOptions]
-     */
-    export type ColumnButtonOptions<TRowData = any, TKey = any> = {
-      /**
-       * [descr:ColumnButtonOptions.component]
-       */
-      component?: dxDataGrid<TRowData, TKey>;
-
-      /**
-       * [descr:ColumnButtonOptions.row]
-       */
-      row?: Row<TRowData, TKey>;
-
-      /**
-       * [descr:ColumnButtonOptions.column]
-       */
-      column?: Column<TRowData, TKey>;
-    };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
       readonly component: dxDataGrid<TRowData, TKey>;
       readonly data?: TRowData;
@@ -11056,13 +11037,19 @@ declare module DevExpress.ui {
        */
       allowDeleting?:
         | boolean
-        | ((options: EditingOptions<TRowData, TKey>) => boolean);
+        | ((options: {
+            component?: dxDataGrid<TRowData, TKey>;
+            row?: Row<TRowData, TKey>;
+          }) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.allowUpdating]
        */
       allowUpdating?:
         | boolean
-        | ((options: EditingOptions<TRowData, TKey>) => boolean);
+        | ((options: {
+            component?: dxDataGrid<TRowData, TKey>;
+            row?: Row<TRowData, TKey>;
+          }) => boolean);
       /**
        * [descr:dxDataGridOptions.editing.texts]
        */
@@ -11080,20 +11067,6 @@ declare module DevExpress.ui {
       TRowData = any,
       TKey = any
     > = DevExpress.common.grids.EditingBase<TRowData, TKey>;
-    /**
-     * [descr:EditingOptions]
-     */
-    export type EditingOptions<TRowData = any, TKey = any> = {
-      /**
-       * [descr:EditingOptions.component]
-       */
-      component?: dxDataGrid<TRowData, TKey>;
-
-      /**
-       * [descr:EditingOptions.row]
-       */
-      row?: Row<TRowData, TKey>;
-    };
     /**
      * [descr:_ui_data_grid_EditingStartEvent]
      */
@@ -12454,17 +12427,21 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((
-          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
-        ) => boolean);
+      | ((options: {
+          component?: dxDataGrid<TRowData, TKey>;
+          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
+          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
+        }) => boolean);
     /**
      * [descr:dxDataGridColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((
-          options: DevExpress.ui.dxDataGrid.ColumnButtonOptions<TRowData, TKey>
-        ) => boolean);
+      | ((options: {
+          component?: dxDataGrid<TRowData, TKey>;
+          row?: DevExpress.ui.dxDataGrid.Row<TRowData, TKey>;
+          column?: DevExpress.ui.dxDataGrid.Column<TRowData, TKey>;
+        }) => boolean);
   }
   /**
    * [descr:dxDataGridOptions]
@@ -28696,25 +28673,6 @@ declare module DevExpress.ui {
       row?: Row<TRowData, TKey>;
       column?: Column<TRowData, TKey>;
     };
-    /**
-     * [descr:ColumnButtonOptions]
-     */
-    export type ColumnButtonOptions<TRowData = any, TKey = any> = {
-      /**
-       * [descr:ColumnButtonOptions.component]
-       */
-      readonly component: dxTreeList<TRowData, TKey>;
-
-      /**
-       * [descr:ColumnButtonOptions.row]
-       */
-      readonly row?: Row<TRowData, TKey>;
-
-      /**
-       * [descr:ColumnButtonOptions.column]
-       */
-      readonly column: Column<TRowData, TKey>;
-    };
     export type ColumnButtonTemplateData<TRowData = any, TKey = any> = {
       readonly component: dxTreeList<TRowData, TKey>;
       readonly data: TRowData;
@@ -28854,38 +28812,33 @@ declare module DevExpress.ui {
        */
       allowAdding?:
         | boolean
-        | ((options: EditingOptions<TRowData, TKey>) => boolean);
+        | ((options: {
+            readonly component: dxTreeList<TRowData, TKey>;
+            readonly row?: Row<TRowData, TKey>;
+          }) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.allowDeleting]
        */
       allowDeleting?:
         | boolean
-        | ((options: EditingOptions<TRowData, TKey>) => boolean);
+        | ((options: {
+            readonly component: dxTreeList<TRowData, TKey>;
+            readonly row?: Row<TRowData, TKey>;
+          }) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.allowUpdating]
        */
       allowUpdating?:
         | boolean
-        | ((options: EditingOptions<TRowData, TKey>) => boolean);
+        | ((options: {
+            readonly component: dxTreeList<TRowData, TKey>;
+            readonly row?: Row<TRowData, TKey>;
+          }) => boolean);
       /**
        * [descr:dxTreeListOptions.editing.texts]
        */
       texts?: EditingTexts;
     }
-    /**
-     * [descr:EditingOptions]
-     */
-    export type EditingOptions<TRowData = any, TKey = any> = {
-      /**
-       * [descr:EditingOptions.component]
-       */
-      readonly component: dxTreeList<TRowData, TKey>;
-
-      /**
-       * [descr:EditingOptions.row]
-       */
-      readonly row?: Row<TRowData, TKey>;
-    };
     /**
      * [descr:_ui_tree_list_EditingStartEvent]
      */
@@ -29871,17 +29824,21 @@ declare module DevExpress.ui {
      */
     visible?:
       | boolean
-      | ((
-          options: DevExpress.ui.dxTreeList.ColumnButtonOptions<TRowData, TKey>
-        ) => boolean);
+      | ((options: {
+          readonly component: dxTreeList<TRowData, TKey>;
+          readonly row?: DevExpress.ui.dxTreeList.Row<TRowData, TKey>;
+          readonly column: DevExpress.ui.dxTreeList.Column<TRowData, TKey>;
+        }) => boolean);
     /**
      * [descr:dxTreeListColumnButton.disabled]
      */
     disabled?:
       | boolean
-      | ((
-          options: DevExpress.ui.dxTreeList.ColumnButtonOptions<TRowData, TKey>
-        ) => boolean);
+      | ((options: {
+          readonly component: dxTreeList<TRowData, TKey>;
+          readonly row?: DevExpress.ui.dxTreeList.Row<TRowData, TKey>;
+          readonly column: DevExpress.ui.dxTreeList.Column<TRowData, TKey>;
+        }) => boolean);
   }
   /**
    * @deprecated Use DevExpress.ui.dxTreeList.Node instead
