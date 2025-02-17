@@ -622,7 +622,7 @@ const columnHeadersView = (Base: ModuleType<ColumnHeadersView>) => class ColumnH
           options[isOnClickMode ? 'bufferedSelectedFilterOperation' : 'selectedFilterOperation'] = column.defaultSelectedFilterOperation || null;
         }
 
-        that._columnsController.columnOption(column.index, options);
+        that._columnsController.columnOption(column.index, options, null, false);
         that._applyFilterViewController.setHighLight($editorContainer, true);
 
         if (!selectedFilterOperation) {

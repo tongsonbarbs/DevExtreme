@@ -655,12 +655,7 @@ export const columnOptionCore = function (that: ColumnsController, column, optio
     return optionGetter(column, { functionsAsIs: true });
   }
   // @ts-expect-error
-  let prevValue = optionGetter(column, { functionsAsIs: true });
-  const filterValue = that.option('filterValue');
-
-  if (optionName === 'filterValue') {
-    prevValue = filterValue === null ? prevValue : filterValue;
-  }
+  const prevValue = optionGetter(column, { functionsAsIs: true });
   if (!equalByValue(prevValue, value, { maxDepth: 5 })) {
     if (optionName === 'groupIndex' || optionName === 'calculateGroupValue') {
       changeType = 'grouping';
@@ -686,7 +681,7 @@ export const columnOptionCore = function (that: ColumnsController, column, optio
       that._checkColumns();
     }
 
-    if (!isDefined(prevValue) && !isDefined(value) && optionName.indexOf('buffer') !== 0) {
+    if (!isDefined(prevValue) && !isDefined(value) && optionName.indexOf('buffer') !== 0 && notFireEvent !== false) {
       notFireEvent = true;
     }
 
