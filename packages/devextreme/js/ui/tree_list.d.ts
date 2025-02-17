@@ -1149,6 +1149,24 @@ export type dxTreeListOptions<TRowData = any, TKey = any> = Omit<GridBaseOptions
  * @deprecated Use Editing instead
  */
 export type dxTreeListEditing<TRowData = any, TKey = any> = Editing<TRowData, TKey>;
+/**
+ * @docid EditingOptions
+ * @public
+ */
+export type EditingOptions<TRowData = any, TKey = any> = {
+    /**
+     * @docid EditingOptions.component
+     * @public
+     */
+    readonly component: dxTreeList<TRowData, TKey>;
+
+    /**
+     * @docid EditingOptions.row
+     * @public
+     * @type dxTreeListRowObject
+     */
+    readonly row?: Row<TRowData, TKey>;
+};
 
 /**
  * @docid dxTreeListEditing
@@ -1164,7 +1182,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @type_function_param1_field row:dxTreeListRowObject
      * @public
      */
-    allowAdding?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey> }) => boolean);
+    allowAdding?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListOptions.editing.allowDeleting
      * @default false
@@ -1173,7 +1191,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @type_function_param1_field row:dxTreeListRowObject
      * @public
      */
-    allowDeleting?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey> }) => boolean);
+    allowDeleting?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListOptions.editing.allowUpdating
      * @default false
@@ -1182,7 +1200,7 @@ export interface Editing<TRowData = any, TKey = any> extends EditingBase<TRowDat
      * @type_function_param1_field row:dxTreeListRowObject
      * @public
      */
-    allowUpdating?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey> }) => boolean);
+    allowUpdating?: boolean | ((options: EditingOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListOptions.editing.texts
      * @type object
@@ -1589,6 +1607,31 @@ export interface dxTreeListColumn<TRowData = any, TKey = any> extends ColumnBase
  * @public
  */
 export type ColumnButton<TRowData = any, TKey = any> = dxTreeListColumnButton<TRowData, TKey>;
+/**
+ * @docid ColumnButtonOptions
+ * @public
+ */
+export type ColumnButtonOptions<TRowData = any, TKey = any> = {
+    /**
+     * @docid ColumnButtonOptions.component
+     * @public
+     */
+    readonly component: dxTreeList<TRowData, TKey>;
+
+    /**
+     * @docid ColumnButtonOptions.row
+     * @public
+     * @type dxTreeListRowObject
+     */
+    readonly row?: Row<TRowData, TKey>;
+
+    /**
+     * @docid ColumnButtonOptions.column
+     * @public
+     * @type Column
+     */
+    readonly column: Column<TRowData, TKey>;
+  };
 
 /**
  * @namespace DevExpress.ui
@@ -1630,7 +1673,7 @@ export interface dxTreeListColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxTreeListColumn
      * @public
      */
-    visible?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey>; readonly column: Column<TRowData, TKey> }) => boolean);
+    visible?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
     /**
      * @docid dxTreeListColumnButton.disabled
      * @default false
@@ -1640,7 +1683,7 @@ export interface dxTreeListColumnButton<TRowData = any, TKey = any> extends Colu
      * @type_function_param1_field column:dxTreeListColumn
      * @public
      */
-    disabled?: boolean | ((options: { readonly component: dxTreeList<TRowData, TKey>; readonly row?: Row<TRowData, TKey>; readonly column: Column<TRowData, TKey> }) => boolean);
+    disabled?: boolean | ((options: ColumnButtonOptions<TRowData, TKey>) => boolean);
 }
 
 /**
