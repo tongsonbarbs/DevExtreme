@@ -113,7 +113,7 @@ test('Filter Row\'s Reset button does not work after a custom filter is set in F
   const filterEditor = dataGrid.getFilterEditor(0, FilterTextBox);
 
   await dataGrid.isReady();
-  
+
   await t
     .expect(dataGrid.dataRows.count)
     .eql(0);
