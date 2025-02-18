@@ -112,8 +112,10 @@ test('Filter Row\'s Reset button does not work after a custom filter is set in F
   const dataGrid = new DataGrid('#container');
   const filterEditor = dataGrid.getFilterEditor(0, FilterTextBox);
 
+  await dataGrid.isReady();
+  
   await t
-    .expect(await dataGrid.dataRows.count)
+    .expect(dataGrid.dataRows.count)
     .eql(0);
 
   await t
@@ -121,7 +123,7 @@ test('Filter Row\'s Reset button does not work after a custom filter is set in F
     .click(filterEditor.menu.getItemByText('Reset'));
 
   await t
-    .expect(await dataGrid.dataRows.count)
+    .expect(dataGrid.dataRows.count)
     .notEql(0);
 }).before(async () => {
   await createWidget('dxDataGrid', {
