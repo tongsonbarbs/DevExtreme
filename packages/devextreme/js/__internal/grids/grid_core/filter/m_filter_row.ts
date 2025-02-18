@@ -623,6 +623,7 @@ const columnHeadersView = (Base: ModuleType<ColumnHeadersView>) => class ColumnH
           options[isOnClickMode ? 'bufferedSelectedFilterOperation' : 'selectedFilterOperation'] = column.defaultSelectedFilterOperation || null;
         }
 
+        // @ts-expect-error
         const isResetFilterOperation = !properties.itemData?.name;
         const isNotFireEvent = isResetFilterOperation ? false : undefined;
         that._columnsController.columnOption(column.index, options, undefined, isNotFireEvent);
