@@ -2,10 +2,12 @@
 import {
   describe, expect, it, jest,
 } from '@jest/globals';
+import { HeaderFilterController } from '@ts/grids/new/grid_core/filtering/header_filter';
 import { rerender } from 'inferno';
 
 import { ColumnsController } from '../../grid_core/columns_controller';
 import { DataController } from '../../grid_core/data_controller';
+import { FilterController } from '../../grid_core/filtering';
 import { Sortable } from '../../grid_core/inferno_wrappers/sortable';
 import type { Options } from '../options';
 import { OptionsControllerMock } from '../options_controller.mock';
@@ -16,9 +18,19 @@ const setup = (options: Options) => {
   rootElement.classList.add('test-container');
 
   const optionsController = new OptionsControllerMock(options);
-  const dataController = new DataController(optionsController);
+  const filterController = new FilterController(optionsController);
+  const dataController = new DataController(optionsController, filterController);
   const columnsController = new ColumnsController(optionsController, dataController);
-  const headerPanelView = new HeaderPanelView(columnsController, optionsController);
+  const headerFilterController = new HeaderFilterController(
+    optionsController,
+    dataController,
+    columnsController,
+  );
+  const headerPanelView = new HeaderPanelView(
+    columnsController,
+    optionsController,
+    headerFilterController,
+  );
 
   headerPanelView.render(rootElement);
   rerender();
@@ -42,6 +54,7 @@ describe('Options', () => {
           columns: ['column1'],
           allowColumnReordering: true,
           headerPanel: {
+            // @ts-expect-error ignored as dragging is tmp commented in .d.ts
             dragging: {
               dropFeedbackMode: 'push',
               scrollSpeed: 555,

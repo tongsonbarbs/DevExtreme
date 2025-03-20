@@ -1,8 +1,11 @@
 import type { Format, SortOrder } from '@js/common';
 import type { ColumnBase } from '@js/common/grids';
+import type { HeaderFilterColumnOptions } from '@ts/grids/new/grid_core/filtering/header_filter';
 import type { ComponentType } from 'inferno';
 
-import type { DataObject, Key } from '../data_controller/types';
+import type { DataObject } from '../data_controller/types';
+
+export type { DataRow } from '@js/ui/card_view';
 
 type InheritedColumnProps =
   | 'alignment'
@@ -11,6 +14,8 @@ type InheritedColumnProps =
   | 'visibleIndex'
   | 'allowReordering'
   | 'allowHiding'
+  | 'allowFiltering'
+  | 'allowHeaderFiltering'
   | 'trueText'
   | 'falseText'
   | 'caption';
@@ -18,8 +23,9 @@ type InheritedColumnProps =
 export type Column = Pick<Required<ColumnBase>, InheritedColumnProps> & {
   dataField?: string;
 
-  sortOrder?: SortOrder; // todo: move to sorting module
-  sortIndex?: number; // todo: move to sorting module
+  sortOrder?: SortOrder;
+
+  sortIndex?: number;
 
   name: string;
 
@@ -34,32 +40,11 @@ export type Column = Pick<Required<ColumnBase>, InheritedColumnProps> & {
     valueText: string;
   }) => string;
 
-  editorTemplate?: unknown;
-
   fieldTemplate?: unknown;
 
-  // TODO: move to cardview/headerpanel
   headerItemTemplate?: ComponentType<{ column: Column }>;
 
   headerItemCssClass?: string;
+  // header filter options for specific column.
+  headerFilter?: HeaderFilterColumnOptions;
 };
-
-export type VisibleColumn = Column & { visible: true };
-
-export interface Cell {
-  value: unknown;
-
-  displayValue: unknown;
-
-  text: string;
-
-  column: Column;
-}
-
-export interface DataRow {
-  cells: Cell[];
-
-  key: Key;
-
-  data: DataObject;
-}

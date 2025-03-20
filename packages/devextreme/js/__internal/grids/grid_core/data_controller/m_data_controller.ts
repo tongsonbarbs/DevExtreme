@@ -28,7 +28,6 @@ import type {
 import gridCoreUtils from '../m_utils';
 import type { VirtualScrollController } from '../virtual_scrolling/m_virtual_scrolling_core';
 import { DataHelperMixin } from './m_data_helper_mixin';
-import { NewDataController } from './new_data_controller';
 
 const changePaging = function (that, optionName, value) {
   const dataSource = that._dataSource;
@@ -237,8 +236,6 @@ export class DataController extends DataHelperMixin(modules.Controller) {
 
     this._refreshDataSource();
     this.postCtor();
-    // eslint-disable-next-line spellcheck/spell-checker
-    this.component.diContext.get(NewDataController).init(this);
   }
 
   /**
@@ -1312,7 +1309,8 @@ export class DataController extends DataHelperMixin(modules.Controller) {
 
   private filter(filterExpr) {
     const dataSource = this._dataSource;
-    const filter = dataSource && dataSource.filter();
+    const filter = dataSource?.filter();
+    const langParams = dataSource?.loadOptions?.()?.langParams;
 
     if (arguments.length === 0) {
       return filter;
@@ -1320,7 +1318,7 @@ export class DataController extends DataHelperMixin(modules.Controller) {
 
     filterExpr = arguments.length > 1 ? Array.prototype.slice.call(arguments, 0) : filterExpr;
 
-    if (gridCoreUtils.equalFilterParameters(filter, filterExpr)) {
+    if (gridCoreUtils.equalFilterParameters(filter, filterExpr, langParams)) {
       return;
     }
     if (dataSource) {
@@ -1781,5 +1779,4 @@ export const dataControllerModule: Module = {
   controllers: {
     data: DataController,
   },
-  newModules: [NewDataController],
 };

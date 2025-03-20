@@ -1,18 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-this-alias */
-/* eslint-disable @typescript-eslint/no-use-before-define */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable max-classes-per-file */
 /* eslint-disable spellcheck/spell-checker */
-import { hydrate } from '@devextreme/runtime/inferno';
+import { hydrate } from '@ts/core/r1/runtime/inferno/index';
 import type { Subscription, SubsGets } from '@ts/core/reactive/index';
 import { toSubscribable } from '@ts/core/reactive/index';
 import { Component, type ComponentType, render } from 'inferno';
-
-import type { TemplateStore } from './template_context';
-import { templateContext } from './template_context';
 
 // import { renderToString } from 'inferno-server';
 
@@ -23,8 +17,6 @@ export abstract class View<T extends {}> {
 
   private firstRender = true;
 
-  private readonly templateStore: TemplateStore = { nodes: [] };
-
   protected abstract component: ComponentType<T>;
 
   protected abstract getProps(): SubsGets<T>;
@@ -34,9 +26,7 @@ export abstract class View<T extends {}> {
     return toSubscribable(this.getProps()).subscribe((props: T) => {
       this.props = props;
       const content = (
-        <templateContext.Provider value={this.templateStore}>
-          <ViewComponent {...props}/>
-        </templateContext.Provider>
+        <ViewComponent {...props}/>
       );
 
       // // @ts-expect-error
@@ -53,6 +43,20 @@ export abstract class View<T extends {}> {
   public asInferno(): ComponentType {
     // eslint-disable-next-line no-return-assign
     return this.inferno ??= this._asInferno();
+  }
+
+  public isCompatibilityMode(): boolean {
+    return false;
+  }
+
+  /*
+   * NOTE: We need this method to be able to call the correct optionChanged overloads
+   * for those Views that reuse existing Views from DataGrid.
+   */
+  // eslint-disable-next-line @stylistic/max-len
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars, @typescript-eslint/explicit-module-boundary-types
+  public optionChanged(_args: any): void {
+
   }
 
   private _asInferno() {
@@ -78,9 +82,7 @@ export abstract class View<T extends {}> {
       public render(): JSX.Element | undefined {
         const ViewComponent = view.component;
         return (
-          <templateContext.Provider value={view.templateStore}>
-            <ViewComponent {...this.state!.props}/>
-          </templateContext.Provider>
+          <ViewComponent {...this.state!.props}/>
         );
       }
 

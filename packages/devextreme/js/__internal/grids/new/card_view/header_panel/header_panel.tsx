@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { Column } from '@ts/grids/new/grid_core/columns_controller/types';
 import { Scrollable } from '@ts/grids/new/grid_core/inferno_wrappers/scrollable';
 import type { ComponentType } from 'inferno';
@@ -25,6 +23,12 @@ export interface HeaderPanelProps {
 
   onSortClick: (column: Column) => void;
 
+  onFilterClick?: (
+    element: Element,
+    column: Column,
+    onFilterCloseCallback?: () => void,
+  ) => void;
+
   itemTemplate?: ComponentType<{ column: Column }>;
 
   itemCssClass?: string;
@@ -34,8 +38,8 @@ export interface HeaderPanelProps {
   draggingOptions?: DraggingOptions;
 }
 
-/**
- * <img src="../../../../../../../../e2e/testcafe-devextreme/tests/cardView/etalons/headers.png"></img>
+// eslint-disable-next-line @stylistic/max-len
+/** <img src="../../../../../../../../e2e/testcafe-devextreme/tests/cardView/etalons/headers.png"></img>
  */
 export class HeaderPanel extends Component<HeaderPanelProps> {
   public render(): JSX.Element {
@@ -66,9 +70,13 @@ export class HeaderPanel extends Component<HeaderPanelProps> {
                 <Item
                   showSortIndexes={this.props.showSortIndexes}
                   column={column}
-                  onSortClick={(): void => { this.props.onSortClick(column); }}
                   template={this.props.itemTemplate}
                   cssClass={this.props.itemCssClass}
+                  onSortClick={(): void => { this.props.onSortClick(column); }}
+                  onFilterClick={(
+                    element: Element,
+                    callback?: () => void,
+                  ) => this.props.onFilterClick?.(element, column, callback)}
                 />
               ))}
             </div>
